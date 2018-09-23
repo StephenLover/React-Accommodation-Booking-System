@@ -12,7 +12,7 @@ class RecommendationForm extends Component{
                         </div>
                         
                         <div className="row">
-                            <div class="recommand">
+                            <div className="recommand">
                                 <ul>
                                     <RecommendationCard/>
                                     <RecommendationCard/>
