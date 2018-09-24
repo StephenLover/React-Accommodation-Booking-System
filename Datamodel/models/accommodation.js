@@ -27,6 +27,9 @@ let accommodationSchema = new Schema({
     pictures: [String],
     longitude: Number,
     latitude: Number,
+    status: {
+        type: String, default: 'Open'
+    }
 })
 
 module.exports = mongoose.model('Accommodation', accommodationSchema, 'Accommodation');
