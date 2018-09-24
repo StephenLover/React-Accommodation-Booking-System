@@ -19,7 +19,7 @@ accomId_list = list()
 
 ## Getting a Collection users
 collectionUsers = db['User']
-relation_userId_email = collectionUsers.find({}, {"_id":1, "email":1})
+relation_userId_email = collectionUsers.find({}, {"_id":1})
 for rela in relation_userId_email:
     ## insert userId_list
     userId_list.append( str(rela['_id']) )
@@ -111,7 +111,7 @@ def gene_transaction_and_review(size=10, accomBeginTime="2018-04-01", accomEndTi
         ## get the candidateUser and candidateAccom, choose one from each list
         candidateUser = [userid for userid in userId_list if userid not in unavaliableUser]
         user = random.choice(candidateUser)
-        candidateAccom = [accomid for accomid in userId_list if accomid not in unavaliableAccom and accomid not in dict_owner_accomId[user]]
+        candidateAccom = [accomid for accomid in accomId_list if accomid not in unavaliableAccom and accomid not in dict_owner_accomId[user]]
         accom = random.choice(candidateAccom)
 
         ## save to record

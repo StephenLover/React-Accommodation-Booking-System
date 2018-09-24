@@ -180,7 +180,7 @@ data = dict()
 keys = dict()
 
 data["userInfo"] = \
-    {"email": user_email,
+    {"_id": user_email,
     "password": gene_password(userInfoLen),
     "firstName":gene_first_name(userInfoLen),
     "lastName": gene_last_name(userInfoLen),
@@ -188,7 +188,7 @@ data["userInfo"] = \
     "phone": gene_phone_number(userInfoLen),
     }
 keys['userInfo'] = \
-    ["email",
+    ["_id",
     "password",
     "firstName",
     "lastName",
@@ -206,7 +206,8 @@ addressList, surburbList, postcodeList, latitudeList, longitudeList = get_addres
 startTime, endTime = gene_time(startTime="2018-08-20", stopTime="2019-08-20", \
                             durationMin=1, durationMax=7, unit='d', size=accommodationInfoLen)
 data["accommodationInfo"] = \
-    {'owner': random.choices(user_email, k=accommodationInfoLen),
+    {'_id': [i for i in range(accommodationInfoLen)],
+    'owner': random.choices(user_email, k=accommodationInfoLen),
     'address': addressList,
     'suburb': surburbList,
     'postcode': postcodeList,
@@ -219,7 +220,8 @@ data["accommodationInfo"] = \
     'latitude': latitudeList
     }
 keys["accommodationInfo"] = \
-    ['owner',
+    ['_id',
+    'owner',
     'address',
     'suburb',
     'postcode',

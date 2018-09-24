@@ -33,12 +33,13 @@ collectionAccommodations.remove()
 filename = 'accommodationInfo.csv'
 dataAccomInfo = pd.read_csv(os.sep.join([folderName, filename]))
 ## convert the FK ownerId to its corresponding address
-dataAccomInfo['owner'] = dataAccomInfo['owner'].map(lambda x: str(collectionUsers.find({"email":x})[0]['_id']))
+#dataAccomInfo['owner'] = dataAccomInfo['owner'].map(lambda x: str(collectionUsers.find({"email":x})[0]['_id']))
 print ("  Start insert accommodationInfo ..." , end=" ")
 for i in range(dataAccomInfo.shape[0]):
     demo = dataAccomInfo.loc[i]
     demo_dict = demo.to_dict()
-    demo_dict['owner'] = ObjectId(demo_dict['owner'])
+    #demo_dict['owner'] = ObjectId(demo_dict['owner'])
+    demo_dict['_id'] = int(demo_dict['_id'])
     demo_dict['postcode'] = int(demo_dict['postcode'])
     demo_dict['capacity'] = int(demo_dict['capacity'])
     demo_dict['startDate'] = datetime.datetime.strptime(demo_dict['startDate'], "%Y-%m-%d")

@@ -25,8 +25,8 @@ print ("  Start insert transaction ..." , end=" ")
 for i in range(dataTransaction.shape[0]):
     demo = dataTransaction.loc[i]
     demo_dict = demo.to_dict()
-    demo_dict['accommodationId'] = ObjectId(demo_dict['accommodationId'])
-    demo_dict['traveler'] = ObjectId(demo_dict['traveler'])
+    demo_dict['accommodationId'] = int(demo_dict['accommodationId'])
+    demo_dict['traveler'] = str(demo_dict['traveler'])
     demo_dict['status'] = str(demo_dict['status'])
     demo_dict['createdTime'] = datetime.datetime.strptime(demo_dict['createdTime'], "%Y-%m-%d:%H:%M:%S")
     demo_dict['modifiedTime'] = datetime.datetime.strptime(demo_dict['modifiedTime'], "%Y-%m-%d:%H:%M:%S")
@@ -46,8 +46,8 @@ print ("  Start insert review ..." , end=" ")
 for i in range(dataReview.shape[0]):
     demo = dataReview.loc[i]
     demo_dict = demo.to_dict()
-    demo_dict['accommodationId'] = ObjectId(demo_dict['accommodationId'])
-    demo_dict['reviewer'] = ObjectId(demo_dict['reviewer'])
+    demo_dict['accommodationId'] = int(demo_dict['accommodationId'])
+    demo_dict['reviewer'] = str(demo_dict['reviewer'])
     demo_dict['star'] = int(demo_dict['star'])
     demo_dict['createdDate'] = datetime.datetime.strptime(demo_dict['createdDate'], "%Y-%m-%d:%H:%M:%S")
     #print (demo_dict, 'dict')
