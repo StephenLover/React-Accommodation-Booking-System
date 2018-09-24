@@ -12,7 +12,7 @@ import os
 __table = ["userInfo,csv", "accommodationInfo.csv"]
 readFolderName = 'csv'
 selectionSet = string.ascii_letters + string.digits
-genderSet = ['male', 'female', 'None']
+genderSet = ['male', 'female']
 
 def gene_password(numberOfRecord):
     passwordList = []
