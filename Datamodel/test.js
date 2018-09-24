@@ -41,13 +41,12 @@ let user = new userModel({
   password: '111'
 });
 let acc = new accommodationModel({
-  _id: 1,
   owner: user,
   address: '121 Dora St.',
   price: 4.456789,
 })
 let trans = new transactionModel({
-  accommodationId: acc,
+  accommodationId: 0,
   traveler: user,
 })
 
@@ -60,7 +59,7 @@ let trans = new transactionModel({
 for(let x of [user, acc, trans]){
   x.save()
    .then(doc => {
-     //console.log(doc)
+     console.log(doc)
    })
    .catch(err => {
      console.error(err)
