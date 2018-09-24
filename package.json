@@ -19,7 +19,6 @@
     "concurrently": "^3.5.1",
     "express": "^4.16.2",
     "mongoose": "^5.2.15",
-    "mongoose-auto-increment": "^5.0.1",
     "react": "^16.5.2",
     "react-helmet": "^5.2.0",
     "react-router-dom": "^4.3.1",

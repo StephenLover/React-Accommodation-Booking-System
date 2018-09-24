@@ -36,19 +36,19 @@ class Database{
 const accDB = new Database();
 
 // create new record
-let user = new userModel({
-  _id: 'albuslee@gmail.com',
-  password: '111'
-});
-let acc = new accommodationModel({
-  owner: user,
-  address: '121 Dora St.',
-  price: 4.456789,
-})
-let trans = new transactionModel({
-  accommodationId: 0,
-  traveler: user,
-})
+// let user = new userModel({
+//   _id: 'albuslee@gmail.com',
+//   password: '111'
+// });
+// let acc = new accommodationModel({
+//   owner: user,
+//   address: '121 Dora St.',
+//   price: 4.456789,
+// })
+// let trans = new transactionModel({
+//   accommodationId: 0,
+//   traveler: user,
+// })
 
 // record.save(function (err, record) {
 //   if (err) return console.error(err);
@@ -56,15 +56,15 @@ let trans = new transactionModel({
 // });
 
 // save function
-for(let x of [user, acc, trans]){
-  x.save()
-   .then(doc => {
-     console.log(doc)
-   })
-   .catch(err => {
-     console.error(err)
-   })
-}
+// for(let x of [user, acc, trans]){
+//   x.save()
+//    .then(doc => {
+//      console.log(doc)
+//    })
+//    .catch(err => {
+//      console.error(err)
+//    })
+// }
 
 
 // find owner's details of accommodation
@@ -91,3 +91,14 @@ for(let x of [user, acc, trans]){
 //     if (err) return handleError(err);
 //     console.log(docs);
 //   })
+
+
+accommodationModel.insertMany({'address': 'ddd'}, function(err,result) {
+  if (err) {
+    // handle error
+    console.log(err);
+  } else {
+    // handle success
+    console.log("All users are inserted successfully")
+  }
+});
