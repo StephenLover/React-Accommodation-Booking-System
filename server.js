@@ -40,13 +40,14 @@ app.get('/api/user/:id', (req, res) => {
     .find({'email': req.params.id})
     .exec( function(err, docs){ 
       (err) => { console.log(err)},
-      console.log(docs)
+      resolve(docs)
+      mongoose.disconnect();
     })
   });
-  // userInfo.then((result) => {
-  //   //console.log(res);
-  //   res.json({username : result})    //// TEMP: need use "then" to load user's trasction, until both info loaded,then return to front-end.
-  // })
+  userInfo.then((result) => {
+    //console.log(res);
+    res.json({username : result})    //// TEMP: need use "then" to load user's trasction, until both info loaded,then return to front-end.
+  })
 });
 
 // get PostInformation
@@ -61,12 +62,12 @@ app.get('/api/accommodation/:id', (req, res) => {
     )
     console.log(req.params.id)
     userModel
-    .find({'email': req.params.id})
+    .find({'_id': req.params.id})
     .exec( function(err, docs){ 
       (err) => { console.log(err)},
-      console.log(docs[0]._id)
+      console.log('docs',docs[0]._id)
       accommodationModel
-      .find({'_id': docs[0]._id})
+      .find({'owner': docs[0]._id})
       .exec(function(err, results){
         console.log(results)
       })
