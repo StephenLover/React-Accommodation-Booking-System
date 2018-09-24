@@ -56,15 +56,15 @@ let trans = new transactionModel({
 // });
 
 // save function
-// for(let x of [user, acc, trans]){
-//   x.save()
-//    .then(doc => {
-//      //console.log(doc)
-//    })
-//    .catch(err => {
-//      console.error(err)
-//    })
-// }
+for(let x of [user, acc, trans]){
+  x.save()
+   .then(doc => {
+     //console.log(doc)
+   })
+   .catch(err => {
+     console.error(err)
+   })
+}
 
 
 // find owner's details of accommodation
@@ -84,10 +84,10 @@ let trans = new transactionModel({
 //   });
 
 // find accommodations
-accommodationModel
-  .find({postcode: '2032'}, null, {skip: 10})
-  //.sort('startDate')
-  .exec(function (err, docs){
-    if (err) return handleError(err);
-    console.log(docs);
-  })
+// accommodationModel
+//   .find({postcode: '2032'}, null, {skip: 10})
+//   //.sort('startDate')
+//   .exec(function (err, docs){
+//     if (err) return handleError(err);
+//     console.log(docs);
+//   })

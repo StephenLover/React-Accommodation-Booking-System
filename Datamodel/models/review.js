@@ -4,11 +4,11 @@ let Schema = mongoose.Schema;
 
 let reviewSchema = new Schema({
     accommodationId: {
-        type: Schema.Types.ObjectId, ref: 'Accommodation'
+        type: Number, ref: 'Accommodation'
     },
     review: String,
     reviewer: {
-        type: Schema.Types.ObjectId, ref: 'User'
+        type: String, ref: 'User'
     },
     star: Number,
     createdDate: {

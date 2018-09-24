@@ -4,10 +4,10 @@ let Schema = mongoose.Schema;
 
 let transactionSchema = new Schema({
     accommodationId: {
-        type: Schema.Types.ObjectId, ref: 'Accommodation'
+        type: Number, ref: 'Accommodation'
     },
     traveler: {
-        type: Schema.Types.ObjectId, ref: 'User'
+        type: String, ref: 'User'
     },
     status: String,
     createdTime: {type: Date, default: Date.now},

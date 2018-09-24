@@ -4,7 +4,7 @@ let Schema = mongoose.Schema;
 
 let accommodationSchema = new Schema({
     owner: {
-        type: Schema.Types.ObjectId, ref: 'User'
+        type: String, ref: 'User'
     },
     address: String,
     suburb: String,
