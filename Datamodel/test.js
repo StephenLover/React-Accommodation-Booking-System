@@ -92,13 +92,3 @@ const accDB = new Database();
 //     console.log(docs);
 //   })
 
-
-accommodationModel.insertMany({'address': 'ddd'}, function(err,result) {
-  if (err) {
-    // handle error
-    console.log(err);
-  } else {
-    // handle success
-    console.log("All users are inserted successfully")
-  }
-});
