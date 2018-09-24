@@ -3,6 +3,7 @@ let validator = require('validator');
 let Schema = mongoose.Schema;
 
 let accommodationSchema = new Schema({
+    _id: Number,
     owner: {
         type: String, ref: 'User'
     },

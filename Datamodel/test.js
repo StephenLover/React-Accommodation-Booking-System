@@ -37,10 +37,11 @@ const accDB = new Database();
 
 // create new record
 let user = new userModel({
-  email: 'albuslee@gmail.com',
+  _id: 'albuslee@gmail.com',
   password: '111'
 });
 let acc = new accommodationModel({
+  _id: 1,
   owner: user,
   address: '121 Dora St.',
   price: 4.456789,
