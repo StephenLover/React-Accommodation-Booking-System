@@ -54,6 +54,41 @@ app.get('/api/user/:id', (req, res) => {
   })
 });
 
+// Sign up
+app.post('/api/signup', function(req, res){
+  let _id = req.body._id
+  let password = req.body.password
+  let firstName = req.body.firstName
+  let lastName = req.body.lastName
+  let phone = req.body.phone
+  mongoose.connect(url)
+    .then(
+      () => {
+        console.log('Database connect')
+      },
+      err => { console.log(err) }
+    )
+  
+  let User = new userModel({
+    _id: _id,
+    password: password,
+    firstName: firstName,
+    lastName: lastName,
+    phone: phone
+  })
+  User
+  .save(function(err, docs){
+    if (err) {
+      console.log(err);
+      res.sendStatus(500).send(err);
+    }
+    console.log(docs)
+    return res.status(200).json(docs);
+    mongoose.disconnect();
+  })
+
+})
+
 // get all history(accommodation info) of specific person
 app.get('/api/history/:id', (req, res) => {
   const historyInfo = new Promise((resolve, reject) => {
