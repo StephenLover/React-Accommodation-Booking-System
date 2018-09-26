@@ -61,6 +61,7 @@ app.post('/api/signup', function(req, res){
   let firstName = req.body.firstName
   let lastName = req.body.lastName
   let phone = req.body.phone
+  let gender = ""
   mongoose.connect(url)
     .then(
       () => {
@@ -74,7 +75,8 @@ app.post('/api/signup', function(req, res){
     password: password,
     firstName: firstName,
     lastName: lastName,
-    phone: phone
+    phone: phone,
+    gender: gender
   })
   User
   .save(function(err, docs){
