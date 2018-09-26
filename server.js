@@ -45,8 +45,12 @@ app.get('/api/user/:id', (req, res) => {
     })
   });
   userInfo.then((result) => {
-    //console.log(res);
-    res.json(result)    //// TEMP: need use "then" to load user's trasction, until both info loaded,then return to front-end.
+    console.log(result)
+    if (result === undefined){
+      res.status(404).send('No such email!')
+      return
+    }
+    res.status(200).json(result)    //// TEMP: need use "then" to load user's trasction, until both info loaded,then return to front-end.
   })
 });
 
