@@ -13,20 +13,12 @@ let Schema = mongoose.Schema;
 
 let accommodationSchema = new Schema({
     _id: Number,
-    owner: {
-        type: String, ref: 'User'
+    property: {
+        type: Number, ref: 'Property'
     },
-    address: String,
-    suburb: String,
-    postcode: Number,
-    capacity: Number,
     startDate: Date,
     endDate: Date,
     price: Number,
-    status: String,
-    pictures: [String],
-    longitude: Number,
-    latitude: Number,
     status: {
         type: String, default: 'Open'
     }

@@ -25,38 +25,13 @@ app.use(function(req, res, next) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true}));
 
-// get UserInformation
+// get specific User Information
 app.get('/api/user/:id', (req, res) => {
   const userInfo = new Promise((resolve, reject) => {
     mongoose.connect(url)
     .then(
       () => {
-        console.log('Database connect')
-      },
-      err => { console.log(err) }
-    )
-    console.log(req.params.id)
-    userModel
-    .find({'email': req.params.id})
-    .exec( function(err, docs){ 
-      (err) => { console.log(err)},
-      resolve(docs)
-      mongoose.disconnect();
-    })
-  });
-  userInfo.then((result) => {
-    //console.log(res);
-    res.json({username : result})    //// TEMP: need use "then" to load user's trasction, until both info loaded,then return to front-end.
-  })
-});
-
-// get PostInformation
-app.get('/api/accommodation/:id', (req, res) => {
-  const userInfo = new Promise((resolve, reject) => {
-    mongoose.connect(url)
-    .then(
-      () => {
-        console.log('Database connect')
+        console.log('/api/user/ connects successfully')
       },
       err => { console.log(err) }
     )
@@ -65,18 +40,45 @@ app.get('/api/accommodation/:id', (req, res) => {
     .find({'_id': req.params.id})
     .exec( function(err, docs){ 
       (err) => { console.log(err)},
-      console.log('docs',docs[0]._id)
-      accommodationModel
-      .find({'owner': docs[0]._id})
-      .exec(function(err, results){
-        console.log(results)
-      })
+      resolve(docs[0])
+      mongoose.disconnect();
     })
   });
-  // userInfo.then((result) => {
-  //   //console.log(res);
-  //   res.json({username : result})    //// TEMP: need use "then" to load user's trasction, until both info loaded,then return to front-end.
-  // })
+  userInfo.then((result) => {
+    //console.log(res);
+    res.json(result)    //// TEMP: need use "then" to load user's trasction, until both info loaded,then return to front-end.
+  })
+});
+
+// get all history(accommodation info) of specific person
+app.get('/api/history/:id', (req, res) => {
+  const historyInfo = new Promise((resolve, reject) => {
+    mongoose.connect(url)
+    .then(
+      () => {
+        console.log('/api/history/ connects successfully')
+      },
+      err => { console.log(err) }
+    )
+    transactionModel
+    .find({})
+    .populate({
+      path: 'accommodationId', match: {'owner': req.params.id}
+    })
+    .sort('modifiedTime')
+    .exec( function(err, docs){ 
+      (err) => { console.log(err)}
+      docs = docs.filter(function(doc){
+        return doc.accommodationId != null;
+      })
+      console.log('docs',docs)
+      resolve(docs);
+    })
+  });
+  historyInfo.then((result) => {
+    //console.log(res);
+    res.json(result)    //// TEMP: need use "then" to load user's trasction, until both info loaded,then return to front-end.
+  })
 });
 
 const port = 5000;

@@ -13,6 +13,13 @@ let transactionSchema = new Schema({
     createdTime: {type: Date, default: Date.now},
     endTime: {type: Date, default: () => Date.now() + 7*24*60*60*1000},
     modifiedTime: Date,
+    review: {
+        type: String, default: null
+    },
+    star: {
+        type: Number, default: null
+    },
+    reviewDate: Date
 })
 
 module.exports = mongoose.model('Transaction', transactionSchema, 'Transaction');
