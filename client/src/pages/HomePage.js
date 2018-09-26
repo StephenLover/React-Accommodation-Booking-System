@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-// import '../css/style.css';
+
 import { Helmet } from "react-helmet";
 import NavigationBarWithoutSession from '../components/NavigationBarWithoutSession';
 import NavigationBarWithSession from '../components/NavigationBarWithSession';
 import RecommendationForm from '../components/RecommendationForm';
 import Banner from '../components/Banner';
 import HomePageFooter from '../components/HomePageFooter';
-
-import '../css/bootstrap.min.css';
+import BannerReact from '../components/BannerReact';
 
 const HomePageHeader = () => {
     return (
@@ -36,8 +35,10 @@ class HomePage extends Component {
                 <NavigationBarWithSession />
                 {/* <NavigationBarWithoutSession /> */}
                 
-                <Banner/>
+                {/* <Banner/> */}
 
+                <BannerReact/>
+                
                 <RecommendationForm/>
 
                 <HomePageFooter/>
