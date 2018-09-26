@@ -7,6 +7,8 @@ import RecommendationForm from '../components/RecommendationForm';
 import Banner from '../components/Banner';
 import HomePageFooter from '../components/HomePageFooter';
 
+import '../css/bootstrap.min.css';
+
 const HomePageHeader = () => {
     return (
         <div>
@@ -15,8 +17,8 @@ const HomePageHeader = () => {
                     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
                     <title>Accomondation System</title>
                     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                    <link rel="stylesheet" type="css" media="screen" href="../css/style.css" />
-                    <link rel="stylesheet" type="css" href="../css/bootstrap.min.css"/>
+                    {/* <link rel="stylesheet" type="css" media="screen" href="../css/style.css" />
+                    <link type="css" rel="stylesheet" href="css/bootstrap.min.css"/> */}
                     {/* <script src={require('../js/index')}></script> */}
                     {/* <script src={require('../js/jquery-1.7.2')}></script> */}
             </Helmet>

@@ -9,6 +9,9 @@ import HomePage from './pages/HomePage';
 import SignUpPage from './pages/SignUpPage'
 // import NotFound from './Pages/notFound';    //TODO : 404 bug need to fix
 
+import '../src/css/style.css';
+import '../src/css/bootstrap.min.css';
+
 
 //routers controller
 const AppRouter = () => 
