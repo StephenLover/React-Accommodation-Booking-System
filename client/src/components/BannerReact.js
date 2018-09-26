@@ -12,21 +12,21 @@ const BannerReact = () => {
     return (
         <div className="imgbox">
             <Fade {...fadeProperties}>
-                <div className="each-fade">
-                    <div className="image-container">
-                        <img src={require(`../img/bg-01.jpg`)} />
+                <div className="each_fade">
+                    <div className="image_container">
+                        <img className= "banner_img" src={require(`../img/bg-01.jpg`)} />
                     </div>
                 </div>
 
-                <div className="each-fade">
-                    <div className="image-container">
-                        <img src={require(`../img/bg-01.jpg`)} />
+                <div className="each_fade">
+                    <div className="image_container">
+                        <img className= "banner_img" src={require(`../img/bg-01.jpg`)} />
                     </div>
                 </div>
 
-                <div className="each-fade">
-                    <div className="image-container">
-                        <img src={require(`../img/bg-01.jpg`)} />
+                <div className="each_fade">
+                    <div className="image_container">
+                        <img className= "banner_img" src={require(`../img/bg-01.jpg`)} />
                     </div>
                 </div>
             </Fade>

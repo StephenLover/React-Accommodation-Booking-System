@@ -4,7 +4,7 @@ import RecommendationCard from '../components/RecommendationCard';
 class RecommendationForm extends Component{
     render() {
         return (
-            <div>
+            <div className="recommendationform">
                 <div id="contact" className="section">
                     <div className="container">
                         <div className="word">

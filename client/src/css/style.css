@@ -157,18 +157,22 @@ html body {
 }
 
 .imgbox {
-    margin-top: 110px;
+    height: 300px;
+    margin-top: 130px;
     width: 1170px; 
     margin-left: auto;
     margin-right: auto; 
     text-align: center; 
 }
 
-.imgbox #bannerimg {
-    padding: 0px; 
-    margin: 0px; 
+.each_fade {
+    height: 300px;
 }
-.imgbox #bannerimg li {
+.banner_img {
+    height: 300px;
+    width: 1170px;
+}
+image_container {
     float: left; 
     list-style: none; 
     width: 100%; 
@@ -176,40 +180,15 @@ html body {
     line-height: 300px; 
     color: #FFFFFF; 
     font-size: 40px;
-    background: url("../img/bg-01.jpg");
+    
     background-size: 1170px 400px;
 } 
 
-.imgbox #bannerimg li .select {
-    display: block;
-}
-
-.imgnum span{ 
-    border-radius: 50%;
-    font: normal normal 12px;
-    color: #FFFFFF; 
-    margin-left: 5px; 
-    padding: 2px 6px 2px 6px; 
-    background-color: #ffa500; 
-    cursor: pointer;
-}
-
-.imgnum span .default {
-    background-color: #ff0000;
-}
-
-.imgnum { 
-    text-align: center; 
-    float:right; 
-    margin: -30px 30px; 
-    position: relative;
-}
-
+/* Recommand System */
 .word {
     margin-top: 40px;
 }
 
-/* Recommand System */
 .recommand {
     margin-top: 40px;
 }
@@ -225,7 +204,7 @@ html body {
     margin-right: 15px;
     margin-bottom: 30px;
     width: 30%;
-    height: 400px;
+    height: 500px;
     border: solid 1px;
     padding: 5px;
 }
@@ -239,7 +218,7 @@ html body {
     margin-right: 15px;
     margin-bottom: 30px;
     width: 30%;
-    height: 400px;
+    height: 500px;
     border: solid 1px;
     padding: 30px;
 }
@@ -250,11 +229,21 @@ html body {
     position: relative;
 }
 
+.acc_brief {
+    margin-top: 10px;
+    color: rgb(115, 79, 33);
+    font-size: 16px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
 
+.acc_brief span {
+    margin-right: 20px;
+}
 .acc_name {
     margin-top: 10px;
     color: #959596;
-    font-size: 30px;
+    font-size: 25px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -270,8 +259,16 @@ html body {
 
 .acc_price {
     color: #ff4e00;
-    font-size: 25px;
+    font-size: 20px;
     margin-top: 10px;
+}
+
+.acc_rank {
+    margin-top: 5px;
+}
+
+.acc_rank span {
+    margin-right: 5px;
 }
 
 /* Footer */
