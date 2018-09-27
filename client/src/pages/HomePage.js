@@ -4,7 +4,6 @@ import { Helmet } from "react-helmet";
 import NavigationBarWithoutSession from '../components/NavigationBarWithoutSession';
 import NavigationBarWithSession from '../components/NavigationBarWithSession';
 import RecommendationForm from '../components/RecommendationForm';
-import Banner from '../components/Banner';
 import HomePageFooter from '../components/HomePageFooter';
 import BannerReact from '../components/BannerReact';
 

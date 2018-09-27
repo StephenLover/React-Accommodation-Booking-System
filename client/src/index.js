@@ -7,6 +7,7 @@ import { BrowserRouter, Route , Switch } from 'react-router-dom'
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import SignUpPage from './pages/SignUpPage'
+import AccommodationDetailsPage from './pages/AccomondationDetails';
 // import NotFound from './Pages/notFound';    //TODO : 404 bug need to fix
 
 import '../src/css/style.css';
@@ -20,6 +21,7 @@ const AppRouter = () =>
             <Route exact path = '/' component = {HomePage} />
             <Route exact path = "/login" component={LoginPage} />
             <Route exact path = "/signup" component={SignUpPage} />
+            <Route exact path = "/accommodation" component={AccommodationDetailsPage} />
             {/* <Route component= {NotFound} /> */}
         </Switch>
     </BrowserRouter>
