@@ -170,7 +170,8 @@ html body {
 }
 .banner_img {
     height: 300px;
-    width: 1170px;
+    width: 1055px;
+    margin-left: 23px;
 }
 image_container {
     float: left; 
@@ -187,10 +188,11 @@ image_container {
 /* Recommand System */
 .word {
     margin-top: 40px;
+    margin-left: 40px;
 }
 
 .recommand {
-    margin-top: 40px;
+    margin-top: 25px;
 }
 
 .recommand ul li {
@@ -596,4 +598,104 @@ footer {
   
 .login100-form-btn:hover:before {
     opacity: 1;
+}
+
+/* Accomondation Detials */
+
+.word_acc_detail {
+    margin-top: 130px;
+    text-align: center;
+}
+
+.acc_img {
+    height: 400px;
+    width: 80%;
+    margin-top: 40px;
+    margin-left: 20px;
+}
+.comment_title {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.comments {
+    margin-left: 20px;
+    margin-top: 20px;
+    padding-right: 40px;
+}
+
+.submit {
+    background: #ff4e00;
+    color: #FFFFFF;
+    border-radius: 20px;
+}
+
+.acc_description {
+    margin-top: 40px;
+}
+/* table */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+	-webkit-box-shadow:  0px 2px 1px 5px rgba(242, 242, 242, 0.1);
+    box-shadow:  0px 2px 1px 5px rgba(242, 242, 242, 0.1);
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.zebra {
+    border: none;
+}
+
+.zebra td {
+    border-left: none;
+    border-top: none;
+    padding: 10px;
+    text-align: left;    
+}
+
+.zebra th, .zebra th:hover {
+    border-left: none;
+	border-bottom: none;
+    padding: 20px;  
+    background-color:#151515 !important;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#151515), to(#404040)) !important;
+    background-image: -webkit-linear-gradient(top, #151515, #404040) !important;
+    background-image:    -moz-linear-gradient(top, #151515, #404040) !important;
+    background-image:     -ms-linear-gradient(top, #151515, #404040) !important;
+    background-image:      -o-linear-gradient(top, #151515, #404040) !important;
+    background-image:         linear-gradient(top, #151515, #404040) !important;
+	color:#fff !important;
+	font-weight:normal;
+}
+
+.zebra tbody tr:nth-child(even) {
+    background: #aaaaaa !important;
+	color:#000000;
+}
+
+.zebra tr:hover *{
+    background: #ffffff;
+	color:#000;
+}
+
+.zebra tr {
+	background:#dbdbdb;
+	color:#000000;
+}
+
+/* map */
+.map {
+    height: 250px;
+    width: 100%;
+    background-color: #a445b2;
+    margin-top: 30px;
+}
+
+.add_to_wl_button {
+    margin-top: 20px;
+    text-align: center;
 }
