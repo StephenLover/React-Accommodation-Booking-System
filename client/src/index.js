@@ -7,7 +7,7 @@ import { BrowserRouter, Route , Switch } from 'react-router-dom'
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import SignUpPage from './pages/SignUpPage'
-import AccommodationDetailsPage from './pages/AccomondationDetails';
+import AccommodationDetailsPage from './pages/AccommodationDetailsPage';
 // import NotFound from './Pages/notFound';    //TODO : 404 bug need to fix
 
 import '../src/css/style.css';

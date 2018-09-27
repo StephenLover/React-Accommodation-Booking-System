@@ -30,7 +30,7 @@ class NavigationBarWithSession extends Component{
                                     <img src={require(`../img/unsw.png`)} alt="logo"/>
                                     {/* <!-- <h1>LOGO</h1> --> */}
                                 </a>
-                    
+
                             </div>
                         {/* <!-- /Logo --> */}
                     {/* <!-- Navigation --> */}

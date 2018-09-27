@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
-import AccomendationDetailsSimilarContainer from '../components/AccomenadtionDetailsSimilarContainer';
-
-import '../css/style.css';
-import '../css/bootstrap.min.css';
+import AccomendationDetailsSimilarContainer from './AccomenadtionDetailsSimilarContainer';
+import AccomendationDetailsBanner from './AccomendationDetailsBanner';
+import AccomendationCard from './AccomendationCard';
 
 
 const AccDetailsHeader = () => {
@@ -14,8 +13,14 @@ const AccDetailsHeader = () => {
 class AccomendationDetailsCard extends Component{
     constructor(props){
         super(props)
-        this.setState = {
-
+        this.state = {
+            //defalut dammy data
+            comments: "This is the Comment of this Accomondation. This is the Comment of this Accomondation. This is the Comment of this Accomondation. This is the Comment of this Accomondation This is the Comment of this Accomondation. This is the Comment of this Accomondation. This is the Comment of this Accomondation. This is the Comment of this Accomondation This is the Comment of this Accomondation. This is the Comment of this Accomondation. This is the Comment of this Accomondation. This is the Comment of this Accomondation",
+            address: "UNSW, Sydney NSW 2052",
+            surburb: "Kensington",
+            postcode: "2052",
+            capacity: "50,000",
+            review: "4.7/5",
         }
     }
     
@@ -31,7 +36,7 @@ class AccomendationDetailsCard extends Component{
                         <div className="row">
                             {/* <!-- Left side of the Body part--> */}
                             <div className="col-md-6">
-                                <img src={require(`../img/bg-01.jpg`)} alt="" className="acc_img"/>
+                                <AccomendationDetailsBanner/>
                                 {/* <!-- If there is no session, the comment part will not avalible --> */}
                                 {/* <!-- Comment part with session --> */}
                                 <div className="comment_title">
@@ -39,7 +44,9 @@ class AccomendationDetailsCard extends Component{
                                 </div>
                                 
                                 <div className="comments">
-                                    <p>This is the Comment of this Accomondation. This is the Comment of this Accomondation. This is the Comment of this Accomondation. This is the Comment of this Accomondation</p>
+                                    <p>
+                                        {this.state.comments};
+                                    </p>
                                 </div>
                             </div>
 
@@ -49,25 +56,25 @@ class AccomendationDetailsCard extends Component{
                                     <tbody>
                                         <tr>
                                             <td width="20%">Address:</td>
-                                            <td width="80%" id="address">Address</td>
+                                            <td width="80%" id="address">{this.state.address}</td>
                                         </tr>
                                         <tr>
                                             <td width="20%">Surburb:</td>
-                                            <td width="80%" id="surburb">Surburb</td>
+                                            <td width="80%" id="surburb">{this.state.surburb}</td>
                                         </tr>
                                         <tr>
                                             <td width="20%">Postcode:</td>
-                                            <td width="80%" id="postcode">Postcode</td>
+                                            <td width="80%" id="postcode">{this.state.postcode}</td>
                                         </tr>
                                         <tr>
                                             <td width="20%">Capacity:</td>
-                                            <td width="80%" id="capacity">Capacity</td>
+                                            <td width="80%" id="capacity">{this.state.capacity}</td>
                                         </tr>
                                         <tr>
                                             <td width="20%">Review:</td>
                                             <td width="80%" id="rank">
                                                 <div>
-                                                    <span id="accomondation_rank">rank</span>
+                                                    <span id="accomondation_rank">{this.state.review}</span>
                                                     <img src={require("../img/stars.png")} alt='star'/>
                                                 </div>
                                             </td>

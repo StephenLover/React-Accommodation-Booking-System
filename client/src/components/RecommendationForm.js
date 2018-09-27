@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RecommendationCard from '../components/RecommendationCard';
+import AccomendationCard from './AccomendationCard';
 
 class RecommendationForm extends Component{
     render() {
@@ -14,12 +14,12 @@ class RecommendationForm extends Component{
                         <div className="row">
                             <div className="recommand">
                                 <ul>
-                                    <RecommendationCard/>
-                                    <RecommendationCard/>
-                                    <RecommendationCard/>
-                                    <RecommendationCard/>
-                                    <RecommendationCard/>
-                                    <RecommendationCard/>
+                                    <AccomendationCard/>
+                                    <AccomendationCard/>
+                                    <AccomendationCard/>
+                                    <AccomendationCard/>
+                                    <AccomendationCard/>
+                                    <AccomendationCard/>
                                 </ul>
                             </div>
                         </div>                

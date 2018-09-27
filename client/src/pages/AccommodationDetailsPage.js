@@ -74,7 +74,7 @@ const AccomendationDetailsFooter = () => {
 }
 
 
-class AccomendationDetails extends Component{
+class AccommodationDetailsPage extends Component{
     constructor(props){
         super(props)
         this.setState = {
@@ -97,4 +97,4 @@ class AccomendationDetails extends Component{
     }
 }
 
-export default AccomendationDetails;
+export default AccommodationDetailsPage;

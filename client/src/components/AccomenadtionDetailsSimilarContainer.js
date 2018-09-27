@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AccomendationDetailsSimilarCard from '../components/AccomendationDetailsSimilarCard'
+import AccomendationCard from './AccomendationCard'
 
 //This is single card component for Similar card in AccomendationDetailsPage 
 // Parent Component for AccomendationDetailsSimilarCard
@@ -14,9 +14,9 @@ class AccomendationDetailsSimilarContainer extends Component{
 
                 <div className="recommand">
                     <ul>
-                        <AccomendationDetailsSimilarCard/>
-                        <AccomendationDetailsSimilarCard/>
-                        <AccomendationDetailsSimilarCard/>
+                        <AccomendationCard/>
+                        <AccomendationCard/>
+                        <AccomendationCard/>
                     </ul>
                 </div>
             </div>
