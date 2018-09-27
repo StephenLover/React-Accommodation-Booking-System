@@ -28,9 +28,10 @@ class NavigationBarWithoutSession extends Component{
                                     <li>
                                         <button type="submit" className="search_button_no">Search</button>
                                     </li>
-                                        <li><a href="Login.html">Login</a></li>
-                                    <li><a href="Singup.html" target="_parent">Sing Up</a></li>
-                                 </ul>
+                                        <li><a href="/login">Sign in</a></li>
+                                        <li><a href="/signup" target="_parent">Sign Up</a>
+                                    </li>
+                                </ul>
                              </nav>
                 
                         {/* <!-- /Navigation --> */}

@@ -32,13 +32,12 @@ class HomePage extends Component {
             <div>
                 <HomePageHeader/>
                 {/* Need to check if user has been logged in */}
-                <NavigationBarWithSession />
-                {/* <NavigationBarWithoutSession /> */}
                 
+                {localStorage.getItem('session-firstName') === null ? <NavigationBarWithoutSession/> : <NavigationBarWithSession/>}
                 {/* <Banner/> */}
 
                 <BannerReact/>
-                
+
                 <RecommendationForm/>
 
                 <HomePageFooter/>

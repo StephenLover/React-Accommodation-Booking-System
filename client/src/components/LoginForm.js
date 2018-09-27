@@ -16,7 +16,7 @@ class LoginForm extends Component{
 
 
     componentWillMount(){
-        if(localStorage.getItem('session-username')){
+        if(localStorage.getItem('session-firstName')){
             window.location.href = "/"
         }
     }
@@ -43,13 +43,11 @@ class LoginForm extends Component{
             return res.json()
         })
         .then(json => {
-            console.log(json)
-            console.log(json.password, this.refs.password.value)
             if(json.password === this.refs.password.value){
                 auth_bool = true;
-                localStorage.setItem('session-username', JSON.stringify(username));
                 localStorage.setItem('session-firstName', JSON.stringify(json.firstName));
                 this.setState({isAuthenticated : true});
+                alert(`Welcome Back! ${localStorage.getItem('session-firstName').slice(1,-1)}! Click on 'OK' will move to homepage.`)
                 window.location.href = "/"
             }else{
                 window.alert("Please check the username or password input");

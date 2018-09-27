@@ -13,7 +13,7 @@ class HomePageFooter extends Component{
                                     <h3>About Us</h3>
                                 </div>
                                 <div className="footer_text">
-                                    <p>Curabitur non nulla sit amet nislinit tempus convallis quis ac lectus. lac inia eget consectetur sed, convallis at tellus. Nulla porttitor accumsana tincidunt.</p>
+                                    <p>The Double 90 Group is an extremely mystical team, there are four wacko in this team, you may can find them at CSE Drums lab in 2pm on Tuesday....</p>
                                 </div>
                             </div>
                         </li>
@@ -24,12 +24,12 @@ class HomePageFooter extends Component{
                                 </div>
                                 <div className="footer_text">
                                     <h4>Location :</h4>
-                                    <p>0926k 4th block building, king Avenue, New York City.</p>
+                                    <p>UNSW Business School G21</p>
                                 </div>
                                 <div className="footer_text">
                                     <h4>Contact :</h4>
-                                    <p>Phone : +121 098 8907 9987</p>
-                                    <p>Email : info@example.com</p>
+                                    <p>Phone : +04?? ??? ???</p>
+                                    <p>Email : weido@gmail.com</p>
                                 </div>  
                             </div>
                         </li>
@@ -47,7 +47,7 @@ class HomePageFooter extends Component{
                     </ul>
                 </div>
                 <div className="copywrite">
-                    <p>Copyright &copy; 2018.Company name All rights reserved.</p>
+                    <p>Copyright &copy; 2018 Double 90 All rights reserved.</p>
                 </div>
             </footer>
             </div>
