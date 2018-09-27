@@ -8,7 +8,7 @@ class RecommendationForm extends Component{
                 <div id="contact" className="section">
                     <div className="container">
                         <div className="word">
-                            <h1>Recommand For You :</h1> 
+                            <h4>Recommand For You :</h4> 
                         </div>
                         
                         <div className="row">

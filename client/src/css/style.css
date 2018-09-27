@@ -170,7 +170,8 @@ html body {
 }
 .banner_img {
     height: 300px;
-    width: 1170px;
+    width: 1055px;
+    margin-left: 23px;
 }
 image_container {
     float: left; 
@@ -187,10 +188,11 @@ image_container {
 /* Recommand System */
 .word {
     margin-top: 40px;
+    margin-left: 40px;
 }
 
 .recommand {
-    margin-top: 40px;
+    margin-top: 25px;
 }
 
 .recommand ul li {
@@ -676,7 +678,7 @@ table {
 }
 
 .zebra tr:hover *{
-    background: #eeeeee;
+    background: #ffffff;
 	color:#000;
 }
 
