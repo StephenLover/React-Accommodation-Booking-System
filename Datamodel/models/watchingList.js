@@ -6,9 +6,9 @@ let watchingListSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId, ref: 'User'
     },
-    accommodationId: {
+    watching_list: [{
         type: Schema.Types.ObjectId, ref: 'Accommodation'
-    },
+    }],
 })
 
 module.exports = mongoose.model('WatchingList', watchingListSchema, 'WatchingList');
