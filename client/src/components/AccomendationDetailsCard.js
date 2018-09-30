@@ -2,28 +2,49 @@ import React, { Component } from 'react';
 
 import AccomendationDetailsSimilarContainer from './AccomenadtionDetailsSimilarContainer';
 import AccomendationDetailsBanner from './AccomendationDetailsBanner';
-import AccomendationCard from './AccomendationCard';
-
-
-const AccDetailsHeader = () => {
-
-}
+import GoogleMapReact from '../components/GoogleMapReact';
 
 
 class AccomendationDetailsCard extends Component{
     constructor(props){
         super(props)
         this.state = {
-            //defalut dammy data
-            comments: "This is the Comment of this Accomondation. This is the Comment of this Accomondation. This is the Comment of this Accomondation. This is the Comment of this Accomondation This is the Comment of this Accomondation. This is the Comment of this Accomondation. This is the Comment of this Accomondation. This is the Comment of this Accomondation This is the Comment of this Accomondation. This is the Comment of this Accomondation. This is the Comment of this Accomondation. This is the Comment of this Accomondation",
-            address: "UNSW, Sydney NSW 2052",
-            surburb: "Kensington",
-            postcode: "2052",
-            capacity: "50,000",
-            review: "4.7/5",
+            comments: "",
+            address: "",
+            surburb: "",
+            postcode: "",
+            capacity: "",
+            review: "",
+            longitude: null,
+            latitude: null,
+            owner: "",
+            pictures: [],
         }
     }
-    
+
+
+
+    componentWillMount(){
+        fetch(`/api/accommodation/${this.props.accId}`)
+        .then(response => response.json())
+        .then(res => {
+            this.setState({
+                comments: res.property.comments,
+                address: res.property.address,
+                suburb: res.property.suburb,
+                postcode: res.property.postcode,
+                capacity: res.property.capacity,
+                review: res.property.review,
+                owner : res.property.owner,
+                longitude : res.property.longitude,
+                latitude :res.property.latitude,
+                pictures: res.property.pictures,
+            })
+        })
+        .catch((err) => {console.log(err)})
+    }
+
+
     render() {
         return (
             <div>
@@ -36,7 +57,7 @@ class AccomendationDetailsCard extends Component{
                         <div className="row">
                             {/* <!-- Left side of the Body part--> */}
                             <div className="col-md-6">
-                                <AccomendationDetailsBanner/>
+                                <AccomendationDetailsBanner pictures={this.state.pictures}/>
                                 {/* <!-- If there is no session, the comment part will not avalible --> */}
                                 {/* <!-- Comment part with session --> */}
                                 <div className="comment_title">
@@ -45,7 +66,7 @@ class AccomendationDetailsCard extends Component{
                                 
                                 <div className="comments">
                                     <p>
-                                        {this.state.comments};
+                                        {this.state.comments}
                                     </p>
                                 </div>
                             </div>
@@ -59,8 +80,8 @@ class AccomendationDetailsCard extends Component{
                                             <td width="80%" id="address">{this.state.address}</td>
                                         </tr>
                                         <tr>
-                                            <td width="20%">Surburb:</td>
-                                            <td width="80%" id="surburb">{this.state.surburb}</td>
+                                            <td width="20%">Suburb:</td>
+                                            <td width="80%" id="suburb">{this.state.suburb}</td>
                                         </tr>
                                         <tr>
                                             <td width="20%">Postcode:</td>
@@ -69,6 +90,10 @@ class AccomendationDetailsCard extends Component{
                                         <tr>
                                             <td width="20%">Capacity:</td>
                                             <td width="80%" id="capacity">{this.state.capacity}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="20%">Owner:</td>
+                                            <td width="80%" id="owner">{this.state.owner}</td>
                                         </tr>
                                         <tr>
                                             <td width="20%">Review:</td>
@@ -81,7 +106,9 @@ class AccomendationDetailsCard extends Component{
                                         </tr>
                                     </tbody>
                                 </table>
-                                    <div className="map"></div>
+                                    <div className="map">
+                                        <GoogleMapReact lat={this.state.latitude} lng={this.state.longitude}/>
+                                    </div>
                                         <form action="/" method="post" className="add_to_wl">
                                             <div className="add_to_wl_button">
                                                 <button type="submit" className="submit">Add to Watching List</button>

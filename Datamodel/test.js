@@ -3,6 +3,7 @@ let mongoose = require('mongoose');
 const userModel = require('./models/user.js');
 const accommodationModel = require('./models/accommodation.js');
 const transactionModel = require('./models/transaction.js');
+const propertyModel = require('./models/property');
 
 // define the address and database name, then connect
 const server = '127.0.0.1:27017'; // REPLACE WITH YOUR DB SERVER
@@ -33,30 +34,29 @@ class Database{
   }
 }
 
-const accDB = new Database();
+// const accDB = new Database();
 
-// create new record
+// // create new record
 // let user = new userModel({
 //   _id: 'albuslee@gmail.com',
 //   password: '111'
 // });
-// let acc = new accommodationModel({
+// let prop= new propertyModel({
+//   _id: 0,
 //   owner: user,
 //   address: '121 Dora St.',
-//   price: 4.456789,
+// })
+// let acc = new accommodationModel({
+//   _id: 0,
+//   property: prop,
 // })
 // let trans = new transactionModel({
-//   accommodationId: 0,
+//   accommodationId: acc,
 //   traveler: user,
 // })
 
-// record.save(function (err, record) {
-//   if (err) return console.error(err);
-//   console.log('albuslee@gmail.com added.');
-// });
-
-// save function
-// for(let x of [user, acc, trans]){
+// // save function
+// for(let x of [user, prop, acc, trans]){
 //   x.save()
 //    .then(doc => {
 //      console.log(doc)
@@ -92,3 +92,20 @@ const accDB = new Database();
 //     console.log(docs);
 //   })
 
+const accInfo = new Promise((resolve, reject) => {
+  mongoose.connect(url)
+  .then(
+    () => {
+      console.log('/api/accommodation/ connects successfully')
+    },
+    err => { console.log(err) }
+  )
+  accommodationModel
+  .find({'_id': 1})
+  .populate('property')
+  .exec( function(err, docs){ 
+    (err) => { console.log(err)},
+    console.log(docs[0])
+    mongoose.disconnect();
+  })
+});

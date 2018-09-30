@@ -11,6 +11,7 @@ const userModel = require('./Datamodel/models/user');
 const accommodationModel = require('./Datamodel/models/accommodation');
 const transactionModel = require('./Datamodel/models/transaction');
 const reviewModel = require('./Datamodel/models/review');
+const propertyModel = require('./Datamodel/models/property');
 
 // CSRF pre-fighting
 app.use(function(req, res, next) {
@@ -90,6 +91,42 @@ app.post('/api/signup', function(req, res){
   })
 
 })
+
+// get accommodation details based on accId
+app.get('/api/accommodation/:id', (req, res) => {
+  const accInfo = new Promise((resolve, reject) => {
+    mongoose.connect(url)
+    .then(
+      () => {
+        console.log('/api/accommodation/ connects successfully')
+      },
+      err => { console.log(err) }
+    )
+    accommodationModel
+    .find({'_id': req.params.id})
+    .exec( function(err, accs){ 
+      (err) => { console.log(err)},
+      acc = accs[0];
+      propertyModel
+      .find({'_id': acc.property})
+      .exec( function(err, props){
+        (err) => {console.log(err)}
+        acc.property = props[0]
+        resolve(acc)
+        mongoose.disconnect();
+      })
+      
+    })
+  });
+  accInfo.then((result) => {
+    console.log(result)
+    if (result === undefined){
+      res.status(404).send('No such accId!')
+      return
+    }
+    res.status(200).json(result)    //// TEMP: need use "then" to load user's trasction, until both info loaded,then return to front-end.
+  })
+});
 
 // get all history(accommodation info) of specific person
 app.get('/api/history/:id', (req, res) => {
