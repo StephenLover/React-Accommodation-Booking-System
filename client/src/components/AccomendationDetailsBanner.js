@@ -10,7 +10,7 @@ const fadeProperties = {
   
 const AccomendationDetailsBanner = () => {
     return (
-        <div className>
+        <div>
             <Fade {...fadeProperties}>
                 <div className="each_fade_detail">
                     <div className="image_container_detail">

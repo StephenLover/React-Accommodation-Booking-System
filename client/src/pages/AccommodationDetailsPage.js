@@ -6,6 +6,9 @@ import NavigationBarWithSession from '../components/NavigationBarWithSession';
 import AccomendationDetailsCard from '../components/AccomendationDetailsCard'
 import HomePageFooter from '../components/HomePageFooter';
 
+
+
+
 const AccomendationDetailsHeader = () => {
     return (
         <div>
@@ -31,13 +34,14 @@ class AccommodationDetailsPage extends Component{
     }
     
     render() {
+        console.log(this.props)
         return (
             <div>
                 <AccomendationDetailsHeader/>
 
                 {localStorage.getItem('session-firstName') === null ? <NavigationBarWithoutSession/> : <NavigationBarWithSession/>}
 
-                <AccomendationDetailsCard/>
+                <AccomendationDetailsCard accId={this.props.match.params.id}/>
 
                 <HomePageFooter/>
             </div>

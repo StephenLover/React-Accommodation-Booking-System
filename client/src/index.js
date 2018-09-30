@@ -21,7 +21,7 @@ const AppRouter = () =>
             <Route exact path = '/' component = {HomePage} />
             <Route exact path = "/login" component={LoginPage} />
             <Route exact path = "/signup" component={SignUpPage} />
-            <Route exact path = "/accommodation" component={AccommodationDetailsPage} />
+            <Route exact path = "/accommodation/:id" component={AccommodationDetailsPage}/>
             {/* <Route component= {NotFound} /> */}
         </Switch>
     </BrowserRouter>
