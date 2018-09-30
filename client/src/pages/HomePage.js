@@ -5,7 +5,7 @@ import NavigationBarWithoutSession from '../components/NavigationBarWithoutSessi
 import NavigationBarWithSession from '../components/NavigationBarWithSession';
 import RecommendationForm from '../components/RecommendationForm';
 import HomePageFooter from '../components/HomePageFooter';
-import BannerReact from '../components/BannerReact';
+import HomePageBanner from '../components/HomePageBanner';
 
 const HomePageHeader = () => {
     return (
@@ -35,7 +35,7 @@ class HomePage extends Component {
                 {localStorage.getItem('session-firstName') === null ? <NavigationBarWithoutSession/> : <NavigationBarWithSession/>}
                 {/* <Banner/> */}
 
-                <BannerReact/>
+                <HomePageBanner/>
 
                 <RecommendationForm/>
 

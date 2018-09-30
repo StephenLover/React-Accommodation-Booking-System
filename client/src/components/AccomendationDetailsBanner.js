@@ -30,7 +30,7 @@ class AccomendationDetailsBanner extends Component {
                 <Fade {...fadeProperties}>
                     <div className="each_fade_detail">
                         <div className="image_container_detail">
-                            <img className= "banner_img_detial" src={`${this.state.pictures[0]}`} alt={require(`../img/bg-01.jpg`)} />
+                            <img className= "banner_img_detial" src={require(`${this.state.pictures[0]}`)} alt={require(`../img/bg-01.jpg`)} />
                         </div>
                     </div>
 

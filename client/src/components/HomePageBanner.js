@@ -8,7 +8,7 @@ const fadeProperties = {
     indicators: true
 }
   
-const BannerReact = () => {
+const HomePageBanner = () => {
     return (
         <div className="imgbox">
             <Fade {...fadeProperties}>
@@ -34,4 +34,4 @@ const BannerReact = () => {
     )
 }
 
-export default BannerReact;
+export default HomePageBanner;
