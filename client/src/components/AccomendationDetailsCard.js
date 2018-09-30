@@ -9,7 +9,6 @@ class AccomendationDetailsCard extends Component{
     constructor(props){
         super(props)
         this.state = {
-            //defalut dammy data
             comments: "",
             address: "",
             surburb: "",
@@ -18,17 +17,17 @@ class AccomendationDetailsCard extends Component{
             review: "",
             longitude: null,
             latitude: null,
-            owner: ""
+            owner: "",
+            pictures: [],
         }
     }
 
 
 
-    componentDidMount(){
+    componentWillMount(){
         fetch(`/api/accommodation/${this.props.accId}`)
         .then(response => response.json())
         .then(res => {
-            // console.log(typeof(res.property.longitude), res.property.latitude)
             this.setState({
                 comments: res.property.comments,
                 address: res.property.address,
@@ -38,9 +37,11 @@ class AccomendationDetailsCard extends Component{
                 review: res.property.review,
                 owner : res.property.owner,
                 longitude : res.property.longitude,
-                latitude :res.property.latitude
+                latitude :res.property.latitude,
+                pictures: res.property.pictures,
             })
         })
+        .catch((err) => {console.log(err)})
     }
 
 
@@ -56,7 +57,7 @@ class AccomendationDetailsCard extends Component{
                         <div className="row">
                             {/* <!-- Left side of the Body part--> */}
                             <div className="col-md-6">
-                                <AccomendationDetailsBanner/>
+                                <AccomendationDetailsBanner pictures={this.state.pictures}/>
                                 {/* <!-- If there is no session, the comment part will not avalible --> */}
                                 {/* <!-- Comment part with session --> */}
                                 <div className="comment_title">

@@ -25,7 +25,7 @@ class NavigationBarWithSession extends Component{
             
                         {/* <!-- Logo --> */}
                             <div className="navbar-brand">
-                                <a className="logo" href="index.html" target="_parent">
+                                <a className="logo" href="/" target="_parent">
                                     {/* <!-- Use Logo Image to exchange this part --> */}
                                     <img src={require(`../img/unsw.png`)} alt="logo"/>
                                     {/* <!-- <h1>LOGO</h1> --> */}
