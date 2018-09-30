@@ -15,15 +15,19 @@ class AccomendationDetailsCard extends Component{
         super(props)
         this.state = {
             //defalut dammy data
-            comments: "This is the Comment of this Accomondation. This is the Comment of this Accomondation. This is the Comment of this Accomondation. This is the Comment of this Accomondation This is the Comment of this Accomondation. This is the Comment of this Accomondation. This is the Comment of this Accomondation. This is the Comment of this Accomondation This is the Comment of this Accomondation. This is the Comment of this Accomondation. This is the Comment of this Accomondation. This is the Comment of this Accomondation",
+            comments: "The University of New South Wales is an Australian public research university located in the Sydney suburb of Kensington. Established in 1949, it is ranked 3rd in Australia, 45th in the world, and 2nd in New South Wales according to the 2018 QS World University Rankings.",
             address: "UNSW, Sydney NSW 2052",
             surburb: "Kensington",
             postcode: "2052",
             capacity: "50,000",
             review: "4.7/5",
+            longitude: null,
+            latitude: null
         }
+        this.GoogleMapInit = this.GoogleMapInit.bind(this);
     }
-    
+
+
     render() {
         return (
             <div>
@@ -81,7 +85,9 @@ class AccomendationDetailsCard extends Component{
                                         </tr>
                                     </tbody>
                                 </table>
-                                    <div className="map"></div>
+                                    <div className="map">
+                                    <div id="map"></div>
+                                    </div>
                                         <form action="/" method="post" className="add_to_wl">
                                             <div className="add_to_wl_button">
                                                 <button type="submit" className="submit">Add to Watching List</button>
