@@ -13,30 +13,31 @@ class AccomendationDetailsBanner extends Component {
     constructor(props){
         super(props);
         this.state = {
-            pictures : ['../img/bg-01.jpg', '../img/bg-02.jpg' , '../img/bg-03.jpg'],
+            pictures : null,
         }
     }
 
-    componentDidMount(){
+    componentWillReceiveProps(nextProps){
+        console.log(nextProps)
         this.setState({
-            pictures : this.props.pictures,
+            pictures : nextProps.pictures.map(pic => {require(pic)}),
         })
     }
 
     render(){
-        console.log(this.props)
+        console.log(this.state)
         return (
             <div>
                 <Fade {...fadeProperties}>
                     <div className="each_fade_detail">
                         <div className="image_container_detail">
-                            <img className= "banner_img_detial" src={`${this.state.pictures[0]}`} alt={require(`../img/bg-01.jpg`)} />
+                            <img className= "banner_img_detial" src={this.state.pictures} />
                         </div>
                     </div>
 
                     <div className="each_fade_detail">
                         <div className="image_container_detail">
-                            <img className= "banner_img_detial" src={require(`../img/bg-02.jpg`)} />
+                            <img className= "banner_img_detial" src={require('../img/hi.jpg')} />
                         </div>
                     </div>
 
