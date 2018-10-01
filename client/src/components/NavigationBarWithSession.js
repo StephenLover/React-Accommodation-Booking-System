@@ -6,20 +6,35 @@ class NavigationBarWithSession extends Component{
         super(props)
         this.state = {
             firstName : "",
+            keywords: "",
         }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentWillMount(props){
         this.setState({
             firstName : localStorage.getItem('session-firstName')
-        })
+        });
+    }
+
+    handleChange(event){
+        console.log(event.target.value)
+        this.setState({
+            keywords: event.target.value
+        });
+    }
+
+    handleSubmit(event){
+        alert(this.state.value);
+        event.preventDefault();
     }
 
     render() {
         return (
             <div>
                 <header id="header" className="transparent-nav">
-                    <form action="/" method="post">
+                    <form action="/" method="post" onSubmit={this.handleSubmit}>
                         <div className="navigationbar">
             
                         {/* <!-- Logo --> */}
@@ -37,10 +52,11 @@ class NavigationBarWithSession extends Component{
                          <nav id="nav">
                             <ul className="main_menu">
                                 <li>
-                                    <input type="text" name="search" className="search_se" id="search" placeholder="Please input Keywords"/>
+                                    <input type="text" name="search" className="search_se" id="search" placeholder="Please input Keywords" 
+                                    value={this.state.keywords} onChange={this.handleChange}/>
                                 </li>
                                 <li>
-                                    <button type="submit" className="search_button_se">Search</button>
+                                    <button type="submit" className="search_button_se" >Search</button>
                                 </li>
                                 <li><img src={require(`../img/Astrid.ico`)} className="user_img"/></li>
                                 <li className="dropdown"><a href="#" id="Username">{this.state.firstName.slice(1,-1)}</a>

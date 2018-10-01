@@ -7,11 +7,13 @@ class SearchResultForm extends Component {
     constructor(props){
         super(props)
         this.state = {
-            sortRequirement: "price_up",
+            sortRequirement: "default",
             currentPageNumber : 1 
         }
         this.handleChange = this.handleChange.bind(this)
     }
+
+
 
     handleChange(e){
         this.setState({
@@ -37,6 +39,7 @@ class SearchResultForm extends Component {
                         <form action="/" method="POST">
                             <span>Sort by:</span>
                             <select name="filter" className="filter_button" value={this.state.value} onChange={this.handleChange}>
+                                <option value="defalut">Default</option>
                                 <option value="price_up">Price Low to High</option>
                                 <option value="price_down">Price High to Low</option>
                                 <option value="review_up">Rank Low to High</option>

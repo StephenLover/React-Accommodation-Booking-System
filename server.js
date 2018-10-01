@@ -92,6 +92,73 @@ app.post('/api/signup', function(req, res){
 
 })
 
+// search based on postcode
+app.get('/api/search/postcode/:id', (req, res) => {
+  const searchInfo = new Promise((resolve, reject) => {
+    mongoose.connect(url)
+    .then(
+      () => {
+        console.log('Search postcode connect')
+      },
+      err => { console.log(err) }
+    )
+
+    let postcode = parseInt(req.params.id)
+    accommodationModel
+    .find({})
+    .populate({
+      path: 'property',
+      match: {postcode: postcode}
+    })
+    .exec(function(err, docs){
+      if (err) {
+        console.log(err);
+      }
+      docs = docs.filter( doc =>{
+        return doc.property !== null
+      })
+      mongoose.disconnect();
+      resolve(docs)
+    })
+    }) // promise end
+  searchInfo.then(result => {
+    return res.json(result);
+  })
+})
+
+// search based on suburb
+app.get('/api/search/suburb/:id', (req, res) => {
+  const searchInfo = new Promise((resolve, reject) => {
+    mongoose.connect(url)
+    .then(
+      () => {
+        console.log('Search suburb connect')
+      },
+      err => { console.log(err) }
+    )
+
+    accommodationModel
+    .find({})
+    .populate({
+      path: 'property',
+      match: {suburb: new RegExp(req.params.id, 'i')}
+    })
+    .exec(function(err, docs){
+      if (err) {
+        console.log(err);
+      }
+      docs = docs.filter( doc =>{
+        return doc.property !== null
+      })
+      mongoose.disconnect();
+      resolve(docs)
+    })
+    }) // promise end
+  searchInfo.then(result => {
+    return res.json(result);
+  })
+})
+
 // get accommodation details based on accId
 app.get('/api/accommodation/:id', (req, res) => {
   const accInfo = new Promise((resolve, reject) => {

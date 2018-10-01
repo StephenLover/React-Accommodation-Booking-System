@@ -4,15 +4,6 @@ import AccomendationDetailsSimilarContainer from './AccomenadtionDetailsSimilarC
 import AccomendationDetailsBanner from './AccomendationDetailsBanner';
 import GoogleMapReact from '../components/GoogleMapReact';
 
-import { Fade } from 'react-slideshow-image';
-
-const fadeProperties = {
-    duration: 5000,
-    transitionDuration: 500,
-    infinite: true,
-    indicators: true
-}
-
 class AccomendationDetailsCard extends Component{
     constructor(props){
         super(props)
@@ -29,8 +20,6 @@ class AccomendationDetailsCard extends Component{
             pictures: [],
         }
     }
-
-
 
     componentWillMount(){
         fetch(`/api/accommodation/${this.props.accId}`)
