@@ -10,7 +10,6 @@ class NavigationBarWithSession extends Component{
     }
 
     componentWillMount(props){
-        console.log(localStorage.getItem('session-firstName'))
         this.setState({
             firstName : localStorage.getItem('session-firstName')
         })

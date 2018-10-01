@@ -18,7 +18,6 @@ const HomePageHeader = () => {
                     {/* <link rel="stylesheet" type="css" media="screen" href="../css/style.css" />
                     <link type="css" rel="stylesheet" href="css/bootstrap.min.css"/> */}
                     {/* <script src={require('../js/index')}></script> */}
-                    {/* <script src={require('../js/jquery-1.7.2')}></script> */}
             </Helmet>
         </div>
     )

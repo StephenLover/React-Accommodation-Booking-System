@@ -4,12 +4,20 @@ import AccomendationDetailsSimilarContainer from './AccomenadtionDetailsSimilarC
 import AccomendationDetailsBanner from './AccomendationDetailsBanner';
 import GoogleMapReact from '../components/GoogleMapReact';
 
+import { Fade } from 'react-slideshow-image';
+
+const fadeProperties = {
+    duration: 5000,
+    transitionDuration: 500,
+    infinite: true,
+    indicators: true
+}
 
 class AccomendationDetailsCard extends Component{
     constructor(props){
         super(props)
         this.state = {
-            comments: "",
+            comments: "Lovely stay. Really well situated Everything is as described. Two hitches were the lack of privacy from the neighbours walking around outside your bedroom window when it was open for fresh air, and because it was really hot particularly in the afternoon when the sun streamed in we had to have everything wide open.",
             address: "",
             surburb: "",
             postcode: "",
@@ -29,7 +37,7 @@ class AccomendationDetailsCard extends Component{
         .then(response => response.json())
         .then(res => {
             this.setState({
-                comments: res.property.comments,
+                // comments: res.property.comments,
                 address: res.property.address,
                 suburb: res.property.suburb,
                 postcode: res.property.postcode,
@@ -42,6 +50,12 @@ class AccomendationDetailsCard extends Component{
             })
         })
         .catch((err) => {console.log(err)})
+    }
+
+    testIfNone(){       
+        if (this.state.pictures[0] !== undefined){
+            return(<AccomendationDetailsBanner pictures={this.state.pictures}/>);
+        }      
     }
 
 
@@ -57,7 +71,8 @@ class AccomendationDetailsCard extends Component{
                         <div className="row">
                             {/* <!-- Left side of the Body part--> */}
                             <div className="col-md-6">
-                                <AccomendationDetailsBanner pictures={this.state.pictures}/>
+                                {this.testIfNone()}
+                                {/* <AccomendationDetailsBanner pictures={this.state.pictures}/> */}
                                 {/* <!-- If there is no session, the comment part will not avalible --> */}
                                 {/* <!-- Comment part with session --> */}
                                 <div className="comment_title">

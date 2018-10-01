@@ -13,38 +13,49 @@ class AccomendationDetailsBanner extends Component {
     constructor(props){
         super(props);
         this.state = {
-            pictures : ['../img/bg-01.jpg', '../img/bg-02.jpg' , '../img/bg-03.jpg'],
+            // pictures : ['../img/bg-01.jpg', '../img/bg-02.jpg' , '../img/bg-03.jpg'],
+            pictures : this.props.pictures
+        }
+        // this.imageDivIterator = this.imageDivIterator.bind(this);
+    }
+
+    componentWillMount(){
+        if (typeof(this.props.pictures[0]) === "string"){
+            this.setState({
+                pictures : this.props.pictures,
+            })
         }
     }
 
-    componentDidMount(){
-        this.setState({
-            pictures : this.props.pictures,
-        })
-    }
 
     render(){
-        console.log(this.props)
+
+        console.log(this.state.pictures)
+
         return (
             <div>
                 <Fade {...fadeProperties}>
+
                     <div className="each_fade_detail">
                         <div className="image_container_detail">
-                            <img className= "banner_img_detial" src={require(`${this.state.pictures[0]}`)} alt={require(`../img/bg-01.jpg`)} />
+                            <img className= "banner_img_detial" src={require(`../${this.state.pictures[0]}`)}/>
                         </div>
                     </div>
 
                     <div className="each_fade_detail">
                         <div className="image_container_detail">
-                            <img className= "banner_img_detial" src={require(`../img/bg-02.jpg`)} />
+                            <img className= "banner_img_detial"  src={require(`../${this.state.pictures[1]}`)}/>
                         </div>
                     </div>
 
                     <div className="each_fade_detail">
                         <div className="image_container_detail">
-                            <img className= "banner_img_detial" src={require(`../img/bg-03.jpg`)} />
+                            <img className= "banner_img_detial"  src={require(`../${this.state.pictures[2]}`)}/>
                         </div>
                     </div>
+
+                    {/* {this.imageDivIterator()} */}
+                    
                 </Fade>
             </div>
         )
