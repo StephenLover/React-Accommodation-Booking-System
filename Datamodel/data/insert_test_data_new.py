@@ -99,21 +99,20 @@ for i in range(dataAccomInfo.shape[0]):
     #demo_dict['endTime'] = datetime.datetime.strptime(demo_dict['endTime'], "%Y-%m-%d:%H:%M:%S")
     if demo_dict['modifiedTime'] != "None":
         demo_dict['modifiedTime'] = datetime.datetime.strptime(demo_dict['modifiedTime'], "%Y-%m-%d:%H:%M:%S")
+    else:
+        demo_dict['modifiedTime'] = None
     if demo_dict['review'] != "None":
         demo_dict['review'] = str(demo_dict['review'])
     else:
-        del demo_dict['review']
-
-    #print ('star')
+        demo_dict['review'] = None
     if not demo_dict['star']:
         demo_dict['star'] = int(demo_dict['star'])
     else:
-        del demo_dict['star']
-    #print ('reviewDate')
+        demo_dict['star'] = None
     if demo_dict['reviewDate'] != "None":
         demo_dict['reviewDate'] = datetime.datetime.strptime(demo_dict['reviewDate'], "%Y-%m-%d:%H:%M:%S")
     else:
-        del demo_dict['reviewDate']
+        demo_dict['reviewDate'] = None
 
     #print (demo_dict, 'dict')
     collectionTransaction.insert(demo_dict)
