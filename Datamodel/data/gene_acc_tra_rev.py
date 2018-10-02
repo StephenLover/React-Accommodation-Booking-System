@@ -87,7 +87,7 @@ def gene_picture(size):
     files = [f for f in files if "jpg" in f]
 
     for _ in range(size):
-        k = random.randint(2,5)
+        k = random.randint(3,5)
         jpgNames = random.choices(files, k=k)
         path = ";".join([os.sep.join([folderName, jpgName]) for jpgName in jpgNames])
         picturesList.append(path)
