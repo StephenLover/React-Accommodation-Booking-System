@@ -2,6 +2,22 @@ import pandas as pd
 import os
 import random
 
+
+#os.rename("image_/20.jpg", "image_/a0.jpg")
+
+
+def reorder(begin):
+    picturesList = list()
+
+    path = "image_"
+    files = os.listdir(path)
+    for file in files:
+        os.rename(os.sep.join([path, file]), os.sep.join([path, str(begin)+'.jpg']))
+        begin += 1
+    #files = [f for f in files if "jpg" in f]
+#reorder(305)
+
+
 def gene_picture(size):
     picturesList = list()
 
