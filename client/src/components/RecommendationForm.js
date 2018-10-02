@@ -28,12 +28,12 @@ class RecommendationForm extends Component{
                 <div className="row">
                     <div className="recommand">
                         <ul>
-                            <AccomendationCard property={this.state.recommendationAccs[0]}/>
                             <AccomendationCard property={this.state.recommendationAccs[1]}/>
-                            <AccomendationCard property={this.state.recommendationAccs[2]}/>
-                            <AccomendationCard property={this.state.recommendationAccs[3]}/>
+                            <AccomendationCard property={this.state.recommendationAccs[8]}/>
+                            <AccomendationCard property={this.state.recommendationAccs[15]}/>
                             <AccomendationCard property={this.state.recommendationAccs[4]}/>
                             <AccomendationCard property={this.state.recommendationAccs[5]}/>
+                            <AccomendationCard property={this.state.recommendationAccs[6]}/>
                         </ul>
                     </div>
                 </div>         
@@ -49,10 +49,9 @@ class RecommendationForm extends Component{
                 <div id="contact" className="section">
                     <div className="container">
                         <div className="word">
-                            <h4>Top-rated recommendation in {this.state.suburb} :</h4> 
+                            <h4>Top-rated Accomendation in {this.state.suburb} :</h4> 
                         </div>
-                        {this.testIfNone()}
-                               
+                        {this.testIfNone()}            
                     </div>
                 </div>
             </div>

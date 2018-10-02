@@ -18,6 +18,7 @@ class AccomendationDetailsCard extends Component{
             latitude: null,
             owner: "",
             pictures: [],
+            similarAccList : [],
         }
     }
 
@@ -36,6 +37,7 @@ class AccomendationDetailsCard extends Component{
                 longitude : res.property.longitude,
                 latitude :res.property.latitude,
                 pictures: res.property.pictures,
+                _id: res.property._id,
             })
         })
         .catch((err) => {console.log(err)})
@@ -111,7 +113,7 @@ class AccomendationDetailsCard extends Component{
                                     </tbody>
                                 </table>
                                     <div className="map">
-                                        <GoogleMapReact lat={this.state.latitude} lng={this.state.longitude}/>
+                                        {/* <GoogleMapReact lat={this.state.latitude} lng={this.state.longitude}/> */}
                                     </div>
                                         <form action="/" method="post" className="add_to_wl">
                                             <div className="add_to_wl_button">
@@ -119,7 +121,7 @@ class AccomendationDetailsCard extends Component{
                                             </div>
                                         </form>
                                     </div>
-                                <AccomendationDetailsSimilarContainer/>
+                                {/* <AccomendationDetailsSimilarContainer/> */}
                         </div>
                     </div>
                 </div>

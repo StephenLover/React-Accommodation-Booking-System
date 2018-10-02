@@ -48,11 +48,11 @@ class AccomendationDetailsBanner extends Component {
                         </div>
                     </div>
 
-                    <div className="each_fade_detail">
+                    {/* <div className="each_fade_detail">
                         <div className="image_container_detail">
                             <img className= "banner_img_detial"  src={require(`../${this.state.pictures[2]}`)}/>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* {this.imageDivIterator()} */}
                     

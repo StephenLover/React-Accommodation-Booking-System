@@ -8,32 +8,64 @@ class SearchResultForm extends Component {
         super(props)
         this.state = {
             sortRequirement: "default",
-            currentPageNumber : 1 
+            currentPageNumber : 0,
+            recommendationAccs: [],
         }
-        this.handleChange = this.handleChange.bind(this)
     }
 
-
-
-    handleChange(e){
-        this.setState({
-            sortRequirement : e.target.value
+    componentWillMount() {
+        fetch(`/api/search/suburb/${localStorage.getItem('keywords')}`)
+        .then(response => response.json())
+        .then(res => {
+            this.setState({
+                // comments: res.property.comments,
+                recommendationAccs : res,
+            })
         })
-        console.log(this.state.sortRequirement)
+        .catch((err) => {console.log(err)})
     }
 
-    handleSubmit(e){
-        alert("Your choice is " + this.state.sortRequirement);
-        e.preventDefault();
+    
+
+    renderIfDataPrepared(){       
+        if (this.state.recommendationAccs[0] !== undefined){
+            return(
+                <div className="row">
+                    <div className="recommand">
+                        <ul>
+                            <AccomendationCard property={this.state.recommendationAccs[0+this.state.currentPageNumber*6]}/>
+                            <AccomendationCard property={this.state.recommendationAccs[1+this.state.currentPageNumber*6]}/>
+                            <AccomendationCard property={this.state.recommendationAccs[2+this.state.currentPageNumber*6]}/>
+                            <AccomendationCard property={this.state.recommendationAccs[3+this.state.currentPageNumber*6]}/>
+                            <AccomendationCard property={this.state.recommendationAccs[4+this.state.currentPageNumber*6]}/>
+                            <AccomendationCard property={this.state.recommendationAccs[5+this.state.currentPageNumber*6]}/>
+                        </ul>
+                    </div>
+                    <div className="pages">
+                        <button type="submit" className="previous_page">&lt;</button>
+                        {
+                            this.state.currentPageNumber === 0 ? null : <button type="submit" className="last_page_number">{this.state.currentPageNumber-1}</button>
+                        }
+                        <button type="submit" className="current_page_number">{this.state.currentPageNumber}</button>
+                        <button type="submit" className="next_page_number">{this.state.currentPageNumber+1}</button>
+                        <button type="submit" className="next_page" onClick={() => {this.setState({
+                            currentPageNumber : this.state.currentPageNumber + 1
+                        })}}>&gt;</button>
+                    </div>
+                </div>         
+            );
+        }      
     }
+
 
 
     render(){
+        console.log(this.state.recommendationAccs)
         return (
             <div id="contact" className="section">
                 <div className="container">
                     <div className="word_search_result">
-                        <h1>Search Result</h1> 
+                        <h1>Search Result of property in {localStorage.getItem('keywords')}</h1> 
                     </div>
                     <div className="filter">
                         <form action="/" method="POST">
@@ -47,28 +79,7 @@ class SearchResultForm extends Component {
                             </select>
                         </form>
                     </div>
-                    <div className="row">
-                        <div className="recommand">
-                            <ul>
-                               <AccomendationCard/>
-                               <AccomendationCard/>
-                               <AccomendationCard/>
-                               <AccomendationCard/>
-                               <AccomendationCard/>
-                               <AccomendationCard/>
-                            </ul>
-                        </div>
-                        <div className="pages">
-                            <button type="submit" className="previous_page">&lt;</button>
-                            {
-                                this.state.currentPageNumber === 1 ? null : <button type="submit" className="last_page_number">{this.state.currentPageNumber-1}</button>
-                            }
-                            
-                            <button type="submit" className="current_page_number">{this.state.currentPageNumber}</button>
-                            <button type="submit" className="next_page_number">{this.state.currentPageNumber+1}</button>
-                            <button type="submit" className="next_page">&gt;</button>
-                        </div>
-                    </div>
+                    {this.renderIfDataPrepared()}
                 </div>
             </div>
         )

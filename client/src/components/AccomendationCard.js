@@ -9,35 +9,36 @@ class AccomendationCard extends Component{
     constructor(props){
         super(props)
         this.state = {
-            // status: this.props.property.status,
-            // _id : this.props.property._id,
-            // price: this.props.property.price,
-            // capacity: this.props.property.property.capacity,
-            // address: this.props.property.property.address,
-            // suburb: this.props.property.property.suburb,
-            // picture: this.props.property.property.pictures[0],
-            // rank : "4.2/5",
+            status: this.props.property.status,
+            _id : this.props.property._id,
+            price: this.props.property.price,
+            capacity: this.props.property.property.capacity,
+            address: this.props.property.property.address,
+            suburb: this.props.property.property.suburb,
+            picture: this.props.property.property.pictures[0],
+            rank : "4.2/5",
 
-            status: "open",
-            _id : 1,
-            price: "258 per night",
-            capacity: "4",
-            address: "UNSW",
-            suburb: "randwick",
-            picture : "img/bg-01.jpg",
-            rank : "4.2/5"
+            // status: "open",
+            // _id : 1,
+            // price: "258 per night",
+            // capacity: "4",
+            // address: "UNSW",
+            // suburb: "randwick",
+            // picture : "img/bg-01.jpg",
+            // rank : "4.2/5"
         }
     }
 
 
 
     render() {
-        console.log(this.state.picture)
+        // console.log(this.props.property)
+        const href_acc = '/accommodation/' + this.state._id
         return (
             <div>
                 <li>
                     <div className="accomondation">
-                        <a href="#"><img src={require(`../${this.state.picture}`)} alt="" className="accomondation_img"/></a>
+                        <a href={href_acc}><img src={require(`../${this.state.picture}`)} alt="" className="accomondation_img"/></a>
                         <div className="acc_brief">
                             <span id="accomondation_capacity">Capacity:{this.state.capacity} person,</span>
                             <span id="accomondation_suburb">{this.state.suburb}</span>

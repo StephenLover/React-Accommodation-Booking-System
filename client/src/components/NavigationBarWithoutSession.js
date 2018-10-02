@@ -23,7 +23,7 @@ class NavigationBarWithoutSession extends Component{
                             <nav id="nav">
                                 <ul className="main_menu">
                                     <li>
-                                        <input type="text" name="search" className="search_no" id="search" placeholder="Please input Keywords"/>
+                                        <input type="text" name="search" className="search_no" id="search" placeholder="Input your search keywords here"/>
                                     </li>
                                     <li>
                                         <button type="submit" className="search_button_no">Search</button>

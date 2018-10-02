@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom'
 
 class NavigationBarWithSession extends Component{
     constructor(props){
@@ -19,15 +19,16 @@ class NavigationBarWithSession extends Component{
     }
 
     handleChange(event){
-        console.log(event.target.value)
         this.setState({
             keywords: event.target.value
         });
     }
 
     handleSubmit(event){
-        alert(this.state.value);
+        // alert(this.state.keywords);
         event.preventDefault();
+        localStorage.setItem('keywords', this.state.keywords);
+        window.location.href="./search"
     }
 
     render() {
@@ -52,7 +53,7 @@ class NavigationBarWithSession extends Component{
                          <nav id="nav">
                             <ul className="main_menu">
                                 <li>
-                                    <input type="text" name="search" className="search_se" id="search" placeholder="Please input Keywords" 
+                                    <input type="text" name="search" className="search_se" id="search" placeholder="Input your search keywords here" 
                                     value={this.state.keywords} onChange={this.handleChange}/>
                                 </li>
                                 <li>
