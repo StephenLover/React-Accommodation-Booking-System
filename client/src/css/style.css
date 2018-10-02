@@ -193,12 +193,14 @@ image_container {
 
 .recommand {
     margin-top: 25px;
+    width: 100%;
 }
 
 .recommand ul li {
     list-style: none;
     display: inline;
 }
+
 
 .recommand ul li:hover .accomondation {
     float: left;
