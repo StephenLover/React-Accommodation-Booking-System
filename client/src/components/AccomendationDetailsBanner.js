@@ -38,19 +38,19 @@ class AccomendationDetailsBanner extends Component {
 
                     <div className="each_fade_detail">
                         <div className="image_container_detail">
-                            <img className= "banner_img_detial" src={require(`../${this.state.pictures[0]}`)}/>
+                            <img className= "banner_img_detail" src={require(`../${this.state.pictures[0]}`)}/>
                         </div>
                     </div>
 
                     <div className="each_fade_detail">
                         <div className="image_container_detail">
-                            <img className= "banner_img_detial"  src={require(`../${this.state.pictures[1]}`)}/>
+                            <img className= "banner_img_detail"  src={require(`../${this.state.pictures[1]}`)}/>
                         </div>
                     </div>
 
                     <div className="each_fade_detail">
                         <div className="image_container_detail">
-                            <img className= "banner_img_detial"  src={require(`../${this.state.pictures[2]}`)}/>
+                            <img className= "banner_img_detail"  src={require(`../${this.state.pictures[2]}`)}/>
                         </div>
                     </div>
 

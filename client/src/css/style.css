@@ -635,6 +635,17 @@ footer {
 .acc_description {
     margin-top: 40px;
 }
+
+/* Detail banner */
+.each_fade_detail {
+    height: 308px;
+}
+.banner_img_detail {
+    height: 308px;
+    width: 500px;
+    margin-top: 40px;
+    margin-left: 23px;
+}
 /* table */
 table {
     border-collapse: collapse;
