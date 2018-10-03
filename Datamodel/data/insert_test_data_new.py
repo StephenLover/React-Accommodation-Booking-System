@@ -6,6 +6,7 @@ import numpy as np
 #from bson.objectid import ObjectId
 import datetime
 import os
+import math
 
 ## change database name if necessary
 databaseName = 'test'
@@ -105,7 +106,7 @@ for i in range(dataAccomInfo.shape[0]):
         demo_dict['review'] = str(demo_dict['review'])
     else:
         demo_dict['review'] = None
-    if demo_dict['star']:
+    if not math.isnan(demo_dict['star']):
         demo_dict['star'] = int(demo_dict['star'])
     else:
         demo_dict['star'] = None
