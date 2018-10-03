@@ -58,7 +58,7 @@ class AccomendationDetailsCard extends Component{
                 <div id="contact" className="section">
                     <div className="container">
                         <div className="word_acc_detail">
-                            <h1 id="accomondation_name">Accomondation Name</h1> 
+                            <h1 id="accomondation_name">{this.state.address}</h1> 
                         </div>
 
                         <div className="row">
@@ -113,7 +113,7 @@ class AccomendationDetailsCard extends Component{
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td width="20%">startDate:</td>
+                                            <td width="20%">AvailableTime:</td>
                                             <td width="80%" id="owner">{this.state.availableTime}</td>
                                         </tr>
                                     </tbody>

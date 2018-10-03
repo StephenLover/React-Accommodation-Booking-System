@@ -14,6 +14,7 @@ class HomePageFooter extends Component{
                                 </div>
                                 <div className="footer_text">
                                     <p>The Double 90 Group is an extremely mystical team, there are four wacko in this team, you may can find them at CSE Drums lab in 2pm on Tuesday....</p>
+                                    <p>Developers: <br/>Albus Lee, Bruce Wang, Jaffar Ye, Stephen Wang</p>
                                 </div>
                             </div>
                         </li>
@@ -39,7 +40,7 @@ class HomePageFooter extends Component{
                                     <h3>Quick Links</h3>
                                 </div>
                                 <div className="footer_text">
-                                    <p><a href="index.html">Home</a></p>
+                                    <p><a href="/">Home</a></p>
                                     <p><a href="#">Back To Top</a></p>
                                 </div>
                             </div>

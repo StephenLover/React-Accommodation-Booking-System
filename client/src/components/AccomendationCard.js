@@ -44,7 +44,7 @@ class AccomendationCard extends Component{
                             <span id="accomondation_suburb">{this.state.suburb}</span>
                         </div>
                         <div className="acc_name">
-                            <a href="#"><span id="accomondation_name">{this.state.address}</span></a>
+                            <a href={href_acc}><span id="accomondation_name">{this.state.address}</span></a>
                         </div>
                         <div className="acc_price">
                             <span id="accomondation_price">${this.state.price} AUD per night</span>

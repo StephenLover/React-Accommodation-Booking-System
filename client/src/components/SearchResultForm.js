@@ -14,6 +14,8 @@ class SearchResultForm extends Component {
             pageOfItems: [],
         }
         this.onChangePage = this.onChangePage.bind(this);
+        this.sortAccordingRequirement = this.sortAccordingRequirement.bind(this);
+        this.handleSelectorChange = this.handleSelectorChange.bind(this);
     }
 
 
@@ -41,16 +43,44 @@ class SearchResultForm extends Component {
                 .catch((err) => {console.log(err)})
             }
         }
-
-
     }
 
+    //sort accomendation according to the price in ascending order
+    sortAccordingRequirement(){
+        let recommendationAccs = this.state.recommendationAccs;
 
+        if(this.state.sortRequirement === 'defalut'){
+            recommendationAccs.sort((a,b) =>{
+                return a._id - b._id
+            })
+            this.setState({
+                recommendationAccs : recommendationAccs
+            })
+        }else if(this.state.sortRequirement === 'price_up'){
+            recommendationAccs.sort((a,b) => {
+                return a.price - b.price
+            })
+            this.setState({
+                recommendationAccs : recommendationAccs
+            })
+        }else if(this.state.sortRequirement === 'price_down'){
+            recommendationAccs.sort((a,b) => {
+                return b.price - a.price
+            })            
+            this.setState({
+                recommendationAccs : recommendationAccs
+            })
+        }
+    }
+
+    //for pagination page change
     onChangePage(pageOfItems) {
         // update local state with new page of items
         this.setState({ pageOfItems });
     }
 
+
+    // for rendering the accomendation cards componentes
     renderIfDataPrepared(){    
         if (this.state.recommendationAccs[0] !== undefined){
             return(
@@ -63,16 +93,20 @@ class SearchResultForm extends Component {
         }      
     }
     
-    // onClickChangeNextPage(){
-    //     this.setState({
-    //         currentPageNumber : this.state.currentPageNumber + 1,
-    //         renderItemList : this.state.recommendationAccs.slice(this.state.currentPageNumber*6,(this.state.currentPageNumber+1)*6)
-    //     })
-    // }
+    componentDidUpdate(prevProps, prevState){
+        if(this.state.sortRequirement !== prevState.sortRequirement){
+            this.sortAccordingRequirement()
+            this.setState({pageOfItems : this.state.recommendationAccs.slice(0,6)})
+        }
+    }
+
+    //handle selector change for sorting
+    handleSelectorChange(event){
+        this.setState({sortRequirement: event.target.value});
+    }
 
 
     render(){
-        console.log(this.state.recommendationAccs)
         return (
             <div id="contact" className="section">
                 <div className="container">
@@ -82,12 +116,10 @@ class SearchResultForm extends Component {
                     <div className="filter">
                         <form action="/" method="POST">
                             <span>Sort by:</span>
-                            <select name="filter" className="filter_button" value={this.state.value} onChange={this.handleChange}>
-                                <option value="defalut">Default</option>
-                                <option value="price_up">Price Low to High</option>
-                                <option value="price_down">Price High to Low</option>
-                                <option value="review_up">Rank Low to High</option>
-                                <option value="review_down">Rank High to Low</option>
+                            <select name="filter" className="filter_button" value={this.state.value} onChange={this.handleSelectorChange}>
+                                <option value="defalut" onClick={this.handleSelectorChange}>Default</option>
+                                <option value="price_up" onClick={this.handleSelectorChange}>Price Low to High</option>
+                                <option value="price_down" onClick={this.handleSelectorChange}>Price High to Low</option>
                             </select>
                         </form>
                     </div>
