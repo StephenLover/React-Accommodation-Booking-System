@@ -19,6 +19,7 @@ class AccomendationDetailsCard extends Component{
             owner: "",
             pictures: [],
             similarAccList : [],
+            availableTime : "",
         }
     }
 
@@ -38,6 +39,7 @@ class AccomendationDetailsCard extends Component{
                 latitude :res.property.latitude,
                 pictures: res.property.pictures,
                 _id: res.property._id,
+                availableTime: res.startDate.slice(0,-14) +" to " + res.endDate.slice(0,-14),
             })
         })
         .catch((err) => {console.log(err)})
@@ -109,6 +111,10 @@ class AccomendationDetailsCard extends Component{
                                                     <img src={require("../img/stars.png")} alt='star'/>
                                                 </div>
                                             </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="20%">startDate:</td>
+                                            <td width="80%" id="owner">{this.state.availableTime}</td>
                                         </tr>
                                     </tbody>
                                 </table>

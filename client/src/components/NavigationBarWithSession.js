@@ -28,7 +28,7 @@ class NavigationBarWithSession extends Component{
         // alert(this.state.keywords);
         event.preventDefault();
         localStorage.setItem('keywords', this.state.keywords);
-        window.location.href="./search"
+        window.location.href="http://localhost:3000/search"
     }
 
     render() {

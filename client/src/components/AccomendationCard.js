@@ -16,7 +16,7 @@ class AccomendationCard extends Component{
             address: this.props.property.property.address,
             suburb: this.props.property.property.suburb,
             picture: this.props.property.property.pictures[0],
-            rank : "4.2/5",
+            rank : (Math.random() * 5).toFixed(1).toString() + '/5.0',
 
             // status: "open",
             // _id : 1,

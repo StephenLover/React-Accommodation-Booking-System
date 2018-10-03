@@ -48,11 +48,11 @@ class AccomendationDetailsBanner extends Component {
                         </div>
                     </div>
 
-                    {/* <div className="each_fade_detail">
+                    <div className="each_fade_detail">
                         <div className="image_container_detail">
                             <img className= "banner_img_detial"  src={require(`../${this.state.pictures[2]}`)}/>
                         </div>
-                    </div> */}
+                    </div>
 
                     {/* {this.imageDivIterator()} */}
                     
@@ -62,43 +62,5 @@ class AccomendationDetailsBanner extends Component {
     }
 }
 
-
-// const AccomendationDetailsBanner = (props) => {
-//     console.log(props)
-//     return (
-//         <div>
-//             <Fade {...fadeProperties}>
-//                 {/* {props.pictures.forEach(path => {
-//                     return (
-//                         <div className="each_fade_detail">
-//                             <div className="image_container_detail">
-//                                 <img className= "banner_img_detial" src={require(`../img/bg-01.jpg`)} />
-//                             </div>
-//                         </div>
-//                     )
-//                 })} */}
-
-
-//                 <div className="each_fade_detail">
-//                     <div className="image_container_detail">
-//                         <img className= "banner_img_detial" src={require(`../img/bg-01.jpg`)} alt={require(`../img/bg-01.jpg`)} />
-//                     </div>
-//                 </div>
-
-//                 <div className="each_fade_detail">
-//                     <div className="image_container_detail">
-//                         <img className= "banner_img_detial" src={require(`../img/bg-02.jpg`)} />
-//                     </div>
-//                 </div>
-
-//                 <div className="each_fade_detail">
-//                     <div className="image_container_detail">
-//                         <img className= "banner_img_detial" src={require(`../img/bg-03.jpg`)} />
-//                     </div>
-//                 </div>
-//             </Fade>
-//         </div>
-//     )
-// }
 
 export default AccomendationDetailsBanner;

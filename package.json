@@ -19,6 +19,7 @@
     "concurrently": "^3.5.1",
     "express": "^4.16.2",
     "google-map-react": "^1.0.8",
+    "jw-react-pagination": "^1.0.7",
     "mongoose": "^5.2.15",
     "react": "^16.5.2",
     "react-google-maps": "^9.4.5",
