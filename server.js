@@ -108,7 +108,7 @@ app.get('/api/search/postcode/:id', (req, res) => {
     .find({})
     .populate({
       path: 'property',
-      match: {postcode: postcode}
+      match: {postcode: postcode,}
     })
     .exec(function(err, docs){
       if (err) {
@@ -138,7 +138,7 @@ app.get('/api/search/suburb/:id', (req, res) => {
     )
 
     accommodationModel
-    .find({})
+    .find({status: 'open'})
     .populate({
       path: 'property',
       match: {suburb: new RegExp(req.params.id, 'i')}
