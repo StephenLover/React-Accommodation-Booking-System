@@ -32,7 +32,7 @@ class AccomendationCard extends Component{
 
 
     render() {
-        // console.log(this.props.property)
+        console.log(this.props.property)
         const href_acc = '/accommodation/' + this.state._id
         return (
             <div>

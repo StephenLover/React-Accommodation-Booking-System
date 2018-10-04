@@ -97,7 +97,7 @@ class AccomendationDetailsCard extends Component{
                                         </tr>
                                         <tr>
                                             <td width="20%">Capacity:</td>
-                                            <td width="80%" id="capacity">{this.state.capacity}</td>
+                                            <td width="80%" id="capacity">{this.state.capacity} persons</td>
                                         </tr>
                                         <tr>
                                             <td width="20%">Owner:</td>
@@ -127,7 +127,7 @@ class AccomendationDetailsCard extends Component{
                                             </div>
                                         </form>
                                     </div>
-                                {/* <AccomendationDetailsSimilarContainer/> */}
+                                <AccomendationDetailsSimilarContainer suburb={this.state.suburb}/>
                         </div>
                     </div>
                 </div>
