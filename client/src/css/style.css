@@ -713,6 +713,12 @@ table {
     text-align: center;
 }
 
+/* similar */
+
+
+.acc_container {
+    width: 100%;
+}
 /* Search Result */
 
 .word_search_result {
@@ -738,4 +744,42 @@ table {
 
 .filter_button {
     margin-left: 40px;
+}
+
+/* Personal Profile */
+
+.word_personal_profile {
+    margin-top: 130px;
+    text-align: center;
+}
+
+.swap_button {
+    margin-left: 20px;
+}
+
+.user_profile_img {
+    margin-top: 40px;
+    margin-left: 100px;
+}
+
+.user_profile ul li{
+    list-style: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+
+.edit_button {
+    margin-left: 50px;
+}
+
+.user_profile ul li span {
+    margin-right: 20px;
+}
+
+.profile_submit {
+    margin-top: 40px;
+    margin-left: 180px;
+    font-size: 25px;
 }

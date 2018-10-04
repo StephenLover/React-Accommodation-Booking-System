@@ -35,7 +35,7 @@ class AccomendationCard extends Component{
         console.log(this.props.property)
         const href_acc = '/accommodation/' + this.state._id
         return (
-            <div>
+            <div className="similar_card">
                 <li>
                     <div className="accomondation">
                         <a href={href_acc}><img src={require(`../${this.state.picture}`)} alt="" className="accomondation_img"/></a>

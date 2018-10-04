@@ -40,7 +40,7 @@ class AccomendationDetailsSimilarContainer extends Component{
         console.log(this.state.recommendationAccs, this.state.suburb, this.props.suburb)
         if(this.state.recommendationAccs.length >=3){
             return (
-                <div>
+                <div className="similar">
                     <div className="word">
                         <h4>Some Similar Near From You :</h4> 
                     </div>
@@ -59,7 +59,7 @@ class AccomendationDetailsSimilarContainer extends Component{
 
     render() {
         return (
-            <div>
+            <div className="acc_container">
                 {this.renderIfDataPrepared()}
             </div>
         )
