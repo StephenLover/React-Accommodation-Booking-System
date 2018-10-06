@@ -616,7 +616,7 @@ footer {
     margin-left: 20px;
 }
 .comment_title {
-    margin-top: 45px;
+    margin-top: 20px;
     margin-left: 20px;
 }
 
@@ -782,4 +782,47 @@ table {
     margin-top: 40px;
     margin-left: 180px;
     font-size: 25px;
+}
+
+.traveller_history {
+    margin-top: 40px;
+}
+
+#comment_area {
+    margin-top: 40px;
+}
+
+.word_comment {
+    text-align: center;
+}
+
+.comment_textarea {
+    margin-left: 150px;
+    margin-top: 10px;
+}
+
+/* review star */
+.ct-star {
+    display: inline-block;
+    margin: 0 1px;
+    width: 19px;
+    height: 19px;
+    background: url(../img/stars.png) no-repeat;
+    vertical-align: -2px;
+    cursor: pointer;
+}
+.ic-star-off {
+    background-position: -39px 0;
+}
+
+.review {
+    margin-left: 150px;
+}
+
+.comment_submit {
+    text-align: center;
+}
+
+.provider_history {
+    margin-top: 40px;
 }
