@@ -36,6 +36,7 @@ class NavigationBarWithSession extends Component{
             <div>
                 <header id="header" className="transparent-nav">
                     <form action="/" method="post" onSubmit={this.handleSubmit}>
+                        
                         <div className="navigationbar">
             
                         {/* <!-- Logo --> */}
@@ -45,12 +46,17 @@ class NavigationBarWithSession extends Component{
                                     <img src={require(`../img/unsw.png`)} alt="logo"/>
                                     {/* <!-- <h1>LOGO</h1> --> */}
                                 </a>
-
+                                <div className="change">
+                                    <select name="change_user" className="change_user">
+                                        <option value="traveller">Traveller</option>
+                                        <option value="Provider">Provider</option>
+                                    </select>
+                                </div>
                             </div>
                         {/* <!-- /Logo --> */}
                     {/* <!-- Navigation --> */}
-                
-                         <nav id="nav">
+                        
+                        <nav id="nav">
                             <ul className="main_menu">
                                 <li>
                                     <input type="text" name="search" className="search_se" id="search" placeholder="Input your search keywords here" 
