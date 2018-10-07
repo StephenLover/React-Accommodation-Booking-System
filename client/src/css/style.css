@@ -62,6 +62,13 @@ html body {
     color: #000000;
     
 }
+.signin {
+    margin-top: 35px;
+}
+
+.signup {
+    margin-top: 35px;
+}
 
 .main_menu li a {
     font-size: 20px;
