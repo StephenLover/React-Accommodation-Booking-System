@@ -4,6 +4,7 @@ html body {
     margin: 0;
 }
 
+
 /* Navigation Bar */
 #header {
 	position:relative;
@@ -277,6 +278,7 @@ image_container {
 
 /* Footer */
 footer {
+    width: 100%;
     background-color: #000000;
     height: 100%;
 }
@@ -772,6 +774,7 @@ table {
 
 .edit_button {
     margin-left: 50px;
+    border-radius: 10px;
 }
 
 .user_profile ul li span {
@@ -782,6 +785,7 @@ table {
     margin-top: 40px;
     margin-left: 180px;
     font-size: 25px;
+    border-radius: 10px;
 }
 
 .traveller_history {
@@ -823,6 +827,95 @@ table {
     text-align: center;
 }
 
+.submit_button {
+    border-radius: 10px;
+}
+
 .provider_history {
     margin-top: 40px;
+}
+
+/* Watchibng List */
+.word_watching_list {
+    margin-top: 150px;
+    text-align: center;
+}
+
+.watching_list {
+    margin-top: 60px;
+}
+
+.remove_button {
+    border-radius: 20px;
+    background-color: #dbdbdb;
+    border-color: #000000;
+}
+
+.button_part{
+    margin-top: 60px;
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+
+.add_button{
+    margin-right: 50px;
+    margin-left: 50px;
+    background-color: #dbdbdb;
+    color: #000000;
+    border: none;
+    padding: 12px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.add_button:hover {
+    text-decoration: none;
+    color: #000000;
+}
+
+/* Pending List */
+.word_pending_list {
+    margin-top: 150px;
+    text-align: center;
+}
+
+.accomondation_pending {
+    margin-left: 280px;
+    margin-top: 40px;
+    transition:all 0.5s;
+    -moz-transition:all 0.5s; 
+    -webkit-transition:all 0.5s; 
+    -o-transition:all 0.5s; 
+    
+    margin-bottom: 30px;
+    width: 50%;
+    height: 600px;
+    border: solid 1px;
+    padding: 30px;
+}
+
+.accomondation_pending:hover {
+    margin-left: 280px;
+    margin-top: 40px;
+    
+    margin-bottom: 30px;
+    width: 50%;
+    height: 600px;
+    border: solid 1px;
+    padding: 5px;
+}
+
+.accomondation_pending_img {
+    width: 100%;
+    height: 70%;
+    position: relative;
+}
+
+.acc_pending_time {
+    margin-top: 10px;
 }
