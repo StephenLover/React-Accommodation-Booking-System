@@ -843,6 +843,7 @@ table {
 
 .watching_list {
     margin-top: 60px;
+    width: 100%;
 }
 
 .remove_button {
