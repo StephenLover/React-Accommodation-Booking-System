@@ -62,9 +62,9 @@ class NavigationBarWithSession extends Component{
                                 <li><img src={require(`../img/Astrid.ico`)} className="user_img"/></li>
                                 <li className="dropdown"><a href="#" id="Username">{this.state.firstName.slice(1,-1)}</a>
                                 <ul className="dropdown_content">
-                                    <li><a href="Profile.html" target="_parent">Personal Profile</a></li>
-                                    <li><a href="WatchingList.html" target="_parent">Watching List</a></li>
-                                    <li><a href="PendingList.html" target="_parent">Pending List</a></li>
+                                    <li><a href="/profile" target="_parent">Personal Profile</a></li>
+                                    <li><a href="/watching" target="_parent">Watching List</a></li>
+                                    <li><a href="/pendinglist" target="_parent">Pending List</a></li>
                                     <li><a href="/" onClick={() => {localStorage.clear()}} target="_parent">Logout</a></li>
                                 </ul> 
                             </li>

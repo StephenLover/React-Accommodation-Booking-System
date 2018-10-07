@@ -60,7 +60,7 @@ html body {
     text-align: center;
     line-height: 50px;
     color: #000000;
-    
+    background-color: #616263;
 }
 
 .main_menu li a {
@@ -78,6 +78,11 @@ html body {
 
 .dropdown_content li {
     width: 100px;
+    background-color: #616263;
+}
+
+.dropdown_content li a {
+    background-color: #616263;
 }
 .main_menu .dropdown:hover .dropdown_content{
     display: block;
