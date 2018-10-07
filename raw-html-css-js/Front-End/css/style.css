@@ -80,11 +80,6 @@ html body {
 
 .dropdown_content li {
     width: 100px;
-    background-color: #616263;
-}
-
-.dropdown_content li a {
-    background-color: #616263;
 }
 
 .dropdown_content li a {
