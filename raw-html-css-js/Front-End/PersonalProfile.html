@@ -93,6 +93,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <img src="img/5190009.jpg" alt="" class="user_profile_img">
+                    <div class="upload">
+                        <input type="button" value="Upload" class="add_button">
+                    </div>
+                    
                 </div>
                 <div class="col-md-6 user_profile">
                     <form action="/" method="post">
@@ -146,7 +150,7 @@
                                 <td width="50%">Address</td>
                                 <td width="10%">StartTime</td>
                                 <td width="10%">EndTime</td>
-                                <td width="5"><input type="button" value="Comment" onclick="show_comment()"></td>
+                                <td width="5"><input type="button" value="Comment" class="submit_button" onclick="show_comment()"></td>
                             </tr>
                             <!-- Below is the content of table -->
                             <tr>
@@ -155,7 +159,7 @@
                                 <td width="55%">Address</td>
                                 <td width="10%">StartTime</td>
                                 <td width="10%">EndTime</td>
-                                <td width="5"><input type="button" value="Comment" onclick="show_comment()"></td>
+                                <td width="5"><input type="button" value="Comment" class="submit_button" onclick="show_comment()"></td>
                             </tr>
                             <tr>
                                 <td width="15%">Surburb</td>
@@ -163,10 +167,13 @@
                                 <td width="55%">Address</td>
                                 <td width="10%">StartTime</td>
                                 <td width="10%">EndTime</td>
-                                <td width="5"><input type="button" value="Comment" onclick="show_comment()"></td>
+                                <td width="5"><input type="button" value="Comment" class="submit_button" onclick="show_comment()"></td>
                             </tr>
                         </tbody>
                     </table>
+                    <div class="button_part">
+                        <a href="ReleaseInformation.html" class="add_button">Release Accomondation Needed Information</a>
+                    </div>
                     <div id="comment_area" style="display:none;">
                         <div class="word_comment">
                             <h3>Comment area:</h3>
@@ -184,7 +191,7 @@
                             <span class="star-txt"></span>
                         </div>
                         <div class="comment_submit">
-                            <button type="submit" >Submit</button>
+                            <button type="submit" class="submit_button">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -220,6 +227,9 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="button_part">
+                    <a href="ReleaseInformation.html" class="add_button">Release New Property</a>
+                </div>
             </div> -->
         </div>
     </div>

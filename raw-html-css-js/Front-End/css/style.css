@@ -618,7 +618,7 @@ footer {
     margin-left: 20px;
 }
 .comment_title {
-    margin-top: 20px;
+    margin-top: 45px;
     margin-left: 20px;
 }
 
@@ -764,7 +764,12 @@ table {
     margin-left: 100px;
 }
 
+.upload {
+    margin-top: 30px;
+    margin-left: 120px;
+}
 .user_profile ul li{
+    border-bottom: solid 1px;
     list-style: none;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -843,6 +848,7 @@ table {
 
 .watching_list {
     margin-top: 60px;
+    width: 100%;
 }
 
 .remove_button {
