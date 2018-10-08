@@ -119,7 +119,7 @@ class AccomendationDetailsCard extends Component{
                                     </tbody>
                                 </table>
                                     <div className="map">
-                                        {/* <GoogleMapReact lat={this.state.latitude} lng={this.state.longitude}/> */}
+                                        <GoogleMapReact lat={this.state.latitude} lng={this.state.longitude}/>
                                     </div>
                                         <form action="/" method="post" className="add_to_wl">
                                             <div className="add_to_wl_button">

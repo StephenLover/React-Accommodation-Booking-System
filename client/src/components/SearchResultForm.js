@@ -108,29 +108,32 @@ class SearchResultForm extends Component {
 
     render(){
         return (
-            <div id="contact" className="section">
-                <div className="container">
-                    <div className="word_search_result">
-                        {/^-{0,1}\d+$/.test(localStorage.getItem('keywords')) === false ? <h1>Search Result of property in {localStorage.getItem('keywords')}</h1> : <h1>Search Result of property in postcode {localStorage.getItem('keywords')}</h1> }
-                    </div>
-                    <div className="filter">
-                        <form action="/" method="POST">
-                            <span>Sort by:</span>
-                            <select name="filter" className="filter_button" value={this.state.value} onChange={this.handleSelectorChange}>
-                                <option value="defalut" onClick={this.handleSelectorChange}>Default</option>
-                                <option value="price_up" onClick={this.handleSelectorChange}>Price Low to High</option>
-                                <option value="price_down" onClick={this.handleSelectorChange}>Price High to Low</option>
-                            </select>
-                        </form>
-                    </div>
-                    <div className="row">
-                        {this.renderIfDataPrepared()}
-                        <div className="pages">
-                            <Pagination items={this.state.recommendationAccs} onChangePage={this.onChangePage}/>
+            <div>
+                <div id="contact" className="section">
+                    <div className="container">
+                        <div className="word_search_result">
+                            {/^-{0,1}\d+$/.test(localStorage.getItem('keywords')) === false ? <h1>Search Result of property in {localStorage.getItem('keywords')}</h1> : <h1>Search Result of property in postcode {localStorage.getItem('keywords')}</h1> }
                         </div>
-                    </div>         
+                        <div className="filter">
+                            <form action="/" method="POST">
+                                <span>Sort by:</span>
+                                <select name="filter" className="filter_button" value={this.state.value} onChange={this.handleSelectorChange}>
+                                    <option value="defalut" onClick={this.handleSelectorChange}>Default</option>
+                                    <option value="price_up" onClick={this.handleSelectorChange}>Price Low to High</option>
+                                    <option value="price_down" onClick={this.handleSelectorChange}>Price High to Low</option>
+                                </select>
+                            </form>
+                        </div>
+                        <div className="row">
+                            {this.renderIfDataPrepared()}
+                            <div className="pages">
+                                <Pagination items={this.state.recommendationAccs} onChangePage={this.onChangePage}/>
+                            </div>
+                        </div>         
+                    </div>
                 </div>
             </div>
+            
         )
     }
 }
