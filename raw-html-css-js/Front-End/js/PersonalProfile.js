@@ -1,21 +1,3 @@
-function show_name() {
-    var value = document.getElementById("edit_input_name").style.display;
-    if (value=="none") {
-        document.getElementById("edit_input_name").style.display="block";
-    } else {
-        document.getElementById("edit_input_name").style.display="none";
-    }
-}
-
-function show_phone() {
-    var value = document.getElementById("edit_input_phone").style.display;
-    if (value=="none") {
-        document.getElementById("edit_input_phone").style.display="block";
-    } else {
-        document.getElementById("edit_input_phone").style.display="none";
-    }
-}
-
 function show_comment() {
     var value = document.getElementById("comment_area").style.display;
     if (value=="none") {

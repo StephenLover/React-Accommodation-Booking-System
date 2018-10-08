@@ -100,42 +100,51 @@
                 </div>
                 <div class="col-md-6 user_profile">
                     <form action="/" method="post">
-                        <ul>
-                            <li>
-                                <span>Name:</span>
-                                <span id="Username">Username</span>
-                                <input type="button" value="Edit" class="edit_button" onclick="show_name()">
-                            </li>
-                            <li>
-                                <div id="edit_input_name" style="display:none">
-                                    <input type="text" name="">
-                                </div>  
-                            </li>
-                            <li>
-                                <span>Gender:</span>
-                                <span id="Gender">Gender</span>
-                            </li>
-                            <li>
-                                <span>Email:</span>
-                                <span id="email">Email</span>
-                            </li>
-                            <li>
-                                <span>Phone:</span>
-                                <span id="Phone">Phone</span>
-                                <input type="button" value="Edit" class="edit_button" onclick="show_phone()">
-                            </li>
-                            <li>
-                                <div id="edit_input_phone" style="display:none">
-                                    <input type="text" name="">
-                                </div> 
-                            </li>
-                        </ul>
-                        <button type="submit" class="profile_submit">Submit</button>
+                        <div class="profile_group">
+                            <label class="user_name">Name:</label>
+                            <input type="text" class="user_name_input" name="username" value="Stephen" required>
+                        </div>
+                        <div class="profile_group">
+                            <label class="user_gender">Gender:</label>
+                            <input type="text" class="user_gender_input" name="gender" value="Male" disabled="disabled">
+                        </div>
+                        <div class="profile_group">
+                            <label class="user_email">Email:</label>
+                            <input type="text" class="user_email_input" name="email" value="Stephen@gmail.com" disabled="disabled">
+                        </div>
+                        <div class="profile_group">
+                            <label class="user_phone">Phone:</label>
+                            <input type="text" class="user_phone_input" name="phone" value="0404123123" required>
+                        </div>
+                        <div class="profile_submit">
+                            <button type="submit" class="add_button">Submit</button>
+                        </div>
+                        
                     </form>
                 </div>
             </div>
 
             <!-- Below are when choose traveller -->
+            <div id="comment_area" style="display:none;">
+                <div class="word_comment">
+                    <h3>Review area:</h3>
+                </div>
+                <textarea name="comment_textarea" class="comment_textarea" cols="100" rows="3"></textarea>
+                <div class="review">
+                    <span class="star">
+                        Star:
+                        <b class="ct-star  ic-star-off"></b>
+                        <b class="ct-star  ic-star-off"></b>
+                        <b class="ct-star  ic-star-off"></b>
+                        <b class="ct-star  ic-star-off"></b>
+                        <b class="ct-star  ic-star-off"></b>
+                    </span>
+                    <span class="star-txt"></span>
+                </div>
+                <div class="comment_submit">
+                    <button type="submit" class="submit_button">Submit</button>
+                </div>
+            </div>
             <div class="traveller_history">
                 <div class="word_history">
                     <h3>History:</h3>
@@ -150,7 +159,7 @@
                                 <td width="50%">Address</td>
                                 <td width="10%">StartTime</td>
                                 <td width="10%">EndTime</td>
-                                <td width="5"><input type="button" value="Comment" class="submit_button" onclick="show_comment()"></td>
+                                <td width="5"><input type="button" value="Review" class="submit_button" onclick="show_comment()"></td>
                             </tr>
                             <!-- Below is the content of table -->
                             <tr>
@@ -159,7 +168,7 @@
                                 <td width="55%">Address</td>
                                 <td width="10%">StartTime</td>
                                 <td width="10%">EndTime</td>
-                                <td width="5"><input type="button" value="Comment" class="submit_button" onclick="show_comment()"></td>
+                                <td width="5"><input type="button" value="Review" class="submit_button" onclick="show_comment()"></td>
                             </tr>
                             <tr>
                                 <td width="15%">Surburb</td>
@@ -167,33 +176,14 @@
                                 <td width="55%">Address</td>
                                 <td width="10%">StartTime</td>
                                 <td width="10%">EndTime</td>
-                                <td width="5"><input type="button" value="Comment" class="submit_button" onclick="show_comment()"></td>
+                                <td width="5"><input type="button" value="Review" class="submit_button" onclick="show_comment()"></td>
                             </tr>
                         </tbody>
                     </table>
                     <div class="button_part">
                         <a href="ReleaseInformation.html" class="add_button">Release Accomondation Needed Information</a>
                     </div>
-                    <div id="comment_area" style="display:none;">
-                        <div class="word_comment">
-                            <h3>Comment area:</h3>
-                        </div>
-                        <textarea name="comment_textarea" class="comment_textarea" cols="100" rows="3"></textarea>
-                        <div class="review">
-                            <span class="star">
-                                Review:
-                                <b class="ct-star  ic-star-off"></b>
-                                <b class="ct-star  ic-star-off"></b>
-                                <b class="ct-star  ic-star-off"></b>
-                                <b class="ct-star  ic-star-off"></b>
-                                <b class="ct-star  ic-star-off"></b>
-                            </span>
-                            <span class="star-txt"></span>
-                        </div>
-                        <div class="comment_submit">
-                            <button type="submit" class="submit_button">Submit</button>
-                        </div>
-                    </div>
+                    
                 </form>
             </div>
 

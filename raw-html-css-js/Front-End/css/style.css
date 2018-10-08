@@ -785,36 +785,43 @@ table {
 
 .user_profile_img {
     margin-top: 40px;
-    margin-left: 100px;
+    margin-left: 125px;
+    height: 180px;
+    width: 180px;
 }
 
 .upload {
     margin-top: 30px;
     margin-left: 120px;
 }
-.user_profile ul li{
-    border-bottom: solid 1px;
-    list-style: none;
+.user_profile {
+    margin-top: 30px;
+}
+.profile_group {
+    font-size: 18px;
+    margin-left: 20px;
     margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 25px;
+    text-align: left;
+}
+.profile_group label{
+    width: 100px;
 }
 
-
-.edit_button {
-    margin-left: 50px;
-    border-radius: 10px;
+.profile_group input{
+    width: 410px;
+    border-radius: 5px;
 }
 
-.user_profile ul li span {
-    margin-right: 20px;
+.user_gender_input {
+    background-color: #dbdbdb;
 }
 
+.user_email_input {
+    background-color: #dbdbdb;
+}
 .profile_submit {
-    margin-top: 40px;
-    margin-left: 180px;
-    font-size: 25px;
-    border-radius: 10px;
+    margin-top: 30px;
+    margin-left: 200px;
 }
 
 .traveller_history {
@@ -894,11 +901,11 @@ table {
     background-color: #dbdbdb;
     color: #000000;
     border: none;
-    padding: 12px 30px;
+    padding: 6px 15px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 14px;
+    font-size: 18px;
     border-radius: 12px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
