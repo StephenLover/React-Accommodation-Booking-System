@@ -214,6 +214,8 @@ image_container {
 .word {
     margin-top: 40px;
     margin-left: 40px;
+    border-bottom: #959596 solid 1px;
+    width: 1050px;;
 }
 
 .recommand {
@@ -259,7 +261,7 @@ image_container {
 }
 
 .acc_brief {
-    margin-top: 10px;
+    margin-top: 5px;
     color: rgb(115, 79, 33);
     font-size: 16px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -270,7 +272,7 @@ image_container {
     margin-right: 20px;
 }
 .acc_name {
-    margin-top: 10px;
+    margin-top: 5px;
     color: #959596;
     font-size: 25px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -288,9 +290,10 @@ image_container {
 
 .acc_price {
     color: #ff4e00;
-    font-size: 20px;
-    margin-top: 10px;
+    font-size: 16px;
+    margin-top: 5px;
 }
+
 
 .acc_rank {
     margin-top: 5px;
