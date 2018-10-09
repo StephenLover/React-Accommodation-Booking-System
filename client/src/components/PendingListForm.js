@@ -20,7 +20,7 @@ class PendingListForm extends Component {
             <div id="contact" class="section">
                 <div class="container">
                     <div class="word_pending_list">
-                        <h1>Pending List</h1> 
+                        <h1>Your pending transaction</h1> 
                     </div>
                     <div class="row">
                         <form action="/" method="post">

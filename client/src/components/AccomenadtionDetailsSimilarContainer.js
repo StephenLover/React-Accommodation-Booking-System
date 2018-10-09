@@ -37,7 +37,7 @@ class AccomendationDetailsSimilarContainer extends Component{
 
 
     renderIfDataPrepared(){
-        console.log(this.state.recommendationAccs, this.state.suburb, this.props.suburb)
+        // console.log(this.state.recommendationAccs, this.state.suburb, this.props.suburb)
         if(this.state.recommendationAccs.length >=3){
             return (
                 <div className="similar">

@@ -20,6 +20,8 @@ class AccomendationDetailsCard extends Component{
             pictures: [],
             similarAccList : [],
             availableTime : "",
+            accId: "",
+            property_id: ""
         }
     }
 
@@ -38,8 +40,9 @@ class AccomendationDetailsCard extends Component{
                 longitude : res.property.longitude,
                 latitude :res.property.latitude,
                 pictures: res.property.pictures,
-                _id: res.property._id,
+                property_id: res.property._id,
                 availableTime: res.startDate.slice(0,-14) +" to " + res.endDate.slice(0,-14),
+                accId : this.props.accId
             })
         })
         .catch((err) => {console.log(err)})
@@ -97,7 +100,7 @@ class AccomendationDetailsCard extends Component{
                                         </tr>
                                         <tr>
                                             <td width="20%">Capacity:</td>
-                                            <td width="80%" id="capacity">{this.state.capacity} persons</td>
+                                            <td width="80%" id="capacity">{this.state.capacity > 1 ? this.state.capacity + " persons" : "1 person"}</td>
                                         </tr>
                                         <tr>
                                             <td width="20%">Owner:</td>

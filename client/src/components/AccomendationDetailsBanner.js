@@ -29,9 +29,6 @@ class AccomendationDetailsBanner extends Component {
 
 
     render(){
-
-        console.log(this.state.pictures)
-
         return (
             <div>
                 <Fade {...fadeProperties}>
