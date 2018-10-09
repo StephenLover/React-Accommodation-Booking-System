@@ -12,6 +12,7 @@ const accommodationModel = require('./Datamodel/models/accommodation');
 const transactionModel = require('./Datamodel/models/transaction');
 const reviewModel = require('./Datamodel/models/review');
 const propertyModel = require('./Datamodel/models/property');
+const watchingModel = require('./Datamodel/models/watchingList');
 
 // CSRF pre-fighting
 app.use(function(req, res, next) {
@@ -194,6 +195,106 @@ app.get('/api/accommodation/:id', (req, res) => {
     res.status(200).json(result)    //// TEMP: need use "then" to load user's trasction, until both info loaded,then return to front-end.
   })
 });
+
+// add accommodation to watching list
+app.post('/api/add2watching', (req, res) => {
+  mongoose.connect(url)
+    .then(
+      () => {
+        console.log('/api/add2watching/ connects successfully')
+      },
+      err => console.log(err)
+    )
+  let user = req.body._id; //user email
+  let accId = parseInt(req.body.accId) //accid
+  watchingModel
+  .findOneAndUpdate({'user': user},
+  {'$push': {'watching_list': accId}},
+  { "new": true, "upsert": true })
+  .exec(function(err, docs){
+    if (err){
+      console.log(err)
+      res.sendStatus(500)
+    }
+    console.log(docs)
+    return res.status(200).json({status:"ok"})
+  })
+})
+
+// get watching list
+app.get('/api/watching/:id', (req, res) => {
+  mongoose.connect(url)
+    .then(
+      () => {
+        console.log('/api/watching/ connects successfully')
+      },
+      err => console.log(err)
+    )
+  watchingModel
+  .find({'user': req.params.id})
+  .exec(function(err, docs){
+    if (err){
+      console.log(err)
+      res.status(500)
+    }
+    if(docs.length === 0){
+      return res.status(404)
+    }
+    res.json(docs[0])
+  })
+})
+
+// remove accommodation from watching list
+app.delete('/api/delwatching', (req,res) => {
+  mongoose.connect(url)
+    .then(
+      () => {
+        console.log('/api/delwatching/ connects successfully')
+      },
+      err => console.log(err)
+    )
+  let user = req.body._id; //user email
+  let accId = parseInt(req.body.accId) //accid
+  watchingModel
+  .findOneAndUpdate({'user': user},
+  {'$pull': {'watching_list': accId}},
+  { "new": true, "upsert": true })
+  .exec(function(err, docs){
+    if (err){
+      console.log(err)
+      res.sendStatus(500)
+    }
+    console.log(docs)
+    return res.status(200).json({status:"ok"})
+  })
+})
+
+// add accommodation from watching list to transaction(pending)
+app.post('/api/add2pending/', (req, res) => {
+  mongoose.connect(url)
+    .then(
+      () => {
+        console.log('/api/delwatching/ connects successfully')
+      },
+      err => console.log(err)
+    )
+  let user = req.body._id; //user email
+  let accId = parseInt(req.body.accId) //accid
+  let trans = new transactionModel({
+    traveler: user,
+    accommodationId: accId,
+    status: 'pending'
+  })
+  trans.save()
+  .then(docs => {
+    console.log(docs)
+    res.status(200).json({status: 'ok'})
+  })
+  .catch(err => {
+    console.log(err);
+    res.sendStatus(500)
+  })
+})
 
 // get all history(accommodation info) of specific person
 app.get('/api/history/:id', (req, res) => {

@@ -4,10 +4,10 @@ let Schema = mongoose.Schema;
 
 let watchingListSchema = new Schema({
     user: {
-        type: Schema.Types.ObjectId, ref: 'User'
+        type: String, ref: 'User'
     },
     watching_list: [{
-        type: Schema.Types.ObjectId, ref: 'Accommodation'
+        type: Number, ref: 'Accommodation'
     }],
 })
 
