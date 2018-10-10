@@ -235,7 +235,7 @@ image_container {
     margin-right: 15px;
     margin-bottom: 30px;
     width: 30%;
-    height: 500px;
+    height: 520px;
     border: solid 1px;
     padding: 5px;
 }
@@ -249,7 +249,7 @@ image_container {
     margin-right: 15px;
     margin-bottom: 30px;
     width: 30%;
-    height: 500px;
+    height: 520px;
     border: solid 1px;
     padding: 30px;
 }
@@ -294,6 +294,9 @@ image_container {
     margin-top: 5px;
 }
 
+.acc_time {
+    margin-top: 5px;
+}
 
 .acc_rank {
     margin-top: 5px;
