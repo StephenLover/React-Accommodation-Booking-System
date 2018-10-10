@@ -4,6 +4,7 @@ const userModel = require('./models/user.js');
 const accommodationModel = require('./models/accommodation.js');
 const transactionModel = require('./models/transaction.js');
 const propertyModel = require('./models/property');
+const watchingModel = require('./models/watchingList')
 
 // define the address and database name, then connect
 const server = '127.0.0.1:27017'; // REPLACE WITH YOUR DB SERVER
@@ -92,20 +93,36 @@ class Database{
 //     console.log(docs);
 //   })
 
-const accInfo = new Promise((resolve, reject) => {
   mongoose.connect(url)
-  .then(
-    () => {
-      console.log('/api/accommodation/ connects successfully')
-    },
-    err => { console.log(err) }
-  )
-  accommodationModel
-  .find({'_id': 1})
-  .populate('property')
-  .exec( function(err, docs){ 
-    (err) => { console.log(err)},
-    console.log(docs[0])
-    mongoose.disconnect();
+    .then(
+      () => {
+        console.log('/api/add2watching/ connects successfully')
+      },
+      err => console.log(err)
+    )
+  let user = 'test@gmail.com'; //user email
+  let accId = 12 //accid
+  // watchingModel
+  // .findOneAndUpdate({'user': user},
+  // {'$push': {'watching_list': accId}},
+  // { "new": true, "upsert": true })
+  // .exec(function(err, docs){
+  //   if (err){
+  //     console.log(err)
+  //   }
+  //   console.log(docs)
+  // })
+
+  let trans = new transactionModel({
+    traveler: user,
+    accommodationId: accId,
+    status: 'pending'
   })
-});
+  trans.save()
+  .then(docs => {
+    console.log(docs)
+  })
+  .catch(err => {
+    console.log(err);
+    res.sendStatus(500)
+  })
