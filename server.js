@@ -232,6 +232,10 @@ app.get('/api/watching/:id', (req, res) => {
     )
   watchingModel
   .find({'user': req.params.id})
+  .populate({
+    path: 'watching_list',
+    populate: {path: 'property'}
+  })
   .exec(function(err, docs){
     if (err){
       console.log(err)
