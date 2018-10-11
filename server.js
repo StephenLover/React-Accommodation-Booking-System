@@ -316,13 +316,39 @@ app.post('/api/add2pending/', (req, res) => {
           console.log(err)
           res.sendStatus(500)
         }
-        console.log(docs)
+        // change status of accommodation open to close
         return res.status(200).json({status:"ok"})
       })
   })
   .catch(err => {
     console.log(err);
     res.sendStatus(500)
+  })
+})
+
+// get pending list from traveler email
+app.get('/api/pending/:id', (req, res) => {
+  mongoose.connect(url)
+    .then(
+      () => {
+        console.log('/api/history/traveler connects successfully')
+      },
+      err => { console.log(err) }
+    )
+  transactionModel
+  .find({'traveler': req.params.id, 'status': 'pending'})
+  .populate({
+    path: 'accommodationId',
+    populate: {path: 'property'}
+  })
+  .exec(function(err, docs){
+    if(err){
+      console.log(err)
+    }
+    if(docs.length === 0){
+      res.status(404).send('No such accId')
+    }
+    res.json(docs[0])
   })
 })
 
@@ -343,7 +369,10 @@ app.get('/api/history/traveler/:id', (req, res) => {
     })
     .sort('modifiedTime')
     .exec( function(err, docs){ 
-      (err) => { console.log(err)}
+      if (err){
+          console.log(err)
+          res.sendStatus(500)
+      }
       docs = docs.filter(function(doc){
         return doc.accommodationId != null;
       })
