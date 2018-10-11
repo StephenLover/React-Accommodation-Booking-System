@@ -45,9 +45,10 @@ class LoginForm extends Component{
         .then(json => {
             if(json.password === this.refs.password.value){
                 auth_bool = true;
-                localStorage.setItem('session-firstName', JSON.stringify(json.firstName));
+                localStorage.setItem('session-firstName', json.firstName);
+                localStorage.setItem('uid',json._id);
                 this.setState({isAuthenticated : true});
-                alert(`Welcome Back! ${localStorage.getItem('session-firstName').slice(1,-1)}! Click on 'OK' will move to homepage.`)
+                alert(`Welcome Back! ${localStorage.getItem('session-firstName')}! Click on 'OK' will move to homepage.`)
                 window.location.href = "/"
             }else{
                 window.alert("Please check the username or password input");

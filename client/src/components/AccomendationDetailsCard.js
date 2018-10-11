@@ -23,6 +23,7 @@ class AccomendationDetailsCard extends Component{
             accId: "",
             property_id: ""
         }
+        this.addToWatchingList = this.addToWatchingList.bind(this);
     }
 
     componentWillMount(){
@@ -54,6 +55,22 @@ class AccomendationDetailsCard extends Component{
         }      
     }
 
+    addToWatchingList(e){
+        e.preventDefault();
+        let url = '/api/add2watching';
+        let data = {_id: localStorage.getItem('uid'), accId: this.state.accId};
+        console.log(JSON.stringify(data))
+        fetch(url, {
+        method: 'POST', 
+        body: JSON.stringify(data),
+        headers:{
+            'Content-Type': 'application/json'
+        }
+        }).then(res => res.json())
+        .then(response => alert('The property has been added to watching list!'))
+        .catch(error => console.error('Error:', error));
+
+    }
 
     render() {
         return (
@@ -126,7 +143,7 @@ class AccomendationDetailsCard extends Component{
                                     </div>
                                         <form action="/" method="post" className="add_to_wl">
                                             <div className="add_to_wl_button">
-                                                <button type="submit" className="submit">Add to Watching List</button>
+                                                <button type="submit" className="submit" onClick={this.addToWatchingList}>Add to Watching List</button>
                                             </div>
                                         </form>
                                     </div>

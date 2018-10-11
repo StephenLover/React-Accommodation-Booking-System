@@ -17,38 +17,38 @@ class PendingListForm extends Component {
 
     render() {
         return (
-            <div id="contact" class="section">
-                <div class="container">
-                    <div class="word_pending_list">
+            <div id="contact" className="section">
+                <div className="container">
+                    <div className="word_pending_list">
                         <h1>Your pending transaction</h1> 
                     </div>
-                    <div class="row">
+                    <div className="row">
                         <form action="/" method="post">
-                            <div class="accomondation_pending">
-                                <a href="#"><img src={require("../img/hi.jpg")} alt="" class="accomondation_pending_img"/></a>
-                                <div class="acc_brief">
+                            <div className="accomondation_pending">
+                                <a href="#"><img src={require("../img/hi.jpg")} alt="" className="accomondation_pending_img"/></a>
+                                <div className="acc_brief">
                                     <span id="accomondation_capacity">Capacity: ,</span>
                                     <span id="accomondation_suburb">Surburb</span>
                                 </div>
-                                <div class="acc_name">
+                                <div className="acc_name">
                                     <a href="#"><span id="accomondation_name">Name</span></a>
                                 </div>
-                                <div class="acc_price">
+                                <div className="acc_price">
                                     <span id="accomondation_price">Price</span>
                                 </div>
-                                <div class="acc_rank">
+                                <div className="acc_rank">
                                     <span id="accomondation_rank">rank</span>
-                                    <img src={require("../img/stars.png")} alt='star' class="rank_star"/>
+                                    <img src={require("../img/stars.png")} alt='star' className="rank_star"/>
                                 </div>
-                                <div class="acc_pending_time">
+                                <div className="acc_pending_time">
                                     <span id="pending_accomondation_time">Start time ------ End time</span>
                                 </div>
                             </div>
                             
-                            <div class="button_part">
+                            <div className="button_part">
                                 
-                                <button type="submit" class="add_button">Pay</button>
-                                <button type="submit" class="add_button">Cancel</button>
+                                <button type="submit" className="add_button">Pay</button>
+                                <button type="submit" className="add_button">Cancel</button>
                                 
                             </div>
                         </form>

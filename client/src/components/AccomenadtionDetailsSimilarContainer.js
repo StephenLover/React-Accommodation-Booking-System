@@ -41,7 +41,7 @@ class AccomendationDetailsSimilarContainer extends Component{
         if(this.state.recommendationAccs.length >=3){
             return (
                 <div className="similar">
-                    <div className="word">
+                    <div className="word_similar">
                         <h4>Some Similar Near From You :</h4> 
                     </div>
 

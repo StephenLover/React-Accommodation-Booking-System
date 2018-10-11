@@ -8,15 +8,12 @@ const fadeProperties = {
     indicators: true
 }
 
-// pass-in bugs here
 class AccomendationDetailsBanner extends Component {
     constructor(props){
         super(props);
         this.state = {
-            // pictures : ['../img/bg-01.jpg', '../img/bg-02.jpg' , '../img/bg-03.jpg'],
             pictures : this.props.pictures
         }
-        // this.imageDivIterator = this.imageDivIterator.bind(this);
     }
 
     componentWillMount(){
