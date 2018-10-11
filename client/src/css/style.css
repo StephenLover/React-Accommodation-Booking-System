@@ -213,9 +213,10 @@ image_container {
 /* Recommand System */
 .word {
     margin-top: 40px;
-    margin-left: 40px;
+    margin-left: auto;
+    margin-right: auto;
     border-bottom: #959596 solid 1px;
-    width: 1050px;;
+    width: 93.5%;
 }
 
 .recommand {
@@ -231,7 +232,7 @@ image_container {
 
 .recommand ul li:hover .accomondation {
     float: left;
-    margin-left: 15px;
+    margin-left: 10px;
     margin-right: 15px;
     margin-bottom: 30px;
     width: 30%;
@@ -245,7 +246,7 @@ image_container {
     -webkit-transition:all 0.5s; 
     -o-transition:all 0.5s; 
     float: left;
-    margin-left: 15px;
+    margin-left: 10px;
     margin-right: 15px;
     margin-bottom: 30px;
     width: 30%;
@@ -745,6 +746,56 @@ table {
     text-align: center;
 }
 
+.total_comment {
+    margin-top: 10px;
+    padding-top: 10px;
+    margin-left: 35px;
+    border-top: #959596 solid 1px;
+}
+
+.total_star_word {
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.total_star {
+    margin-top: 40px;
+    float: left;
+    width: 40%;
+    margin-left: 20px;
+    position: sticky !important;
+    top: 40px;
+}
+
+.total_star span {
+    margin-right: 20px;
+}
+
+.all_comment {
+    margin-top: 20px;
+    float: right;
+    width: 50%;
+}
+
+
+
+.comment_person_img {
+    width: 50px;
+    height: 50px;
+    border-radius: 200px;
+}
+.comment_person_detail {
+    margin-top: 20px;
+}
+.comment_person_detail span {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.comment_words {
+    margin-top: 30px;
+    border-bottom: #959596 solid 1px;
+    padding-bottom: 20px;
+}
 /* similar */
 
 
