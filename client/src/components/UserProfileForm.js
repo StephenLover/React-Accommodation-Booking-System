@@ -49,19 +49,19 @@ class UserProfileForm extends Component{
                             <form action="/" method="post">
                                 <div className="profile_group">
                                     <label className="user_name">Name:</label>
-                                    <input type="text" className="user_name_input" name="username" value="Stephen" required/>
+                                    <input type="text" className="user_name_input" name="username" defaultValue="Stephen" required/>
                                 </div>
                                 <div className="profile_group">
                                     <label className="user_gender">Gender:</label>
-                                    <input type="text" className="user_gender_input" name="gender" value="Male" disabled="disabled"/>
+                                    <input type="text" className="user_gender_input" name="gender" defaultValue="Male" disabled="disabled"/>
                                 </div>
                                 <div className="profile_group">
                                     <label className="user_email">Email:</label>
-                                    <input type="text" className="user_email_input" name="email" value="Stephen@gmail.com" disabled="disabled"/>
+                                    <input type="text" className="user_email_input" name="email" defaultValue="Stephen@gmail.com" disabled="disabled"/>
                                 </div>
                                 <div className="profile_group">
                                     <label className="user_phone">Phone:</label>
-                                    <input type="text" className="user_phone_input" name="phone" value="0404123123" required/>
+                                    <input type="text" className="user_phone_input" name="phone" defaultValue="0404123123" required/>
                                 </div>
                                 <div className="profile_submit">
                                     <button type="submit" className="add_button">Submit</button>
