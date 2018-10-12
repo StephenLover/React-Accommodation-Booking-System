@@ -49,12 +49,39 @@ app.get('/api/user/:id', (req, res) => {
   userInfo.then((result) => {
     console.log(result)
     if (result === undefined){
-      res.status(404).send('No such email!')
+      res.send([])
       return
     }
     res.status(200).json(result)    //// TEMP: need use "then" to load user's trasction, until both info loaded,then return to front-end.
   })
 });
+
+// update user profile with PK email
+app.post('/api/user/update', (req, res) => {
+  mongoose.connect(url)
+    .then(
+      () => {
+        console.log('/api/user/ connects successfully')
+      },
+      err => { console.log(err) }
+    )
+  let _id = req.body._id;// user email
+  let firstName = req.body.firstName;
+  let lastName = req.body.lastName;
+  let phone = req.body.phone;
+  userModel
+  .findOneAndUpdate({'_id': _id},
+  {'$set': {'firstName': firstName, 'lastName': lastName, 'phone': phone}},
+  {"new": true })
+  .exec(function(err, docs){
+    if (err){
+      console.log(err)
+      res.sendStatus(500)
+    }
+    console.log(docs)
+    return res.status(200).json({status:"ok"})
+  })
+})
 
 // Sign up
 app.post('/api/signup', function(req, res){
@@ -88,7 +115,6 @@ app.post('/api/signup', function(req, res){
     }
     console.log(docs)
     return res.status(200).json(docs);
-    mongoose.disconnect();
   })
 
 })
@@ -170,21 +196,6 @@ app.get('/api/accommodation/:id', (req, res) => {
       },
       err => { console.log(err) }
     )
-    // accommodationModel
-    // .find({'_id': req.params.id})
-    // .exec( function(err, accs){ 
-    //   (err) => { console.log(err)},
-    //   acc = accs[0];
-    //   propertyModel
-    //   .find({'_id': acc.property})
-    //   .exec( function(err, props){
-    //     (err) => {console.log(err)}
-    //     acc.property = props[0]
-    //     resolve(acc)
-    //     mongoose.disconnect();
-    //   })
-      
-    // })
 
     transactionModel
     .find({}, 'review star reviewDate traveler')
@@ -213,7 +224,10 @@ app.get('/api/accommodation/:id', (req, res) => {
             return acc.property !== null;
           })
           console.log(accs)
-          accs[0] = {'accommodationId': accs[0]}
+          accs[0] = {
+            'review': null,
+            'accommodationId': accs[0]
+          }
           resolve(accs)
         })
       } else {
@@ -273,7 +287,7 @@ app.get('/api/watching/:id', (req, res) => {
       res.status(500)
     }
     if(docs.length === 0){
-      return res.status(404)
+      return res.json({'watching_list': [], '_id': null, 'user': req.params.id, '__v': null})
     }
     res.json(docs[0])
   })
@@ -309,7 +323,7 @@ app.post('/api/add2pending/', (req, res) => {
   mongoose.connect(url)
     .then(
       () => {
-        console.log('/api/delwatching/ connects successfully')
+        console.log('/api/add2pending/ connects successfully')
       },
       err => console.log(err)
     )
@@ -362,13 +376,13 @@ app.get('/api/pending/:id', (req, res) => {
       console.log(err)
     }
     if(docs.length === 0){
-      res.status(404).send('No such accId')
+      res.send([])
     }
     res.json(docs[0])
   })
 })
 
-// get all history(accommodation info) of specific person
+// get all history(accommodation info) of traveler
 app.get('/api/history/traveler/:id', (req, res) => {
     mongoose.connect(url)
     .then(
@@ -378,7 +392,7 @@ app.get('/api/history/traveler/:id', (req, res) => {
       err => { console.log(err) }
     )
     transactionModel
-    .find({'traveler': req.params.id}, 'review star')
+    .find({'traveler': req.params.id}, 'review star status')
     .populate({
       path: 'accommodationId', select: 'startDate endDate price',
       populate: {path: 'property', select: 'address suburb'}
@@ -396,6 +410,61 @@ app.get('/api/history/traveler/:id', (req, res) => {
       res.json(docs)
     })
 });
+
+// get all history(accommodation info) of provider
+app.get('/api/history/provider/:id', (req, res) => {
+  mongoose.connect(url)
+  .then(
+    () => {
+      console.log('/api/history/provider connects successfully')
+    },
+    err => { console.log(err) }
+  )
+  accommodationModel
+  .find({}, 'startDate endDate price')
+  .populate({
+    path: 'property', match: {owner: req.params.id}, select: 'address suburb'
+  })
+  .sort('startDate')
+  .exec( function(err, docs){ 
+    if (err){
+        console.log(err)
+        res.sendStatus(500)
+    }
+    docs = docs.filter(function(doc){
+      return doc.property !== null;
+    })
+    console.log('docs',docs)
+    res.json(docs)
+  })
+});
+
+// insert review of accommodation from traveler
+app.post('/api/review/update', (req, res) => {
+  mongoose.connect(url)
+  .then(
+    () => {
+      console.log('/api/review/update connects successfully')
+    },
+    err => { console.log(err) }
+  )
+  let traveler = req.body.traveler; // traveler email
+  let accommodationId = req.body.accommodationId;
+  let review = req.body.review
+  let star = req.body.star
+  transactionModel
+  .findOneAndUpdate({traveler: traveler, accommodationId: accommodationId},
+  {'$set': {'review': review, 'star': star, 'reviewDate': Date.now()}},
+  {"new": true })
+  .exec(function(err, docs){
+    if (err){
+      console.log(err)
+      res.sendStatus(500)
+    }
+    console.log(docs)
+    return res.status(200).json({status:"ok"})
+  })
+})
 
 const port = 5000;
 

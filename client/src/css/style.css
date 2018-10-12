@@ -995,6 +995,9 @@ table {
     margin-top: 150px;
     text-align: center;
 }
+.pending_form {
+    width: 100%;
+}
 
 .accomondation_pending {
     margin-left: 280px;
@@ -1030,4 +1033,13 @@ table {
 
 .acc_pending_time {
     margin-top: 10px;
+}
+
+.acc_owner_detail {
+    margin-top: 10px;
+}
+
+.nopending {
+    text-align: center;
+    margin-top: 70px;
 }
