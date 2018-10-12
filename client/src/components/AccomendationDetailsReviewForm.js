@@ -30,7 +30,7 @@ class AccomendationDetailsReviewForm extends Component{
             if(this.state.numberOfReviewer === 0){
                 return("No one commented this accommodation, be the first one to left your comment!")
             }else if(this.state.numberOfReviewer === 1){
-                return("one review from people who commented this accommodation")
+                return("One review from people who commented this accommodation")
             }else{
                 return(`${this.state.numberOfReviewer} reviews from people who commented this accommodation`)
             }
@@ -57,8 +57,9 @@ class AccomendationDetailsReviewForm extends Component{
             <div className="total_comment">
                 <div className="total_star">
                     <h2 className="total_star_word">{this.renderNumberOfReviewer()}</h2>
-                    <span>{this.state.propertyAverage.toFixed(1)}/5.0</span>
-                    <NonEditableRatingReact rating={Math.round(this.state.propertyAverage)}/>
+                    {this.state.propertyAverage === null ? null : <span>{this.state.propertyAverage.toFixed(1)}/5.0</span>}
+
+                    {this.state.propertyAverage === null ? null : <NonEditableRatingReact rating={Math.round(this.state.propertyAverage)}/>}
                 </div>
 
                 <div className="all_comment">

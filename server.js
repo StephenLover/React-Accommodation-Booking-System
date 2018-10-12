@@ -106,7 +106,7 @@ app.get('/api/search/postcode/:id', (req, res) => {
 
     let postcode = parseInt(req.params.id)
     accommodationModel
-    .find({status: 'open'})
+    .find({})
     .populate({
       path: 'property',
       match: {postcode: postcode,}
@@ -170,59 +170,28 @@ app.get('/api/accommodation/:id', (req, res) => {
       },
       err => { console.log(err) }
     )
-    // accommodationModel
-    // .find({'_id': req.params.id})
-    // .exec( function(err, accs){ 
-    //   (err) => { console.log(err)},
-    //   acc = accs[0];
-    //   propertyModel
-    //   .find({'_id': acc.property})
-    //   .exec( function(err, props){
-    //     (err) => {console.log(err)}
-    //     acc.property = props[0]
-    //     resolve(acc)
-    //     mongoose.disconnect();
-    //   })
-      
-    // })
-
-    transactionModel
-    .find({}, 'review star reviewDate traveler')
-    .populate({
-      path: 'accommodationId traveler',
-      populate: {path: 'property', match: {'_id': req.params.id}}
-    })
-    .exec(function(err, docs){
-      if(err){
-        console.log(err);
-      }
-      docs = docs.filter( doc => {
-        return doc.accommodationId.property !== null;
+    accommodationModel
+    .find({'_id': req.params.id})
+    .exec( function(err, accs){ 
+      (err) => { console.log(err)},
+      acc = accs[0];
+      propertyModel
+      .find({'_id': acc.property})
+      .exec( function(err, props){
+        (err) => {console.log(err)}
+        acc.property = props[0]
+        resolve(acc)
+        mongoose.disconnect();
       })
-      if(docs.length === 0){
-        accommodationModel
-        .find({})
-        .populate({
-          path: 'property', match: {'_id': req.params.id}
-        })
-        .exec(function(err, accs){
-          if(err){
-            console.log(err);
-          }
-          accs = accs.filter(acc => {
-            return acc.property !== null;
-          })
-          console.log(accs)
-          accs[0] = {'accommodationId': accs[0]}
-          resolve(accs)
-        })
-      } else {
-      resolve(docs);
-      }
+      
     })
   });
   accInfo.then((result) => {
     console.log(result)
+    if (result === undefined){
+      res.status(404).send('No such accId!')
+      return
+    }
     res.status(200).json(result)    //// TEMP: need use "then" to load user's trasction, until both info loaded,then return to front-end.
   })
 });
@@ -323,18 +292,7 @@ app.post('/api/add2pending/', (req, res) => {
   trans.save()
   .then(docs => {
     console.log(docs)
-    watchingModel
-      .findOneAndUpdate({'user': user},
-      {'$pull': {'watching_list': accId}},
-      { "new": true, "upsert": true })
-      .exec(function(err, docs){
-        if (err){
-          console.log(err)
-          res.sendStatus(500)
-        }
-        // change status of accommodation open to close
-        return res.status(200).json({status:"ok"})
-      })
+    res.status(200).json({status: 'ok'})
   })
   .catch(err => {
     console.log(err);
@@ -342,59 +300,35 @@ app.post('/api/add2pending/', (req, res) => {
   })
 })
 
-// get pending list from traveler email
-app.get('/api/pending/:id', (req, res) => {
-  mongoose.connect(url)
-    .then(
-      () => {
-        console.log('/api/history/traveler connects successfully')
-      },
-      err => { console.log(err) }
-    )
-  transactionModel
-  .find({'traveler': req.params.id, 'status': 'pending'})
-  .populate({
-    path: 'accommodationId',
-    populate: {path: 'property'}
-  })
-  .exec(function(err, docs){
-    if(err){
-      console.log(err)
-    }
-    if(docs.length === 0){
-      res.status(404).send('No such accId')
-    }
-    res.json(docs[0])
-  })
-})
-
 // get all history(accommodation info) of specific person
-app.get('/api/history/traveler/:id', (req, res) => {
+app.get('/api/history/:id', (req, res) => {
+  const historyInfo = new Promise((resolve, reject) => {
     mongoose.connect(url)
     .then(
       () => {
-        console.log('/api/history/traveler connects successfully')
+        console.log('/api/history/ connects successfully')
       },
       err => { console.log(err) }
     )
     transactionModel
-    .find({'traveler': req.params.id}, 'review star')
+    .find({})
     .populate({
-      path: 'accommodationId', select: 'startDate endDate price',
-      populate: {path: 'property', select: 'address suburb'}
+      path: 'accommodationId', match: {'owner': req.params.id}
     })
     .sort('modifiedTime')
     .exec( function(err, docs){ 
-      if (err){
-          console.log(err)
-          res.sendStatus(500)
-      }
+      (err) => { console.log(err)}
       docs = docs.filter(function(doc){
         return doc.accommodationId != null;
       })
       console.log('docs',docs)
-      res.json(docs)
+      resolve(docs);
     })
+  });
+  historyInfo.then((result) => {
+    //console.log(res);
+    res.json(result)    //// TEMP: need use "then" to load user's trasction, until both info loaded,then return to front-end.
+  })
 });
 
 const port = 5000;
