@@ -106,7 +106,7 @@ app.get('/api/search/postcode/:id', (req, res) => {
 
     let postcode = parseInt(req.params.id)
     accommodationModel
-    .find({})
+    .find({status: 'open'})
     .populate({
       path: 'property',
       match: {postcode: postcode,}
@@ -193,20 +193,36 @@ app.get('/api/accommodation/:id', (req, res) => {
       populate: {path: 'property', match: {'_id': req.params.id}}
     })
     .exec(function(err, docs){
-      (err) => console.log(err),
+      if(err){
+        console.log(err);
+      }
       docs = docs.filter( doc => {
         return doc.accommodationId.property !== null;
       })
+      if(docs.length === 0){
+        accommodationModel
+        .find({})
+        .populate({
+          path: 'property', match: {'_id': req.params.id}
+        })
+        .exec(function(err, accs){
+          if(err){
+            console.log(err);
+          }
+          accs = accs.filter(acc => {
+            return acc.property !== null;
+          })
+          console.log(accs)
+          accs[0] = {'accommodationId': accs[0]}
+          resolve(accs)
+        })
+      } else {
       resolve(docs);
-      mongoose.disconnect()
+      }
     })
   });
   accInfo.then((result) => {
     console.log(result)
-    if (result === undefined){
-      res.status(404).send('No such accId!')
-      return
-    }
     res.status(200).json(result)    //// TEMP: need use "then" to load user's trasction, until both info loaded,then return to front-end.
   })
 });
