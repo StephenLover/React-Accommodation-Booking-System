@@ -287,7 +287,7 @@ app.get('/api/watching/:id', (req, res) => {
       res.status(500)
     }
     if(docs.length === 0){
-      return res.send([])
+      return res.json({'watching_list': [], '_id': null, 'user': req.params.id, '__v': null})
     }
     res.json(docs[0])
   })
