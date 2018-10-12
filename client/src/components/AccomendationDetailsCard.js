@@ -92,6 +92,7 @@ class AccomendationDetailsCard extends Component{
     }
 
     render() {
+        console.log(this.state.reviewList)
         return (
             <div>
                 <div id="contact" className="section">
