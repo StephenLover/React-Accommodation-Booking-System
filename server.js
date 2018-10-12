@@ -56,6 +56,33 @@ app.get('/api/user/:id', (req, res) => {
   })
 });
 
+// update user profile with PK email
+app.post('/api/user/update', (req, res) => {
+  mongoose.connect(url)
+    .then(
+      () => {
+        console.log('/api/user/ connects successfully')
+      },
+      err => { console.log(err) }
+    )
+  let _id = req.body._id;// user email
+  let firstName = req.body.firstName;
+  let lastName = req.body.lastName;
+  let phone = req.body.phone;
+  userModel
+  .findOneAndUpdate({'_id': _id},
+  {'$set': {'firstName': firstName, 'lastName': lastName, 'phone': phone}},
+  {"upsert": true })
+  .exec(function(err, docs){
+    if (err){
+      console.log(err)
+      res.sendStatus(500)
+    }
+    console.log(docs)
+    return res.status(200).json({status:"ok"})
+  })
+})
+
 // Sign up
 app.post('/api/signup', function(req, res){
   let _id = req.body._id
