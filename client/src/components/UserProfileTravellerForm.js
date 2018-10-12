@@ -42,8 +42,8 @@ class UserProfileTravellerForm extends Component{
                                 {/* <!-- This is the table title --> */}
                                 <tr>
                                     <td width="15%">Surburb</td>
-                                    <td width="10%">Postcode</td>
-                                    <td width="50%">Address</td>
+                                    <td width="15%">Price</td>
+                                    <td width="45%">Address</td>
                                     <td width="10%">StartTime</td>
                                     <td width="10%">EndTime</td>
                                     <td width="5"><input type="button" value="Review" class="submit_button" onClick="show_comment()"/></td>
@@ -51,7 +51,7 @@ class UserProfileTravellerForm extends Component{
                                 {/* <!-- Below is the content of table --> */}
                                 <tr>
                                     <td width="15%">Surburb</td>
-                                    <td width="10%">Postcode</td>
+                                    <td width="10%">Price</td>
                                     <td width="55%">Address</td>
                                     <td width="10%">StartTime</td>
                                     <td width="10%">EndTime</td>
@@ -59,7 +59,7 @@ class UserProfileTravellerForm extends Component{
                                 </tr>
                                 <tr>
                                     <td width="15%">Surburb</td>
-                                    <td width="10%">Postcode</td>
+                                    <td width="10%">Price</td>
                                     <td width="55%">Address</td>
                                     <td width="10%">StartTime</td>
                                     <td width="10%">EndTime</td>

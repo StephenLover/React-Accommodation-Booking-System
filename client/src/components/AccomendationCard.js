@@ -25,14 +25,14 @@ class AccomendationCard extends Component{
 
 
     render() {
-        const href_acc = '/accommodation/' + this.state.acc_id
+        const href_acc = '/accommodation/' + this.state.property_id
         return (
             <div className="similar_card">
                 <li>
                     <div className="accomondation">
                         <a href={href_acc}><img src={require(`../${this.state.picture}`)} alt="" className="accomondation_img"/></a>
                         <div className="acc_brief">
-                            <span id="accomondation_capacity">Capacity: {this.state.capacity > 1 ? this.state.capacity + " persons" : "1 person"},</span>
+                            <span id="accomondation_capacity">{this.state.capacity > 1 ? this.state.capacity + " persons" : "1 person"},</span>
                             <span id="accomondation_suburb">{this.state.suburb}</span>
                         </div>
                         <div className="acc_name">

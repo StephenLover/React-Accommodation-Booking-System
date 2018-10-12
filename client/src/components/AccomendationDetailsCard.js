@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import AccomendationDetailsSimilarContainer from './AccomenadtionDetailsSimilarContainer';
 import AccomendationDetailsBanner from './AccomendationDetailsBanner';
 import GoogleMapReact from '../components/GoogleMapReact';
+import AccomendationDetailsReviewForm from '../components/AccomendationDetailsReviewForm'
 
 class AccomendationDetailsCard extends Component{
     constructor(props){
@@ -21,29 +22,34 @@ class AccomendationDetailsCard extends Component{
             similarAccList : [],
             availableTime : "",
             accId: "",
-            property_id: ""
+            property_id: "",
+            reviewList: null,
         }
         this.addToWatchingList = this.addToWatchingList.bind(this);
+        this.googleComponentRender = this.googleComponentRender.bind(this);
     }
 
     componentWillMount(){
         fetch(`/api/accommodation/${this.props.accId}`)
         .then(response => response.json())
         .then(res => {
+            console.log(res)
+            // console.log(res[0].accommodationId.startDate.slice(0,-14),res[0].accommodationId.endDate.slice(0,-14))
             this.setState({
                 // comments: res.property.comments,
-                address: res.property.address,
-                suburb: res.property.suburb,
-                postcode: res.property.postcode,
-                capacity: res.property.capacity,
-                review: res.property.review,
-                owner : res.property.owner,
-                longitude : res.property.longitude,
-                latitude :res.property.latitude,
-                pictures: res.property.pictures,
-                property_id: res.property._id,
-                availableTime: res.startDate.slice(0,-14) +" to " + res.endDate.slice(0,-14),
-                accId : this.props.accId
+                address: res[0].accommodationId.property.address,
+                suburb: res[0].accommodationId.property.suburb,
+                postcode: res[0].accommodationId.property.postcode,
+                capacity: res[0].accommodationId.property.capacity,
+                review: res[0].accommodationId.property.review,
+                owner : res[0].accommodationId.property.owner,
+                longitude : res[0].accommodationId.property.longitude,
+                latitude :res[0].accommodationId.property.latitude,
+                pictures: res[0].accommodationId.property.pictures,
+                availableTime: res[0].accommodationId.startDate.slice(0,-14) +" to " + res[0].accommodationId.endDate.slice(0,-14),
+                accId : res[0].accommodationId._id,
+                property_id : this.props.accId,
+                reviewList : res,
             })
         })
         .catch((err) => {console.log(err)})
@@ -58,7 +64,7 @@ class AccomendationDetailsCard extends Component{
     addToWatchingList(e){
         e.preventDefault();
         let url = '/api/add2watching';
-        let data = {_id: localStorage.getItem('uid'), accId: this.state.accId};
+        let data = {_id: localStorage.getItem('uid'), accId: this.state.property_id};
         console.log(JSON.stringify(data))
         fetch(url, {
         method: 'POST', 
@@ -70,6 +76,19 @@ class AccomendationDetailsCard extends Component{
         .then(response => alert('The property has been added to watching list!'))
         .catch(error => console.error('Error:', error));
 
+    }
+
+    googleComponentRender(){
+        if (this.state.latitude !== null && this.state.longitude){
+            return(<GoogleMapReact lat={this.state.latitude} lng={this.state.longitude}/>)
+        }
+    }
+
+    reviewListRender(){
+        if(this.state.reviewList !== null){
+            let filteredReviewedList = this.state.reviewList.filter(singleReview => singleReview.review !== null)
+            return (<AccomendationDetailsReviewForm reviewList={filteredReviewedList}/>)
+        }
     }
 
     render() {
@@ -139,7 +158,7 @@ class AccomendationDetailsCard extends Component{
                                     </tbody>
                                 </table>
                                     <div className="map">
-                                        <GoogleMapReact lat={this.state.latitude} lng={this.state.longitude}/>
+                                        {/* {this.googleComponentRender()} */}
                                     </div>
                                         <form action="/" method="post" className="add_to_wl">
                                             <div className="add_to_wl_button">
@@ -147,6 +166,8 @@ class AccomendationDetailsCard extends Component{
                                             </div>
                                         </form>
                                     </div>
+
+                                {this.reviewListRender()}
                                 <AccomendationDetailsSimilarContainer suburb={this.state.suburb}/>
                         </div>
                     </div>

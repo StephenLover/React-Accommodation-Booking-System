@@ -59,7 +59,7 @@ class NavigationBarWithSession extends Component{
                         <nav id="nav">
                             <ul className="main_menu">
                                 <li>
-                                    <input type="text" name="search" className="search_se" id="search" placeholder="Input your search keywords here" 
+                                    <input type="text" name="search" className="search_se" id="search" placeholder="Input your search keywords or postcode" 
                                     value={this.state.keywords} onChange={this.handleChange}/>
                                 </li>
                                 <li>
