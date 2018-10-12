@@ -10,10 +10,30 @@ class PendingListForm extends Component {
             price: "",
             rank : "",
             startTime: "",
-            endTime: "",
-            
+            endTime: "", 
         }
     }
+
+    componentWillMount(){
+        fetch(`api/pending/${localStorage.getItem('uid')}`)
+            .then(response => {
+                if(response.status === 200){
+                    var res = response.json()
+                    return res
+                }else if(response.status === 404){
+                    var res = null
+                    return res
+                }
+            })
+            .then(res => {
+                console.log(res)
+                // this.setState({
+                //     capacity: res.pr
+                // })
+            })
+            .catch((err) => {console.log(err)})
+    }
+
 
     render() {
         return (

@@ -392,7 +392,7 @@ app.get('/api/pending/:id', (req, res) => {
       console.log(err)
     }
     if(docs.length === 0){
-      res.status(404).send('No such accId')
+      res.status(404).send('Travella has no pending transaction')
     }
     res.json(docs[0])
   })
