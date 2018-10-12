@@ -24,15 +24,16 @@ class RecommendationForm extends Component{
 
     testIfNone(){       
         if (this.state.recommendationAccs[0] !== undefined){
+            console.log(this.state.recommendationAccs)
             return(
                 <div className="row">
                     <div className="recommand">
                         <ul>
-                            <AccomendationCard property={this.state.recommendationAccs[1]}/>
-                            <AccomendationCard property={this.state.recommendationAccs[8]}/>
-                            <AccomendationCard property={this.state.recommendationAccs[15]}/>
+                            <AccomendationCard property={this.state.recommendationAccs[2]}/>
+                            <AccomendationCard property={this.state.recommendationAccs[11]}/>
+                            <AccomendationCard property={this.state.recommendationAccs[12]}/>
                             <AccomendationCard property={this.state.recommendationAccs[4]}/>
-                            <AccomendationCard property={this.state.recommendationAccs[5]}/>
+                            <AccomendationCard property={this.state.recommendationAccs[13]}/>
                             <AccomendationCard property={this.state.recommendationAccs[6]}/>
                         </ul>
                     </div>
