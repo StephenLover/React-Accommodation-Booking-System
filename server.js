@@ -49,7 +49,7 @@ app.get('/api/user/:id', (req, res) => {
   userInfo.then((result) => {
     console.log(result)
     if (result === undefined){
-      res.status(404).send('No such email!')
+      res.send([])
       return
     }
     res.status(200).json(result)    //// TEMP: need use "then" to load user's trasction, until both info loaded,then return to front-end.
@@ -287,7 +287,7 @@ app.get('/api/watching/:id', (req, res) => {
       res.status(500)
     }
     if(docs.length === 0){
-      return res.status(404)
+      return res.send([])
     }
     res.json(docs[0])
   })
@@ -376,7 +376,7 @@ app.get('/api/pending/:id', (req, res) => {
       console.log(err)
     }
     if(docs.length === 0){
-      res.status(404).send('The traveler does not have pendinglist')
+      res.send([])
     }
     res.json(docs[0])
   })
