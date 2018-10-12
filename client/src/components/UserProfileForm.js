@@ -46,19 +46,19 @@ class UserProfileForm extends Component{
                     <form action="/" method="post">
                         <div className="profile_group">
                             <label className="user_name">Name:</label>
-                            <input type="text" className="user_name_input" name="username" value={this.state.name} required/>
+                            <input type="text" className="user_name_input" name="username" defaultValue={this.state.name} required/>
                         </div>
                         <div className="profile_group">
                             <label className="user_gender">Gender:</label>
-                            <input type="text" className="user_gender_input" name="gender" value={this.state.gender} disabled="disabled"/>
+                            <input type="text" className="user_gender_input" name="gender" defaultValue={this.state.gender} disabled="disabled"/>
                         </div>
                         <div className="profile_group">
                             <label className="user_email">Email:</label>
-                            <input type="text" className="user_email_input" name="email" value={this.state.email} disabled="disabled"/>
+                            <input type="text" className="user_email_input" name="email" defaultValue={this.state.email} disabled="disabled"/>
                         </div>
                         <div className="profile_group">
                             <label className="user_phone">Phone:</label>
-                            <input type="text" className="user_phone_input" name="phone" value={this.state.phone} required/>
+                            <input type="text" className="user_phone_input" name="phone" defaultValue={this.state.phone} required/>
                         </div>
                         <div className="profile_submit">
                             <button type="submit" className="add_button">Submit</button>

@@ -102,7 +102,7 @@ class PendingListForm extends Component {
             <div id="contact" className="section">
                 <div className="container">
                     <div className="word_pending_list">
-                        <h1>Your pending transaction</h1> 
+                        <h1>Your Pending Transaction</h1> 
                     </div>
                     <div className="row">
                         {this.state.pendingListLoaded === true ? this.renderIfPendingListIsEmpty() : this.renderIfPendingListIsNotEmpty()}
