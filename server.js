@@ -213,7 +213,10 @@ app.get('/api/accommodation/:id', (req, res) => {
             return acc.property !== null;
           })
           console.log(accs)
-          accs[0] = {'accommodationId': accs[0]}
+          accs[0] = {
+            'review': null,
+            'accommodationId': accs[0]
+          }
           resolve(accs)
         })
       } else {
