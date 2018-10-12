@@ -287,9 +287,7 @@ app.get('/api/watching/:id', (req, res) => {
       res.status(500)
     }
     if(docs.length === 0){
-      console.log("--------------------");
-      let emptyObj = {"watching_list":[],"_id":null,"user":req.params.id,"__v":0}
-      return res.json(emptyObj)
+      return res.json({'watching_list': [], '_id': null, 'user': req.params.id, '__v': null})
     }
     res.json(docs[0])
   })
