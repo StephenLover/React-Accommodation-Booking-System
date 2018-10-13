@@ -377,7 +377,7 @@ app.get('/api/pending/:id', (req, res) => {
     }
     console.log(docs[0])
     if(docs.length === 0){
-      res.status(404).send('false') // check if there is a pending list
+      res.send('false') // check if there is a pending list
       return
     }
     res.json(docs[0])
@@ -399,6 +399,30 @@ app.post('/api/pending/cancel', (req, res) => {
   transactionModel
   .findOneAndUpdate({'traveler': traveler, 'accommodationId': accId},
   {'$set': {'status': 'cancel'}},
+  {"new": true })
+  .exec(function(err, docs){
+    if(err){
+      console.log(err)
+    }
+    console.log('doc',docs)
+    return res.status(200).json({status:"ok"})
+  })
+})
+
+app.post('/api/pending/success', (req, res) => {
+  mongoose.connect(url)
+    .then(
+      () => {
+        console.log('/api/pending/success connects successfully')
+      },
+      err => { console.log(err) }
+    )
+  let traveler = req.body.traveler; //user email
+  let accId = parseInt(req.body.accommodationId) //accid
+  console.log('acc',accId)
+  transactionModel
+  .findOneAndUpdate({'traveler': traveler, 'accommodationId': accId},
+  {'$set': {'status': 'success'}},
   {"new": true })
   .exec(function(err, docs){
     if(err){
@@ -448,7 +472,7 @@ app.get('/api/history/provider/:id', (req, res) => {
     err => { console.log(err) }
   )
   accommodationModel
-  .find({}, 'startDate endDate price')
+  .find({}, 'startDate endDate price ad')
   .populate({
     path: 'property', match: {owner: req.params.id}, select: 'address suburb'
   })
