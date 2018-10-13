@@ -13,10 +13,13 @@ class UserProfileForm extends Component{
             gender: null,
             email: null,
             phone: null,
+            // reviewFormStatus: false,
+            // reviewItem: null,
         }
         this.handleSelectorChange = this.handleSelectorChange.bind(this);
         this.renderUserInfo = this.renderUserInfo.bind(this);
         this.renderHistoryOrAccForm = this.renderHistoryOrAccForm.bind(this);
+        this.handleUserInfoFormSubmit = this.handleUserInfoFormSubmit.bind(this);
     }
 
     handleSelectorChange(event){
@@ -28,6 +31,7 @@ class UserProfileForm extends Component{
         fetch(`/api/user/${localStorage.getItem('uid')}`)
             .then(response => response.json())
             .then(res => {
+                console.log(res.firstName,res.lastName)
                 this.setState({
                     // comments: res.property.comments,
                     name: res.firstName + ' ' + res.lastName,
@@ -39,6 +43,35 @@ class UserProfileForm extends Component{
             .catch((err) => {console.log(err)})
     }
 
+    handleUserInfoFormSubmit(e){
+        e.preventDefault();
+
+        // if(this.state.email !== null){
+        //     let url = '/api/user/update';
+        //     let fullName = 
+        //     split(/(\s)/).filter(item => !/\s/.test(item)  //["Stephen","Wang"]
+        //     let data = {_id: localStorage.getItem('uid'), firstName};
+        //     console.log(JSON.stringify(data))
+        //     fetch(url, {
+        //     method: 'POST', 
+        //     body: JSON.stringify(data),
+        //     headers:{
+        //         'Content-Type': 'application/json'
+        //     }
+        //     }).then(res => res.json())
+        //     .then(response => alert('Property added to pending list!', JSON.stringify(response)))
+        //     .then(window.location.href="./watching")
+        //     .catch(error => console.error('Error:', error));
+        // }else{
+        //     alert('Please choose one property to add to pending list!')
+        // }
+
+    }
+
+    handleUserInfoChange(){
+        
+    }
+
     renderUserInfo(){
         if(this.state.name !== null){
             return(
@@ -46,22 +79,22 @@ class UserProfileForm extends Component{
                     <form action="/" method="post">
                         <div className="profile_group">
                             <label className="user_name">Name:</label>
-                            <input type="text" className="user_name_input" name="username" value={this.state.name} required/>
+                            <input type="text" className="user_name_input" name="username" defaultValue={this.state.name} required/>
                         </div>
                         <div className="profile_group">
                             <label className="user_gender">Gender:</label>
-                            <input type="text" className="user_gender_input" name="gender" value={this.state.gender} disabled="disabled"/>
+                            <input type="text" className="user_gender_input" name="gender" defaultValue={this.state.gender} disabled="disabled"/>
                         </div>
                         <div className="profile_group">
                             <label className="user_email">Email:</label>
-                            <input type="text" className="user_email_input" name="email" value={this.state.email} disabled="disabled"/>
+                            <input type="text" className="user_email_input" name="email" defaultValue={this.state.email} disabled="disabled"/>
                         </div>
                         <div className="profile_group">
                             <label className="user_phone">Phone:</label>
-                            <input type="text" className="user_phone_input" name="phone" value={this.state.phone} required/>
+                            <input type="text" className="user_phone_input" name="phone" defaultValue={this.state.phone} required/>
                         </div>
                         <div className="profile_submit">
-                            <button type="submit" className="add_button">Submit</button>
+                            <button type="submit" className="add_button" onClick={this.handleUserInfoFormSubmit}>Submit</button>
                         </div>
                         
                     </form>

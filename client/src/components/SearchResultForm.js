@@ -48,6 +48,7 @@ class SearchResultForm extends Component {
     //sort accomendation according to the price in ascending order
     sortAccordingRequirement(){
         let recommendationAccs = this.state.recommendationAccs;
+        console.log(recommendationAccs)
 
         if(this.state.sortRequirement === 'defalut'){
             recommendationAccs.sort((a,b) =>{
@@ -67,6 +68,20 @@ class SearchResultForm extends Component {
             recommendationAccs.sort((a,b) => {
                 return b.price - a.price
             })            
+            this.setState({
+                recommendationAccs : recommendationAccs
+            })
+        }else if(this.state.sortRequirement === 'capacity_up'){
+            recommendationAccs.sort((a,b) => {
+                return a.property.capacity - b.property.capacity
+            })
+            this.setState({
+                recommendationAccs : recommendationAccs
+            })
+        }else if(this.state.sortRequirement === 'capacity_down'){
+            recommendationAccs.sort((a,b) => {
+                return b.property.capacity - a.property.capacity
+            })
             this.setState({
                 recommendationAccs : recommendationAccs
             })
@@ -107,6 +122,7 @@ class SearchResultForm extends Component {
 
 
     render(){
+        console.log(this.state.recommendationAccs)
         return (
             <div>
                 <div id="contact" className="section">
@@ -121,6 +137,8 @@ class SearchResultForm extends Component {
                                     <option value="defalut" onClick={this.handleSelectorChange}>Default</option>
                                     <option value="price_up" onClick={this.handleSelectorChange}>Price Low to High</option>
                                     <option value="price_down" onClick={this.handleSelectorChange}>Price High to Low</option>
+                                    <option value="capacity_up" onClick={this.handleSelectorChange}>Capacity Low to High</option>
+                                    <option value="capacity_down" onClick={this.handleSelectorChange}>Capacity High to Low</option>
                                 </select>
                             </form>
                         </div>

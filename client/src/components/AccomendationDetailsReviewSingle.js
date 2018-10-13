@@ -26,7 +26,7 @@ class AccomendationDetailsReviewSingle extends Component{
                     <span id="comment_person_name">{this.state.name}</span>
                     {/* <span id="comment_person_time">{this.state.transactionDate}</span> */}
                     <div className="comment_person_review_date">
-                        <span id="comment_person_review_date">{this.state.reviewDate}</span>
+                        {this.state.reviewDate}
                     </div>
                     
 

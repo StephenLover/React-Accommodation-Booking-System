@@ -64,7 +64,7 @@ class AccomendationDetailsCard extends Component{
     addToWatchingList(e){
         e.preventDefault();
         let url = '/api/add2watching';
-        let data = {_id: localStorage.getItem('uid'), accId: this.state.property_id};
+        let data = {_id: localStorage.getItem('uid'), accId: this.state.accId};
         console.log(JSON.stringify(data))
         fetch(url, {
         method: 'POST', 
@@ -109,7 +109,7 @@ class AccomendationDetailsCard extends Component{
                                 {/* <!-- If there is no session, the comment part will not avalible --> */}
                                 {/* <!-- Comment part with session --> */}
                                 <div className="comment_title">
-                                    <h4>Comments:</h4>
+                                    <h4>Discription:</h4>
                                 </div>
                                 
                                 <div className="comments">

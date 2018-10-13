@@ -270,7 +270,7 @@ image_container {
 }
 
 .acc_brief span {
-    margin-right: 20px;
+    margin-right: 10px;
 }
 .acc_name {
     margin-top: 5px;
@@ -767,7 +767,7 @@ table {
 }
 
 .total_star span {
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 .all_comment {
@@ -787,17 +787,34 @@ table {
     margin-top: 20px;
 }
 .comment_person_detail span {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 150px;
+    
+}
+
+.comment_person_review_date {
+    margin-top: 10px;
+    float: right;
 }
 
 .comment_words {
-    margin-top: 30px;
+    margin-top: 10px;
     border-bottom: #959596 solid 1px;
     padding-bottom: 20px;
 }
+
+.detail_review_star {
+    margin-top: 20px;
+}
+
+.detail_review_star label {
+    margin-right: 5px;
+}
 /* similar */
 
+.word_similar {
+    margin-top: 20px;
+    margin-left: 50px;
+}
 
 .acc_container {
     width: 100%;
@@ -823,6 +840,7 @@ table {
 
 .filter {
     margin-left: 40px;
+    margin-top: 20px;
 }
 
 .filter_button {
@@ -977,6 +995,9 @@ table {
     margin-top: 150px;
     text-align: center;
 }
+.pending_form {
+    width: 100%;
+}
 
 .accomondation_pending {
     margin-left: 280px;
@@ -1015,5 +1036,10 @@ table {
 }
 
 .acc_owner_detail {
-    margin-top: 20px;
+    margin-top: 10px;
+}
+
+.nopending {
+    text-align: center;
+    margin-top: 70px;
 }

@@ -33,7 +33,6 @@ class WatchingListForm extends Component {
     }
 
     renderMulitipleRecords(){
-        console.log('asdadssad' +this.state.watchingList)
         if(this.state.watchingList.length !== 0 && this.state.watchingList !== undefined & this.state.watchingList !== []){
             return this.state.watchingList.map(acc => (
                 <WatchingListSingle accId={acc._id} key={acc._id} suburb={acc.property.suburb}
@@ -114,7 +113,7 @@ class WatchingListForm extends Component {
 
                                     <div className="button_part">
                                         <button type="submit" className="add_button" onClick={this.handleSubmitToPendingList}>Add to Pending List</button>
-                                        <a href="AccomondationDetail.html" className="add_button">Back</a>
+                                        <a href="/" className="add_button">Back</a>
                                     </div>
                                 </form>
                             </div>
