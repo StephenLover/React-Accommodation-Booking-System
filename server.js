@@ -377,7 +377,7 @@ app.get('/api/pending/:id', (req, res) => {
     }
     console.log(docs[0])
     if(docs.length === 0){
-      res.status(404).send('false') // check if there is a pending list
+      res.send('false') // check if there is a pending list
       return
     }
     res.json(docs[0])
