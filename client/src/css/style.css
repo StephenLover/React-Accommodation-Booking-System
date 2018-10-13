@@ -899,6 +899,11 @@ table {
     margin-left: 200px;
 }
 
+.tablehead {
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .traveller_history {
     margin-top: 40px;
 }
