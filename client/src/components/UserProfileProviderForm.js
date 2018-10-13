@@ -45,11 +45,10 @@ class UserProfileProviderForm extends Component{
                     <table className="provider_table zebra">
                         <tbody>
                             <tr>
-                                <td width="15%">Surburb</td>
-                                <td width="10%">Postcode</td>
-                                <td width="55%">Address</td>
-                                <td width="10%">StartTime</td>
-                                <td width="10%">EndTime</td>
+                                <td width="20%">Surburb</td>
+                                <td width="40%">Address</td>
+                                <td width="20%">StartTime</td>
+                                <td width="20%">EndTime</td>
                             </tr>
                             {this.renderProviderMultipleRecords()}
                         </tbody>

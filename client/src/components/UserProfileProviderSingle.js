@@ -8,10 +8,10 @@ class UserProfileProviderSingle extends Component {
         const {suburb, address, startTime, endTime} = this.props
         return (                
             <tr>
-                <td width="15%">{suburb}</td>
-                <td width="55%">{address}</td>
-                <td width="10%">{startTime}</td>
-                <td width="10%">{endTime}</td>
+                <td width="20%">{suburb}</td>
+                <td width="40%">{address}</td>
+                <td width="20%">{startTime}</td>
+                <td width="20%">{endTime}</td>
             </tr>
         );
   }
