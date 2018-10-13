@@ -75,6 +75,7 @@ for i in range(dataAccomInfo.shape[0]):
     demo_dict['endDate'] = datetime.datetime.strptime(demo_dict['endDate'], "%Y-%m-%d")
     demo_dict['price'] = int(demo_dict['price'])
     #demo_dict['status'] = str(demo_dict['status'])
+    demo_dict['ad'] = int(demo_dict['ad'])
 
     #print (demo_dict, 'dict')
     collectionAccommodation.insert(demo_dict)
