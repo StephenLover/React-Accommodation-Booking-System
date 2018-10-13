@@ -172,7 +172,7 @@ class UserProfileTravellerForm extends Component{
                     <form action="/" method="post">
                         <table className="traveller_table zebra">
                             <tbody>
-                            <tr>
+                            <tr className="tablehead">
                                 <td width="15%">Suburb</td>
                                 <td width="15%">Price</td>
                                 <td width="35%">Address</td>

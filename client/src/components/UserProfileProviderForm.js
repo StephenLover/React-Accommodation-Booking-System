@@ -44,8 +44,8 @@ class UserProfileProviderForm extends Component{
                     </div>
                     <table className="provider_table zebra">
                         <tbody>
-                            <tr>
-                                <td width="20%">Surburb</td>
+                            <tr className="tablehead">
+                                <td width="20%">Suburb</td>
                                 <td width="40%">Address</td>
                                 <td width="20%">StartTime</td>
                                 <td width="20%">EndTime</td>
