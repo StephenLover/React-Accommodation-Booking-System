@@ -54,7 +54,6 @@ class UserProfileTravellerForm extends Component{
     }
 
     handleClickReviewButton(reviewStateFromSingle,reviewFormIndex){
-        console.log(reviewStateFromSingle)
         if(this.state.reviewFormIndex !== null && this.state.reviewFormIndex !== reviewFormIndex){
             this.setState({
                 reviewFormStatus : true,
@@ -101,7 +100,7 @@ class UserProfileTravellerForm extends Component{
                         <div className="review">
                         <h4>Rating: {this.state.reviewFormReviewStar}.0 / 5.0</h4>
                             <span className="star">
-                                {this.state.reviewFormReviewStar === null ?  <EditableRatingReact handleReviewFormChange={this.handleReviewFormChange.bind(this)}/> :
+                                {this.state.reviewFormReviewStar === null ?  <EditableRatingReact handleReviewFormChange={this.handleReviewFormChange}/> :
                                 <NonEditableRatingReact rating={this.state.reviewFormReviewStar}/>}
                             </span>
                             <span className="star-txt"></span>
@@ -141,7 +140,7 @@ class UserProfileTravellerForm extends Component{
     }
 
     render () {
-
+        console.log(this.state.travellerHistory)
         console.log(this.state.reviewFormInput, this.props)
         return (
             <div>
