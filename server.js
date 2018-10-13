@@ -223,7 +223,7 @@ app.get('/api/accommodation/:id', (req, res) => {
           accs = accs.filter(acc => {
             return acc.property !== null;
           })
-          console.log(accs)
+          //console.log(accs)
           accs[0] = {
             'review': null,
             'accommodationId': accs[0]
@@ -261,7 +261,7 @@ app.post('/api/add2watching', (req, res) => {
       console.log(err)
       res.sendStatus(500)
     }
-    console.log(docs)
+    //console.log(docs)
     return res.status(200).json({status:"ok"})
   })
 })
@@ -313,7 +313,7 @@ app.delete('/api/delwatching', (req,res) => {
       console.log(err)
       res.sendStatus(500)
     }
-    console.log(docs)
+    //console.log(docs)
     return res.status(200).json({status:"ok"})
   })
 })
@@ -361,7 +361,7 @@ app.get('/api/pending/:id', (req, res) => {
   mongoose.connect(url)
     .then(
       () => {
-        console.log('/api/history/traveler connects successfully')
+        console.log('/api/pending connects successfully')
       },
       err => { console.log(err) }
     )
@@ -375,10 +375,37 @@ app.get('/api/pending/:id', (req, res) => {
     if(err){
       console.log(err)
     }
+    console.log(docs[0])
     if(docs.length === 0){
-      res.send([])
+      res.status(404).send('false') // check if there is a pending list
+      return
     }
     res.json(docs[0])
+  })
+})
+
+// change status from pending to cancel in pending list
+app.post('/api/pending/cancel', (req, res) => {
+  mongoose.connect(url)
+    .then(
+      () => {
+        console.log('/api/pending/cancel connects successfully')
+      },
+      err => { console.log(err) }
+    )
+  let traveler = req.body.traveler; //user email
+  let accId = parseInt(req.body.accommodationId) //accid
+  console.log('acc',accId)
+  transactionModel
+  .findOneAndUpdate({'traveler': traveler, 'accommodationId': accId},
+  {'$set': {'status': 'cancel'}},
+  {"new": true })
+  .exec(function(err, docs){
+    if(err){
+      console.log(err)
+    }
+    console.log('doc',docs)
+    return res.status(200).json({status:"ok"})
   })
 })
 
