@@ -409,6 +409,30 @@ app.post('/api/pending/cancel', (req, res) => {
   })
 })
 
+app.post('/api/pending/success', (req, res) => {
+  mongoose.connect(url)
+    .then(
+      () => {
+        console.log('/api/pending/success connects successfully')
+      },
+      err => { console.log(err) }
+    )
+  let traveler = req.body.traveler; //user email
+  let accId = parseInt(req.body.accommodationId) //accid
+  console.log('acc',accId)
+  transactionModel
+  .findOneAndUpdate({'traveler': traveler, 'accommodationId': accId},
+  {'$set': {'status': 'success'}},
+  {"new": true })
+  .exec(function(err, docs){
+    if(err){
+      console.log(err)
+    }
+    console.log('doc',docs)
+    return res.status(200).json({status:"ok"})
+  })
+})
+
 // get all history(accommodation info) of traveler
 app.get('/api/history/traveler/:id', (req, res) => {
     mongoose.connect(url)
