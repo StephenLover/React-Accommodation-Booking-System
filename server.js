@@ -448,7 +448,7 @@ app.get('/api/history/provider/:id', (req, res) => {
     err => { console.log(err) }
   )
   accommodationModel
-  .find({}, 'startDate endDate price')
+  .find({}, 'startDate endDate price ad')
   .populate({
     path: 'property', match: {owner: req.params.id}, select: 'address suburb'
   })
