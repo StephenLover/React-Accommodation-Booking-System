@@ -113,7 +113,7 @@ class WatchingListForm extends Component {
 
                                     <div className="button_part">
                                         <button type="submit" className="add_button" onClick={this.handleSubmitToPendingList}>Add to Pending List</button>
-                                        <a href="AccomondationDetail.html" className="add_button">Back</a>
+                                        <a href="/" className="add_button">Back</a>
                                     </div>
                                 </form>
                             </div>
