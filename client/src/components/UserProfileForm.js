@@ -60,7 +60,12 @@ class UserProfileForm extends Component{
                 'Content-Type': 'application/json'
             }})
 				.then(res => res.json)
-				.then(response => alert('User Profile Updated'))
+				.then(response => {
+                    localStorage.setItem('session-firstName', this.state.firstName);
+                    alert('User Profile Updated');
+                    window.location.href="/profile"
+
+                })
 				.catch(error => console.error('Error:', error));
 
     }
