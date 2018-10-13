@@ -5,6 +5,7 @@ const transactionModel = require('./models/transaction.js');
 const propertyModel = require('./models/property');
 const reviewModel = require('./models/review');
 const watchingModel = require('./models/watchingList');
+const travelerReqModel = require('./models/travelerReq');
 
 // define the address and database name, then connect
 const server = '127.0.0.1:27017'; // REPLACE WITH YOUR DB SERVER
@@ -64,9 +65,15 @@ class Database{
       user: user,
       watching_list: [acc]
   })
+  let travelerReq = new travelerReqModel({
+    _id: 0,
+    user: user,
+    minPrice: 20,
+    maxPrice: 100,
+  })
   
   // save function
-  for(let x of [user, prop, acc, trans, rev, watch]){
+  for(let x of [user, prop, acc, trans, rev, watch, travelerReq]){
     x.save()
      .then(doc => {
        console.log(doc)
