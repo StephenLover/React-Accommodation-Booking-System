@@ -19,6 +19,7 @@ class UserProfileForm extends Component{
         this.handleSelectorChange = this.handleSelectorChange.bind(this);
         this.renderUserInfo = this.renderUserInfo.bind(this);
         this.renderHistoryOrAccForm = this.renderHistoryOrAccForm.bind(this);
+        this.handleUserInfoFormSubmit = this.handleUserInfoFormSubmit.bind(this);
     }
 
     handleSelectorChange(event){
@@ -30,6 +31,7 @@ class UserProfileForm extends Component{
         fetch(`/api/user/${localStorage.getItem('uid')}`)
             .then(response => response.json())
             .then(res => {
+                console.log(res.firstName,res.lastName)
                 this.setState({
                     // comments: res.property.comments,
                     name: res.firstName + ' ' + res.lastName,
@@ -39,6 +41,35 @@ class UserProfileForm extends Component{
                 })
             })
             .catch((err) => {console.log(err)})
+    }
+
+    handleUserInfoFormSubmit(e){
+        e.preventDefault();
+
+        // if(this.state.email !== null){
+        //     let url = '/api/user/update';
+        //     let fullName = 
+        //     split(/(\s)/).filter(item => !/\s/.test(item)  //["Stephen","Wang"]
+        //     let data = {_id: localStorage.getItem('uid'), firstName};
+        //     console.log(JSON.stringify(data))
+        //     fetch(url, {
+        //     method: 'POST', 
+        //     body: JSON.stringify(data),
+        //     headers:{
+        //         'Content-Type': 'application/json'
+        //     }
+        //     }).then(res => res.json())
+        //     .then(response => alert('Property added to pending list!', JSON.stringify(response)))
+        //     .then(window.location.href="./watching")
+        //     .catch(error => console.error('Error:', error));
+        // }else{
+        //     alert('Please choose one property to add to pending list!')
+        // }
+
+    }
+
+    handleUserInfoChange(){
+        
     }
 
     renderUserInfo(){
@@ -63,7 +94,7 @@ class UserProfileForm extends Component{
                             <input type="text" className="user_phone_input" name="phone" defaultValue={this.state.phone} required/>
                         </div>
                         <div className="profile_submit">
-                            <button type="submit" className="add_button">Submit</button>
+                            <button type="submit" className="add_button" onClick={this.handleUserInfoFormSubmit}>Submit</button>
                         </div>
                         
                     </form>

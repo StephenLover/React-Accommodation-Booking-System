@@ -33,7 +33,6 @@ class WatchingListForm extends Component {
     }
 
     renderMulitipleRecords(){
-        console.log('asdadssad' +this.state.watchingList)
         if(this.state.watchingList.length !== 0 && this.state.watchingList !== undefined & this.state.watchingList !== []){
             return this.state.watchingList.map(acc => (
                 <WatchingListSingle accId={acc._id} key={acc._id} suburb={acc.property.suburb}

@@ -20,7 +20,6 @@ class UserProfileTravellerSingle extends Component{
 
 
   render() {
-    console.log(this.props)
     const { suburb, price, address, startTime, endTime ,review, star} = this.props;
     return (                
             <tr>

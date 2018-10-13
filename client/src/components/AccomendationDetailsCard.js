@@ -64,7 +64,7 @@ class AccomendationDetailsCard extends Component{
     addToWatchingList(e){
         e.preventDefault();
         let url = '/api/add2watching';
-        let data = {_id: localStorage.getItem('uid'), accId: this.state.property_id};
+        let data = {_id: localStorage.getItem('uid'), accId: this.state.accId};
         console.log(JSON.stringify(data))
         fetch(url, {
         method: 'POST', 

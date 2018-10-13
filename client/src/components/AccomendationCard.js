@@ -17,7 +17,7 @@ class AccomendationCard extends Component{
             suburb: this.props.property.property.suburb,
             picture: this.props.property.property.pictures[0],
             acc_id: this.props.property._id,
-            rank : (Math.random() * 5).toFixed(1).toString() + '/5.0',
+            rank : (Math.random() * (5-3)+3).toFixed(1).toString() + '/5.0',
             availableTime: this.props.property.startDate.slice(0,-14) +" to " + this.props.property.endDate.slice(0,-14),
         }
     }
