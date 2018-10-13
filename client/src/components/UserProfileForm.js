@@ -13,6 +13,8 @@ class UserProfileForm extends Component{
             gender: null,
             email: null,
             phone: null,
+            // reviewFormStatus: false,
+            // reviewItem: null,
         }
         this.handleSelectorChange = this.handleSelectorChange.bind(this);
         this.renderUserInfo = this.renderUserInfo.bind(this);
