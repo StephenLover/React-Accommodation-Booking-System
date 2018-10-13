@@ -21,7 +21,8 @@ let accommodationSchema = new Schema({
     price: Number,
     status: {
         type: String, default: 'Open'
-    }
+    },
+    ad: Number
 })
 
 module.exports = mongoose.model('Accommodation', accommodationSchema, 'Accommodation');

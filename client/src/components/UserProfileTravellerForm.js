@@ -174,9 +174,10 @@ class UserProfileTravellerForm extends Component{
                             <tr className="tablehead">
                                 <td width="15%">Suburb</td>
                                 <td width="15%">Price</td>
-                                <td width="35%">Address</td>
+                                <td width="20%">Address</td>
                                 <td width="15%">StartTime</td>
                                 <td width="15%">EndTime</td>
+                                <td width="15%">Status</td>
                                 <td width="5">Review</td>
                             </tr>
                                 {this.renderTravellerHistory()}
