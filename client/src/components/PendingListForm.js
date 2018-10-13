@@ -14,9 +14,11 @@ class PendingListForm extends Component {
             picture: null,
             pendingListLoaded: null,
             ownerEmail: null,
+            accId : null,
         }
         this.renderIfPendingListIsEmpty = this.renderIfPendingListIsEmpty.bind(this);
         this.renderIfPendingListIsNotEmpty = this.renderIfPendingListIsNotEmpty.bind(this);
+        this.deletePropertyFromPendingList = this.deletePropertyFromPendingList.bind(this);
     }
 
     componentWillMount(){
@@ -36,6 +38,7 @@ class PendingListForm extends Component {
                         picture: res.accommodationId.property.pictures[0],
                         pendingListLoaded: true,
                         ownerEmail: res.accommodationId.property.owner,
+                        accId: res.accommodationId._id
                     })
                 }
             })
@@ -64,10 +67,11 @@ class PendingListForm extends Component {
     }
 
     renderIfPendingListIsEmpty(){
+        const href_acc = '/accommodation/' + this.state.property_id
         return(
             <form action="/" method="post" className="pending_form">
                 <div className="accomondation_pending">
-                    <a href="#"><img src={require(`../${this.state.picture}`)} alt="" className="accomondation_pending_img"/></a>
+                    <a href={href_acc}><img src={require(`../${this.state.picture}`)} alt="" className="accomondation_pending_img"/></a>
                     <div className="acc_brief">
                         <span id="accomondation_capacity">{this.state.capacity} persons,</span>
                         <span id="accomondation_suburb">{this.state.suburb}</span>
@@ -79,7 +83,7 @@ class PendingListForm extends Component {
                         <span id="accomondation_price">Price: {this.state.price} AUD</span>
                     </div>
                     <div className="acc_pending_time">
-                        <span id="pending_accomondation_time">Pending Time: {this.state.startTime} ------ {this.state.endTime}</span>
+                        <span id="pending_accomondation_time">Pending Time: {this.state.startTime} --- {this.state.endTime}</span>
                     </div>
                     <div className="acc_owner_detail">
                         <span id="owner_detail">Owner Email: {this.state.ownerEmail}</span>
@@ -89,12 +93,37 @@ class PendingListForm extends Component {
                 <div className="button_part">
                     
                     <button type="submit" className="add_button">Pay</button>
-                    <button type="submit" className="add_button">Cancel</button>
+                    <button type="submit" className="add_button" onClick={this.deletePropertyFromPendingList}>Cancel</button>
                     
                 </div>
             </form>
         )
     }
+
+    deletePropertyFromPendingList(e){
+        e.preventDefault();
+
+        
+        if(this.state.accId !== null){
+            let url = '/api/pending/cancel';
+            let data = {
+                traveler: localStorage.getItem('uid'),
+                accommodationId: this.state.accId,
+            };
+            console.log(JSON.stringify(data))
+            fetch(url, {
+            method: 'POST', 
+            body: JSON.stringify(data),
+            headers:{
+                'Content-Type': 'application/json'
+            }
+            }).then(res => res.json())
+            .then(response => alert('Transaction Cancelled!!', JSON.stringify(response)))
+            .then(window.location.href="./pendinglist")
+            .catch(error => console.error('Error:', error));
+        }
+    }
+
 
     render() {
         console.log(this.state)
