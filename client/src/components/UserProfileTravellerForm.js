@@ -21,7 +21,8 @@ class UserProfileTravellerForm extends Component{
         this.renderTravellerHistory = this.renderTravellerHistory.bind(this);
         this.handleReviewFormSubmit = this.handleReviewFormSubmit.bind(this);
         this.handleClickReviewButton = this.handleClickReviewButton.bind(this);
-        this.handleReviewFormChange = this.handleReviewFormChange.bind(this)
+        this.handleReviewFormContentChange = this.handleReviewFormContentChange.bind(this);
+        this.handleReviewFormStarChange = this.handleReviewFormStarChange.bind(this);
     }
 
     componentWillMount(){
@@ -41,7 +42,7 @@ class UserProfileTravellerForm extends Component{
                  key={index} suburb={singleRecord.accommodationId.property.suburb} price={singleRecord.accommodationId.price}
                  address={singleRecord.accommodationId.property.address} startTime={singleRecord.accommodationId.startDate.slice(0,-14)}
                  endTime={singleRecord.accommodationId.endDate.slice(0,-14)} review={singleRecord.review} star={singleRecord.star}
-                 status={singleRecord.accommodationId.status}
+                 status={singleRecord.status}
                  handleClickReviewButton={this.handleClickReviewButton.bind(this)} reviewFormStatus={this.state.reviewFormStatus}
                  reviewFormIndex={index}
             />))
@@ -70,16 +71,43 @@ class UserProfileTravellerForm extends Component{
         }
     }
 
-    handleReviewFormChange(e){
+    handleReviewFormContentChange(e){
         this.setState({
             reviewFormInput: e.target.value
         });
+    }
+
+    handleReviewFormStarChange(starFromEditableStarComponent){
+        this.setState({
+            reviewFormMark : starFromEditableStarComponent
+        })
     }
 
 
     handleReviewFormSubmit(e){
         e.preventDefault();
         //submit review to server
+
+        if(this.state.reviewFormInput !== null && this.state.reviewFormMark !== null){
+            let url = '/api/review/update';
+            let data = {
+                traveler: localStorage.getItem('uid'),
+                accommodationId: this.state.travellerHistory[this.state.reviewFormIndex]['accommodationId']['_id'],
+                review : this.state.reviewFormInput,
+                star : this.state.reviewFormMark
+            };
+            console.log(JSON.stringify(data))
+            fetch(url, {
+            method: 'POST', 
+            body: JSON.stringify(data),
+            headers:{
+                'Content-Type': 'application/json'
+            }
+            }).then(res => res.json())
+            .then(response => alert('Review Success!', JSON.stringify(response)))
+            .then(window.location.href="./watching")
+            .catch(error => console.error('Error:', error));
+        }
     }
 
     renderReviewForm(){
@@ -96,7 +124,7 @@ class UserProfileTravellerForm extends Component{
                         <h4>Rating: {this.state.reviewFormReviewStar}.0 / 5.0</h4>
                             <span className="star">
                                 {this.state.reviewFormReviewStar === null ?  
-                                <EditableRatingReact handleReviewFormChange={this.handleReviewFormChange.bind(this)}/> :
+                                <EditableRatingReact /> :
                                 <NonEditableRatingReact rating={this.state.reviewFormReviewStar}/>}
                             </span>
                             <span className="star-txt"></span>
@@ -109,14 +137,15 @@ class UserProfileTravellerForm extends Component{
                         <div className="word_comment">
                             <h3>Review area:</h3>
                         </div>
-                        <textarea value={this.state.reviewFormInput} onChange={this.handleReviewFormChange}
+                        <textarea value={this.state.reviewFormInput} onChange={this.handleReviewFormContentChange}
                             placeholder="Write your comment here..." name="comment_textarea" 
                             className="comment_textarea" cols="100" rows="3">
                         </textarea>
                 
                         <div className="review">
                             <span className="star">
-                                {this.state.reviewFormReviewStar === null ?  <EditableRatingReact/> :
+                                {this.state.reviewFormReviewStar === null ?  
+                                <EditableRatingReact handleReviewFormStarChange={this.handleReviewFormStarChange.bind(this)}/> :
                                 <NonEditableRatingReact rating={this.state.reviewFormReviewStar}/>}
                             </span>
                             <span className="star-txt"></span>
@@ -136,28 +165,9 @@ class UserProfileTravellerForm extends Component{
     }
 
     render () {
-        console.log(this.state.travellerHistory)
-        console.log(this.state.reviewFormInput, this.props)
+        console.log(this.state.reviewFormMark)
         return (
             <div>
-               
-                {/* <div id="comment_area" >
-                <div id="comment_area" style={{display:'none'}} >
-                    <div className="word_comment">
-                        <h3>Review area:</h3>
-                    </div>
-                    <textarea name="comment_textarea" className="comment_textarea" cols="100" rows="3"></textarea>
-                    <div className="review">
-                        <span className="star">
-                            Star:
-                            <EditableRatingReact/>
-                        </span>
-                        <span className="star-txt"></span>
-                    </div>
-                    <div className="comment_submit">
-                        <button type="submit" className="submit_button">Submit</button>
-                    </div>
-                </div> */}
                 {this.renderReviewForm()}
 
                 <div className="traveller_history">
