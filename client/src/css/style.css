@@ -921,6 +921,11 @@ table {
     margin-top: 10px;
 }
 
+.adv_price_button {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
 /* review star */
 .ct-star {
     display: inline-block;

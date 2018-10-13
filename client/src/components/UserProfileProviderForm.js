@@ -46,9 +46,10 @@ class UserProfileProviderForm extends Component{
                         <tbody>
                             <tr className="tablehead">
                                 <td width="20%">Suburb</td>
-                                <td width="40%">Address</td>
-                                <td width="20%">StartTime</td>
-                                <td width="20%">EndTime</td>
+                                <td width="35%">Address</td>
+                                <td width="15%">StartTime</td>
+                                <td width="15%">EndTime</td>
+                                <td width="15%">Advertisement</td>
                             </tr>
                             {this.renderProviderMultipleRecords()}
                         </tbody>
