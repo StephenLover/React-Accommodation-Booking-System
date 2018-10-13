@@ -8,15 +8,20 @@ class UserProfileTravellerForm extends Component{
         super(props)
         this.state = {
             travellerHistory : null,
+            //below part is for dynamically handle write review/check review window poping up
             reviewFormStatus: false,
             reviewFormIndex : null,
             reviewFormReviewContent: null,
             reviewFormReviewStar: null,
+            //below are for submit the review form to commit a new review to database
+            reviewFormInput: "",
+            reviewFormMark: null,
         }
         this.renderReviewForm = this.renderReviewForm.bind(this);
         this.renderTravellerHistory = this.renderTravellerHistory.bind(this);
-        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.handleReviewFormSubmit = this.handleReviewFormSubmit.bind(this);
         this.handleClickReviewButton = this.handleClickReviewButton.bind(this);
+        this.handleReviewFormChange = this.handleReviewFormChange.bind(this)
     }
 
     componentWillMount(){
@@ -38,12 +43,12 @@ class UserProfileTravellerForm extends Component{
                  endTime={singleRecord.accommodationId.endDate.slice(0,-14)} review={singleRecord.review} star={singleRecord.star}
                  handleClickReviewButton={this.handleClickReviewButton.bind(this)} reviewFormStatus={this.state.reviewFormStatus}
                  reviewFormIndex={index}
-                 
             />))
 
         }
     }
 
+    
     componentDidUpdate(prevProps,prevState){
         
     }
@@ -67,7 +72,14 @@ class UserProfileTravellerForm extends Component{
         }
     }
 
-    handleFormSubmit(e){
+    handleReviewFormChange(e){
+        this.setState({
+            reviewFormInput: e.target.value
+        });
+    }
+
+
+    handleReviewFormSubmit(e){
         e.preventDefault();
         //submit review to server
     }
@@ -89,7 +101,7 @@ class UserProfileTravellerForm extends Component{
                         <div className="review">
                         <h4>Rating: {this.state.reviewFormReviewStar}.0 / 5.0</h4>
                             <span className="star">
-                                {this.state.reviewFormReviewStar === null ?  <EditableRatingReact/> :
+                                {this.state.reviewFormReviewStar === null ?  <EditableRatingReact handleReviewFormChange={this.handleReviewFormChange.bind(this)}/> :
                                 <NonEditableRatingReact rating={this.state.reviewFormReviewStar}/>}
                             </span>
                             <span className="star-txt"></span>
@@ -102,7 +114,10 @@ class UserProfileTravellerForm extends Component{
                         <div className="word_comment">
                             <h3>Review area:</h3>
                         </div>
-                        <textarea placeholder="Write your comment here..." name="comment_textarea" className="comment_textarea" cols="100" rows="3"></textarea>
+                        <textarea value={this.state.reviewFormInput} onChange={this.handleReviewFormChange}
+                            placeholder="Write your comment here..." name="comment_textarea" 
+                            className="comment_textarea" cols="100" rows="3">
+                        </textarea>
                 
                         <div className="review">
                             <span className="star">
@@ -112,7 +127,7 @@ class UserProfileTravellerForm extends Component{
                             <span className="star-txt"></span>
                         </div>
                         <div className="comment_submit">
-                            <button type="submit" className="submit_button">Submit</button>
+                            <button type="submit" className="submit_button" onClick={this.handleReviewFormSubmit}>Submit</button>
                         </div>
                     </div>
                     )
@@ -127,7 +142,7 @@ class UserProfileTravellerForm extends Component{
 
     render () {
 
-        console.log(this.state)
+        console.log(this.state.reviewFormInput, this.props)
         return (
             <div>
                
