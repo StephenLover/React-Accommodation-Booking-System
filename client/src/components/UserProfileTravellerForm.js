@@ -160,9 +160,9 @@ class UserProfileTravellerForm extends Component{
                             <tr>
                                 <td width="15%">Suburb</td>
                                 <td width="15%">Price</td>
-                                <td width="45%">Address</td>
-                                <td width="10%">StartTime</td>
-                                <td width="10%">EndTime</td>
+                                <td width="35%">Address</td>
+                                <td width="15%">StartTime</td>
+                                <td width="15%">EndTime</td>
                                 <td width="5">Review</td>
                             </tr>
                                 {this.renderTravellerHistory()}

@@ -21,23 +21,23 @@ class UserProfileProviderForm extends Component{
                             <tr>
                                 <td width="15%">Surburb</td>
                                 <td width="10%">Postcode</td>
-                                <td width="55%">Address</td>
-                                <td width="10%">StartTime</td>
-                                <td width="10%">EndTime</td>
+                                <td width="45%">Address</td>
+                                <td width="15%">StartTime</td>
+                                <td width="15%">EndTime</td>
                             </tr>
                             <tr>
                                 <td width="15%">Surburb</td>
                                 <td width="10%">Postcode</td>
-                                <td width="55%">Address</td>
-                                <td width="10%">StartTime</td>
-                                <td width="10%">EndTime</td>
+                                <td width="45%">Address</td>
+                                <td width="15%">StartTime</td>
+                                <td width="15%">EndTime</td>
                             </tr>
                             <tr>
                                 <td width="15%">Surburb</td>
                                 <td width="10%">Postcode</td>
-                                <td width="55%">Address</td>
-                                <td width="10%">StartTime</td>
-                                <td width="10%">EndTime</td>
+                                <td width="45%">Address</td>
+                                <td width="15%">StartTime</td>
+                                <td width="15%">EndTime</td>
                             </tr>
                         </tbody>
                     </table>
