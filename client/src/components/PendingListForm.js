@@ -19,6 +19,8 @@ class PendingListForm extends Component {
         this.renderIfPendingListIsEmpty = this.renderIfPendingListIsEmpty.bind(this);
         this.renderIfPendingListIsNotEmpty = this.renderIfPendingListIsNotEmpty.bind(this);
         this.deletePropertyFromPendingList = this.deletePropertyFromPendingList.bind(this);
+        this.PayPendingTranscation = this.PayPendingTranscation.bind(this);
+        this.backToWatchingList = this.backToWatchingList.bind(this);
     }
 
     componentWillMount(){
@@ -46,11 +48,16 @@ class PendingListForm extends Component {
     }
 
     
+    backToWatchingList(e){
+        e.preventDefault();
+        window.location.href="/watching"
+    }
+
     renderIfPendingListIsNotEmpty(){
         return(
                 <form action="/" method="post" className="pending_form">
                     <div className="accomondation_pending">
-                        <a href="#"><img src={require("../img/hi.jpg")} alt="" className="accomondation_pending_img"/></a>
+                        <a href="/watching"><img src={require("../img/hi.jpg")} alt="" className="accomondation_pending_img"/></a>
                         <div className="nopending">
                             <h1>Your Pending List is empty!</h1>
                         </div>
@@ -58,9 +65,7 @@ class PendingListForm extends Component {
                     </div>
                     
                     <div className="button_part">
-                        
-                        <button type="submit" className="add_button">Cancel</button>
-                        
+                        <button type="submit" onClick={this.backToWatchingList} className="add_button">Back to Watching List</button>
                     </div>
                 </form>
         )
@@ -77,7 +82,7 @@ class PendingListForm extends Component {
                         <span id="accomondation_suburb">{this.state.suburb}</span>
                     </div>
                     <div className="acc_name">
-                        <a href="#"><span id="accomondation_name">{this.state.address}</span></a>
+                        <a href={href_acc}><span id="accomondation_name">{this.state.address}</span></a>
                     </div>
                     <div className="acc_price">
                         <span id="accomondation_price">Price: {this.state.price} AUD</span>
@@ -92,7 +97,7 @@ class PendingListForm extends Component {
                 
                 <div className="button_part">
                     
-                    <button type="submit" className="add_button">Pay</button>
+                    <button type="submit" className="add_button" onClick={this.PayPendingTranscation}>Pay</button>
                     <button type="submit" className="add_button" onClick={this.deletePropertyFromPendingList}>Cancel</button>
                     
                 </div>
@@ -117,13 +122,34 @@ class PendingListForm extends Component {
             headers:{
                 'Content-Type': 'application/json'
             }
-            }).then(res => res.json())
+            })
             .then(response => alert('Transaction Cancelled!!', JSON.stringify(response)))
             .then(window.location.href="./pendinglist")
             .catch(error => console.error('Error:', error));
         }
     }
 
+    PayPendingTranscation(e){
+        e.preventDefault();
+        if(this.state.accId !== null){
+            let url = '/api/pending/success';
+            let data = {
+                traveler: localStorage.getItem('uid'),
+                accommodationId: this.state.accId,
+            };
+            console.log(JSON.stringify(data))
+            fetch(url, {
+            method: 'POST', 
+            body: JSON.stringify(data),
+            headers:{
+                'Content-Type': 'application/json'
+            }
+            })
+            .then(response => alert('Pay successed!!', JSON.stringify(response)))
+            .then(window.location.href="./pendinglist")
+            .catch(error => console.error('Error:', error));
+        }
+    }
 
     render() {
         console.log(this.state)

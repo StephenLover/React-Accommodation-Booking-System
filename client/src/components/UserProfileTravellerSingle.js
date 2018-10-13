@@ -22,7 +22,7 @@ class UserProfileTravellerSingle extends Component{
     renderReviewButtons(){
         if(this.props.status === 'pending'){
             return(
-                <td width="5%"><input disabled type="button" value="Need Confirm" className="submit_button"/></td>
+                <td width="5%"><input style={{color: '#FF0000'}} disabled type="button" value="Need Confirm" className="submit_button"/></td>
             )
         }else if(this.props.status === 'success'){
             if(this.props.review === null){
@@ -34,14 +34,20 @@ class UserProfileTravellerSingle extends Component{
                     <td width="5%"><input type="button" value="Check Review" className="submit_button" onClick={this.handleReviewClick}/></td>
                 )
             } 
+        }else if(this.props.status === 'cancel'){
+            return(
+                <td width="5%"><input disabled style={{color: "#FFFFFF", backgroundColor: "#000000"}} type="button" value="Cancelled" className="submit_button"/></td>
+            )
         }
     }
 
   render() {
+      console.log(this.props.status)
     const { suburb, price, address, startTime, endTime ,review, status, star} = this.props;
     const statusObj = {
         pending : 'Pending',
-        success : 'Finished'
+        success : 'Finished',
+        cancel: 'Cancelled'
     }
     return (                
             <tr>

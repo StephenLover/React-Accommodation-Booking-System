@@ -165,7 +165,7 @@ class UserProfileTravellerForm extends Component{
     }
 
     render () {
-        console.log(this.state.reviewFormMark)
+        console.log(this.state.travellerHistory)
         return (
             <div>
                 {this.renderReviewForm()}
