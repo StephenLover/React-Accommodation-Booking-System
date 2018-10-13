@@ -466,6 +466,42 @@ app.get('/api/history/provider/:id', (req, res) => {
   })
 });
 
+// provider pay advertisement
+app.post('/api/ad', (req, res) => {
+  mongoose.connect(url)
+  .then(
+    () => {
+      console.log('/api/ad connects successfully')
+    },
+    err => { console.log(err) }
+  )
+  let accommodationId = parseInt(req.body.accommodationId);
+  let ad = parseInt(req.body.ad);
+  accommodationModel
+  .find({_id: accommodationId})
+  .exec(function(err, accs){
+    if (err){
+      console.log(err)
+      res.sendStatus(500)
+    }
+    let oldAd = accs[0].ad;
+    let newAd = oldAd + ad;
+    accommodationModel
+    .findOneAndUpdate({'_id': accommodationId},
+    {'$set': {'ad': newAd}},
+    {'new': true})
+    .exec(function(err, docs){
+      if (err){
+        console.log(err)
+        res.sendStatus(500)
+      }
+      console.log(docs)
+      return res.status(200).json({status:"ok"})
+    })
+  })
+  
+})
+
 // insert review of accommodation from traveler
 app.post('/api/review/update', (req, res) => {
   mongoose.connect(url)

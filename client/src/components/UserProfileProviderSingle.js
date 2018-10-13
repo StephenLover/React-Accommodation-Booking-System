@@ -9,9 +9,10 @@ class UserProfileProviderSingle extends Component {
         return (                
             <tr>
                 <td width="20%">{suburb}</td>
-                <td width="35%">{address}</td>
+                <td width="20%">{address}</td>
                 <td width="15%">{startTime}</td>
                 <td width="15%">{endTime}</td>
+                <td width="15%">Ad Value</td>
                 <td width="15%">
                     <select name="adv_price" className="adv_price_button">
                         <option defaultValue="15">$15</option>

@@ -899,6 +899,11 @@ table {
     margin-left: 200px;
 }
 
+.tablehead {
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .traveller_history {
     margin-top: 40px;
 }
@@ -914,6 +919,11 @@ table {
 .comment_textarea {
     margin-left: 150px;
     margin-top: 10px;
+}
+
+.adv_price_button {
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 /* review star */
@@ -1042,4 +1052,59 @@ table {
 .nopending {
     text-align: center;
     margin-top: 70px;
+}
+
+/* Release Information */
+.word_release_information {
+    margin-top: 150px;
+    text-align: center;
+}
+
+.release_property {
+    width: 100%;
+}
+
+.release_property_button {
+    margin-top: 40px;
+    text-align: center;
+}
+
+#property_input_form {
+    width: 100%;
+    margin-top: 40px;
+}
+
+.input_group {
+    font-size: 18px;
+    margin-top: 10px;
+    text-align: center; 
+    
+}
+
+.input_group label{
+    width: 200px;
+    text-align: left;
+}
+
+.input_group input{
+    width: 410px;
+    border-radius: 5px;
+}
+
+.property_capacity_button {
+    width: 410px;
+}
+
+.property_submit {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.release_accomondation {
+    width: 100%;
+}
+
+.release_accomondation_button {
+    margin-top: 40px;
+    text-align: center;
 }
