@@ -8,16 +8,18 @@ class EditableRatingReact extends React.Component {
     this.state = {
       rating: 4
     };
+    this.onStarClick = this.onStarClick.bind(this)
   }
  
   onStarClick(nextValue, prevValue, name) {
     this.setState({
         rating: nextValue
     });
-    this.props.handleReviewFormChange(this.state.rating)
+    // this.props.handleReviewFormChange(this.state.rating)
   }
  
   render() {
+    console.log(this.state.rating, this.props)
     const { rating } = this.state;
     const evaluation = {
         1 : ' terrible experience',

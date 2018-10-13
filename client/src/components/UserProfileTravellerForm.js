@@ -41,14 +41,13 @@ class UserProfileTravellerForm extends Component{
                  key={index} suburb={singleRecord.accommodationId.property.suburb} price={singleRecord.accommodationId.price}
                  address={singleRecord.accommodationId.property.address} startTime={singleRecord.accommodationId.startDate.slice(0,-14)}
                  endTime={singleRecord.accommodationId.endDate.slice(0,-14)} review={singleRecord.review} star={singleRecord.star}
+                 status={singleRecord.accommodationId.status}
                  handleClickReviewButton={this.handleClickReviewButton.bind(this)} reviewFormStatus={this.state.reviewFormStatus}
                  reviewFormIndex={index}
             />))
-
         }
     }
 
-    
     componentDidUpdate(prevProps,prevState){
         
     }
@@ -83,10 +82,6 @@ class UserProfileTravellerForm extends Component{
         //submit review to server
     }
 
-
-
-
-    
     renderReviewForm(){
         if(this.state.travellerHistory !== null){
             if(this.state.reviewFormStatus === true){
@@ -96,11 +91,12 @@ class UserProfileTravellerForm extends Component{
                         <div className="word_comment">
                             <h3>Your Review for this wonderful accomondation was: </h3>
                         </div>
-                            <textarea disabled placeholder={this.state.reviewFormReviewContent} name="comment_textarea" className="comment_textarea" cols="100" rows="3"></textarea>
+                            <textarea disabled placeholder={this.state.reviewFormReviewContent} name="comment_textarea" className="comment_textarea" cols="100" rows="5"></textarea>
                         <div className="review">
                         <h4>Rating: {this.state.reviewFormReviewStar}.0 / 5.0</h4>
                             <span className="star">
-                                {this.state.reviewFormReviewStar === null ?  <EditableRatingReact handleReviewFormChange={this.handleReviewFormChange}/> :
+                                {this.state.reviewFormReviewStar === null ?  
+                                <EditableRatingReact handleReviewFormChange={this.handleReviewFormChange.bind(this)}/> :
                                 <NonEditableRatingReact rating={this.state.reviewFormReviewStar}/>}
                             </span>
                             <span className="star-txt"></span>
@@ -178,7 +174,7 @@ class UserProfileTravellerForm extends Component{
                                 <td width="15%">StartTime</td>
                                 <td width="15%">EndTime</td>
                                 <td width="15%">Status</td>
-                                <td width="5">Review</td>
+                                <td width="5%">Review</td>
                             </tr>
                                 {this.renderTravellerHistory()}
                             </tbody>
