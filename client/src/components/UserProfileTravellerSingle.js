@@ -4,7 +4,8 @@ class UserProfileTravellerSingle extends Component{
     constructor(props){
         super(props)
         this.state = {
-            reviewFormStatus : this.props.reviewFormStatus
+            reviewFormStatus : this.props.reviewFormStatus,
+            reviewFormIndex : this.props.reviewFormIndex
         }
         this.handleReviewClick = this.handleReviewClick.bind(this);
     }
@@ -14,12 +15,12 @@ class UserProfileTravellerSingle extends Component{
         this.setState({
             reviewFormStatus : !this.state.reviewFormStatus
         })
-        this.props.handleClickReviewButton(this.state.reviewFormStatus)
+        this.props.handleClickReviewButton(this.state.reviewFormStatus, this.state.reviewFormIndex)
     }
 
 
   render() {
-    console.log("Single Status "+this.state.reviewFormStatus)
+    console.log(this.props)
     const { suburb, price, address, startTime, endTime ,review, star} = this.props;
     return (                
             <tr>

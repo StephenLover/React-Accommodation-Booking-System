@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import UserProfileTravellerSingle from '../components/UserProfileTravellerSingle';
 import EditableRatingReact from '../components/EditableRatingReact';
-
+import NonEditableRatingReact from '../components/NonEditableRatingReact';
 
 class UserProfileTravellerForm extends Component{
     constructor(props){
@@ -9,10 +9,9 @@ class UserProfileTravellerForm extends Component{
         this.state = {
             travellerHistory : null,
             reviewFormStatus: false,
-            reviewFormContent: {
-                review: null,
-                star: null,
-            }
+            reviewFormIndex : null,
+            reviewFormReviewContent: null,
+            reviewFormReviewStar: null,
         }
         this.renderReviewForm = this.renderReviewForm.bind(this);
         this.renderTravellerHistory = this.renderTravellerHistory.bind(this);
@@ -38,6 +37,8 @@ class UserProfileTravellerForm extends Component{
                  address={singleRecord.accommodationId.property.address} startTime={singleRecord.accommodationId.startDate.slice(0,-14)}
                  endTime={singleRecord.accommodationId.endDate.slice(0,-14)} review={singleRecord.review} star={singleRecord.star}
                  handleClickReviewButton={this.handleClickReviewButton.bind(this)} reviewFormStatus={this.state.reviewFormStatus}
+                 reviewFormIndex={index}
+                 
             />))
 
         }
@@ -47,11 +48,23 @@ class UserProfileTravellerForm extends Component{
         
     }
 
-    handleClickReviewButton(reviewStateFromSingle){
+    handleClickReviewButton(reviewStateFromSingle,reviewFormIndex){
         console.log(reviewStateFromSingle)
-        this.setState({
-            reviewFormStatus : !this.state.reviewFormStatus,
-        })
+        if(this.state.reviewFormIndex !== null && this.state.reviewFormIndex !== reviewFormIndex){
+            this.setState({
+                reviewFormStatus : true,
+                reviewFormIndex : reviewFormIndex,
+                reviewFormReviewContent : this.state.travellerHistory[reviewFormIndex].review,
+                reviewFormReviewStar : this.state.travellerHistory[reviewFormIndex].star,
+            })
+        }else{
+            this.setState({
+                reviewFormStatus : !this.state.reviewFormStatus,
+                reviewFormIndex : reviewFormIndex,
+                reviewFormReviewContent : this.state.travellerHistory[reviewFormIndex].review,
+                reviewFormReviewStar : this.state.travellerHistory[reviewFormIndex].star,
+            })
+        }
     }
 
     handleFormSubmit(e){
@@ -59,19 +72,42 @@ class UserProfileTravellerForm extends Component{
         //submit review to server
     }
 
+
+
+
+    
     renderReviewForm(){
         if(this.state.travellerHistory !== null){
             if(this.state.reviewFormStatus === true){
-                return (
-                    <div id="comment_area" >
+                if(this.state.reviewFormReviewContent !== null){
+                    return (
+                        <div id="comment_area" >
+                        <div className="word_comment">
+                            <h3>Your Review for this wonderful accomondation was: </h3>
+                        </div>
+                            <textarea disabled placeholder={this.state.reviewFormReviewContent} name="comment_textarea" className="comment_textarea" cols="100" rows="3"></textarea>
+                        <div className="review">
+                        <h4>Rating: {this.state.reviewFormReviewStar}.0 / 5.0</h4>
+                            <span className="star">
+                                {this.state.reviewFormReviewStar === null ?  <EditableRatingReact/> :
+                                <NonEditableRatingReact rating={this.state.reviewFormReviewStar}/>}
+                            </span>
+                            <span className="star-txt"></span>
+                        </div>
+                    </div>
+                    )
+                }else{
+                    return(
+                        <div id="comment_area" >
                         <div className="word_comment">
                             <h3>Review area:</h3>
                         </div>
-                        <textarea name="comment_textarea" className="comment_textarea" cols="100" rows="3"></textarea>
+                        <textarea placeholder="Write your comment here..." name="comment_textarea" className="comment_textarea" cols="100" rows="3"></textarea>
+                
                         <div className="review">
                             <span className="star">
-                                Star:
-                                <EditableRatingReact/>
+                                {this.state.reviewFormReviewStar === null ?  <EditableRatingReact/> :
+                                <NonEditableRatingReact rating={this.state.reviewFormReviewStar}/>}
                             </span>
                             <span className="star-txt"></span>
                         </div>
@@ -79,7 +115,8 @@ class UserProfileTravellerForm extends Component{
                             <button type="submit" className="submit_button">Submit</button>
                         </div>
                     </div>
-                )
+                    )
+                }
             }else{
                 return (
                     null
@@ -90,7 +127,7 @@ class UserProfileTravellerForm extends Component{
 
     render () {
 
-        console.log(this.state.reviewFormStaus, this.props.renderReviewForm)
+        console.log(this.state)
         return (
             <div>
                
