@@ -189,6 +189,31 @@ app.get('/api/search/suburb/:id', (req, res) => {
   })
 })
 
+// get ad for homepage
+app.get('/api/search/ad', (req, res) => {
+  mongoose.connect(url)
+    .then(
+      () => {
+        console.log('/api/search/ad connects successfully')
+      },
+      err => console.log(err)
+    )
+  accommodationModel
+  .find({status: 'open'})
+  .populate({
+    path: 'property',
+  })
+  .sort('-ad')
+  .limit(3)
+  .exec(function(err, docs){
+    if(err){
+      console.log(err);
+    }
+    console.log(docs)
+    res.json(docs)
+  })
+})
+
 // get accommodation details based on accId
 app.get('/api/accommodation/:id', (req, res) => {
   const accInfo = new Promise((resolve, reject) => {

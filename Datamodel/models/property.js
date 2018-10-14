@@ -14,6 +14,7 @@ let propertySchema = new Schema({
     pictures: [String],
     longitude: Number,
     latitude: Number,
+    avgStar: Number
 })
 
 module.exports = mongoose.model('Property', propertySchema, 'Property');
