@@ -189,7 +189,7 @@ class UserProfileTravellerForm extends Component{
                             </tbody>
                         </table>
                         <div className="button_part">
-                            <a href="ReleaseInformation.html" className="add_button">Release Accomondation Needed Information</a>
+                            <a href="/release/traveller" className="add_button">Release Accomondation Needed Information</a>
                         </div>
                         
                     </form>

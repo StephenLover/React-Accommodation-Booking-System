@@ -59,7 +59,7 @@ class UserProfileProviderForm extends Component{
                         </tbody>
                     </table>
                     <div className="button_part">
-                        <a href="ReleaseInformation.html" className="add_button">Release New Property</a>
+                        <a href="/release/provider" className="add_button">Release New Property</a>
                     </div>
                 </div>
             </div>
