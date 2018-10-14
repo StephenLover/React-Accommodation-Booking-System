@@ -30,9 +30,9 @@ class ProviderReleaseInformationContainer extends Component{
                                 <td width="25%">Capacity</td>
                                 <td width="25%">Add Time</td>
                             </tr>
-                            
+                        </tbody> 
                             <ProviderReleaseOwnPropertySingleContainer/>
-                        </tbody>
+                        
                     </table>
                 </div>
                 </div>

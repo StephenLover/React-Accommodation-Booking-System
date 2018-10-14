@@ -6,10 +6,10 @@ import ProviderReleaseOwnPropertySingleForm from './ProviderReleaseOwnPropertySi
 class ProviderReleaseOwnPropertySingleContainer extends Component{
     render() {
         return (
-            <div>
+            <tbody>
                 <ProviderReleaseOwnPropertySingleInfo/>
                 <ProviderReleaseOwnPropertySingleForm/>
-            </div>
+            </tbody>
         )
     }
 }
