@@ -20,7 +20,7 @@ let accommodationSchema = new Schema({
     endDate: Date,
     price: Number,
     status: {
-        type: String, default: 'Open'
+        type: String, default: 'open'
     },
     ad: {
         type: Number, default: 0
