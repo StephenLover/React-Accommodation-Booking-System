@@ -28,6 +28,9 @@ class HomePageAdvertisementContainer extends Component{
                 <HomePageAdvertisementSinglecard key={index} capacity={singleProperty.property.capacity}
                 suburb={singleProperty.property.suburb} address={singleProperty.property.address}
                 price={singleProperty.price} pictures={singleProperty.property.pictures}
+                property_id={singleProperty.property._id} accId={singleProperty._id}
+                startTime={singleProperty.startDate.slice(0,10)}
+                endTime={singleProperty.endDate.slice(0, 10)}
                 />
             ))
         }
@@ -37,13 +40,13 @@ class HomePageAdvertisementContainer extends Component{
     render() {
         console.log(this.state.adAccList)
         return (
-            <div id="contact" class="section">
-                <div class="container">
-                    <div class="word">
-                        <h1>Advertisement :</h1>
+            <div id="contact" className="section">
+                <div className="container">
+                    <div className="word">
+                        <h4>Advertisement :</h4>
                     </div>
-                    <div class="row">
-                        <div class="recommand">
+                    <div className="row">
+                        <div className="recommand">
                             <ul>
                                 {this.renderIfDataPreapared()}
                             </ul>
