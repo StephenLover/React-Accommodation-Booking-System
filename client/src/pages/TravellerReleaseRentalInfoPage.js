@@ -5,7 +5,7 @@ import NavigationBarWithoutSession from "../components/NavigationBarWithoutSessi
 import NavigationBarWithSession from "../components/NavigationBarWithSession";
 
 //sub components import
-
+import TravellerReleaseInformationForm from "../components/TravellerReleaseInformationForm"
 const TravellerReleaseRentalInfoPageHeader = () => {
     return (
         <div>
@@ -29,8 +29,9 @@ class TravellerReleaseRentalInfoPage extends Component {
             <div>
                 <TravellerReleaseRentalInfoPageHeader/>
 
-                {localStorage.getItem('session-firstName') === null ? <NavigationBarWithoutSession/> : <NavigationBarWithSession/>}
+                <TravellerReleaseInformationForm/>
 
+                {localStorage.getItem('session-firstName') === null ? <NavigationBarWithoutSession/> : <NavigationBarWithSession/>}
 
                 <HomePageFooter/>
             </div>

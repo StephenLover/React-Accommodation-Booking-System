@@ -123,6 +123,7 @@ html body {
 
 
 .search_no {
+    border: 1px solid #dbdbdb;
     margin-top: 40px;
     margin-left: 10px;
     margin-right: 10px;
@@ -144,6 +145,7 @@ html body {
 
 
 .search_se {
+    border: 1px solid #dbdbdb;
     margin-top: 40px;
     margin-left: 10px;
     margin-right: 10px;

@@ -6,7 +6,7 @@ import NavigationBarWithSession from '../components/NavigationBarWithSession';
 import RecommendationForm from '../components/RecommendationForm';
 import HomePageFooter from '../components/HomePageFooter';
 import HomePageBanner from '../components/HomePageBanner';
-import HomePageAdvertisement from '../components/HomePageAdvertisement'
+import HomePageAdvertisementContainer from '../components/HomePageAdvertisementContainer'
 
 const HomePageHeader = () => {
     return (
@@ -37,7 +37,7 @@ class HomePage extends Component {
 
                 <HomePageBanner/>
 
-                <HomePageAdvertisement/>
+                <HomePageAdvertisementContainer/>
 
                 <RecommendationForm/>
 

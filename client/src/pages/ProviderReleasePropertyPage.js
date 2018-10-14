@@ -5,7 +5,7 @@ import NavigationBarWithoutSession from "../components/NavigationBarWithoutSessi
 import NavigationBarWithSession from "../components/NavigationBarWithSession";
 
 //sub components import
-
+import ProviderReleaseInformationContainer from '../components/ProviderReleaseInformationContainer';
 const ProviderReleasePropertyHeader = () => {
     return (
         <div>
@@ -31,6 +31,7 @@ class UserProfilePage extends Component {
 
                 {localStorage.getItem('session-firstName') === null ? <NavigationBarWithoutSession/> : <NavigationBarWithSession/>}
 
+                <ProviderReleaseInformationContainer/>
 
                 <HomePageFooter/>
             </div>
