@@ -595,7 +595,9 @@ app.post('/api/property/new', (req, res) => {
   let suburb = req.body.suburb;
   let postcode = parseInt(req.body.postcode);
   let capacity = parseInt(req.body.capacity);
-  
+  function getRandom(min, max) {
+		return 'image/' + (Math.floor(Math.random() * (max-min)) + min) +'.jpg';
+	}
   propertyModel
   .count()
   .exec(function(err, count){
@@ -603,13 +605,15 @@ app.post('/api/property/new', (req, res) => {
       console.log(err);
     }
     console.log('count',count)
+
     let property = new propertyModel({
       _id: count,
       owner: owner,
       address: address,
       suburb: suburb,
       postcode: postcode,
-      capacity: capacity
+      capacity: capacity,
+      pictures: [getRandom(1,754),getRandom(1,754),getRandom(1,754),getRandom(1,754),getRandom(1,754)]
     })
     property
     .save(function(err, docs){
@@ -620,6 +624,27 @@ app.post('/api/property/new', (req, res) => {
       console.log(docs)
       return res.status(200).json(docs);
     })
+  })
+})
+
+// get property info for provider
+app.get('/api/property/:id', (req, res) => {
+  mongoose.connect(url)
+  .then(
+    () => {
+      console.log('/api/property connects successfully')
+    },
+    err => { console.log(err) }
+  )
+
+  propertyModel
+  .find({'owner': req.params.id})
+  .exec(function(err, docs){
+    if(err){
+      console.log(err);
+    }
+    console.log(docs)
+    res.json(docs)
   })
 })
 
