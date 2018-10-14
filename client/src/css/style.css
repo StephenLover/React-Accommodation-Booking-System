@@ -1092,6 +1092,8 @@ table {
 .input_group input{
     width: 410px;
     border-radius: 5px;
+    border: 1px solid #dbdbdb;
+    padding-left: 5px;
 }
 
 .property_capacity_button {
@@ -1122,6 +1124,9 @@ table {
 
 #addlist input {
     border-radius: 5px;
+    padding-left: 5px;
+    margin-left: 5px;
+    border: 1px solid #dbdbdb;
 }
 
 .release_requirements {

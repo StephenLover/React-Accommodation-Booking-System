@@ -5,9 +5,15 @@ class ProviderReleaseNewPropertyForm extends Component{
         super(props)
         this.state = {
             dropDownState : false,
+            name: null,
+            address: null,
+            suburb: null,
+            postcode: null,
+            capacity: null,
         }
         this.handleDropDownButton = this.handleDropDownButton.bind(this);
         this.renderReleaseForm = this.renderReleaseForm.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
     handleDropDownButton(){
@@ -16,25 +22,34 @@ class ProviderReleaseNewPropertyForm extends Component{
         })
     }
 
+    handleInputChange(e){
+        e.preventDefault()
+        let propertyname = this.refs.propertyname.value;
+        let address = this.refs.address.value;
+        let surburb = this.refs.surburb.value;
+        let postcode = this.ref.postcode.value
+        console.log(propertyname,address,surburb,postcode)
+    }
+
     renderReleaseForm(){
         if(this.state.dropDownState === true){
             return (
                 <form action="/" method="post" id="property_input_form" >
                     <div className="input_group">
                         <label className="property_name">Property Name:</label>
-                        <input type="text" className="property_name_input" name="propertyname" required/>
+                        <input type="text" className="property_name_input" name="propertyname" ref="propertyname" onChange={this.handleInputChange} required/>
                     </div>
                     <div className="input_group">
                         <label className="property_address">Address:</label>
-                        <input type="text" className="property_address_input" name="address" required/>
+                        <input type="text" className="property_address_input" name="address" ref="address" required/>
                     </div>
                     <div className="input_group">
                         <label className="property_surburb">Surburb:</label>
-                        <input type="text" className="property_suburb_input" name="surburb" required/>
+                        <input type="text" className="property_suburb_input" name="surburb" ref="suburb" required/>
                     </div>
                     <div className="input_group">
                         <label className="property_postcode">Postcode:</label>
-                        <input type="text" className="property_postcode_input" name="postcode" required/>
+                        <input type="text" className="property_postcode_input" name="postcode" ref="postcode" required/>
                     </div>
                     <div className="input_group">
                         <label className="property_capacity">Capacity:</label>

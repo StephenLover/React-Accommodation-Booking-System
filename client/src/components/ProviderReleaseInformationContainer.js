@@ -1,9 +1,43 @@
 import React, { Component } from 'react';
 import ProviderReleaseProertyForm from './ProviderReleaseNewPropertyForm';
-import ProviderReleaseOwnPropertySingleContainer from './ProviderReleaseOwnPropertySingleContainer';
+import ProviderReleaseOwnPropertySingleComponent from './ProviderReleaseOwnPropertySingleComponent';
 
 class ProviderReleaseInformationContainer extends Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            propertyList : null,
+
+        }
+        this.renderIfPropertyListNotEmpty = this.renderIfPropertyListNotEmpty.bind(this);
+    }
+
+
+    componentWillMount(){
+        fetch(`/api/property/${localStorage.getItem('uid')}`)
+        .then(response => response.json())
+        .then(res => {
+            this.setState({
+                propertyList : res
+            })
+        })
+        .catch((err) => {console.log(err)})
+    }
+
+    renderIfPropertyListNotEmpty(){
+        if(this.state.propertyList !== null){
+            return (
+                this.state.propertyList.map((singleProperty, index) => (
+                    <ProviderReleaseOwnPropertySingleComponent key={index} suburb={singleProperty.suburb} 
+                    address={singleProperty.address} capacity={singleProperty.capacity}
+                    property_id={singleProperty._id}/>
+                ))
+            )
+        }
+    }
+
     render() {
+        console.log(this.state)
         return (
             <div id="contact" className="section">
                 <div className="container">
@@ -31,7 +65,7 @@ class ProviderReleaseInformationContainer extends Component{
                                 <td width="25%">Add Time</td>
                             </tr>
                         </tbody> 
-                            <ProviderReleaseOwnPropertySingleContainer/>
+                        {this.renderIfPropertyListNotEmpty()}
                         
                     </table>
                 </div>

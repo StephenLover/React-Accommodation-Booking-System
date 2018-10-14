@@ -15,7 +15,6 @@ class RecommendationForm extends Component{
         .then(response => response.json())
         .then(res => {
             this.setState({
-                // comments: res.property.comments,
                 recommendationAccs : res,
             })
         })
