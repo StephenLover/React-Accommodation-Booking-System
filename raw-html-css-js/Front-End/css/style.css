@@ -1104,7 +1104,28 @@ table {
     width: 100%;
 }
 
-.release_accomondation_button {
+.word_release_accomondation {
     margin-top: 40px;
-    text-align: center;
+}
+
+.release_accomondation_table {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+#addlist {
+    width: 100%;
+}
+
+#addlist input {
+    border-radius: 5px;
+}
+
+.release_requirements {
+    width: 100%;
+    margin-top: 40px;
+}
+
+.requirements_capacity_button {
+    width: 410px;
 }

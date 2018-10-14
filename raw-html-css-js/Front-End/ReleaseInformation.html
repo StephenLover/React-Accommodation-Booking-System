@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Release Information</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <script src="js/ReleaseInfromation.js"></script>
+</head>
+<body>
+    <!-- 
+     // Navigation Bar Without Session 
+    <header id="header" class="transparent-nav">
+        <form action="/" method="post">
+            <div class="navigationbar">   
+                 Logo 
+                <div class="navbar-brand">
+                    <a class="logo" href="index.html" target="_parent">
+                        // Use Logo Image to exchange this part
+                        <img src="img/unsw.png" alt="logo">
+                    </a>
+                </div>      
+                // Navigation       
+                <nav id="nav">
+                    <ul class="main_menu">
+                        <li>
+                            <input type="text" name="search" class="search_no" id="search" placeholder="Please input Keywords">
+                        </li>
+                        <li>
+                            <button type="submit" class="search_button_no">Search</button>
+                        </li>
+                        <li><a href="Login.html">Login</a></li>
+                        <li><a href="Singup.html" target="_parent">Sing Up</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </form>
+    </header> -->
+
+    <!-- Navigation Bar With Session -->
+    <header id="header" class="transparent-nav">
+        <form action="/" method="post">
+            <div class="navigationbar">
+                <!-- Logo -->
+                <div class="navbar-brand">
+                    <a class="logo" href="index.html" target="_parent">
+                        <!-- Use Logo Image to exchange this part -->
+                        <img src="img/unsw.png" alt="logo">
+                    </a>
+                </div>
+                <!-- Navigation -->
+                <nav id="nav">
+                    <ul class="main_menu">
+                        <li>
+                            <input type="text" name="search" class="search_se" id="search" placeholder="Please input Keywords">
+                            <!-- <input type="" name="Traveller" id="traveller">
+                            <input type="radio" name="Provider" id="Provider"> -->
+                        </li>
+                        <li>
+                            <button type="submit" class="search_button_se">Search</button>
+                        </li>
+                        <li><img src="img/5190009.jpg" class="user_img"></li>
+                        <li class="dropdown"><a href="#" id="Username">Username</a>
+                            <ul class="dropdown_content">
+                                <li><a href="Profile.html" target="_parent">Personal Profile</a></li>
+                                <li><a href="WatchingList.html" target="_parent">Watching List</a></li>
+                                <li><a href="PendingList.html" target="_parent">Pending List</a></li>
+                                <li><a href="index.html" target="_parent">Logout</a></li>
+                            </ul> 
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </form>
+    </header>
+
+    <div id="contact" class="section">
+        <div class="container">
+            <!-- The Words are belong to Provider -->
+            <div class="word_release_information">
+                <h1>Property Release Information</h1> 
+            </div>
+            
+            <!-- The Words are belong to Traveller -->
+            <!-- <div class="word_release_information">
+                <h1>Accomondation Needed Release Information</h1> 
+            </div> -->
+
+            <div class="row">
+                <!-- Below are release information for Provider -->
+                <div class="release_property">
+                    <div class="release_property_button">
+                        <input type="button" value="Release New Property" class="add_button" onclick="show_property()">
+                    </div>
+                    <form action="/" method="post" id="property_input_form" style="display: none;">
+                        <div class="input_group">
+                            <label class="property_name">Property Name:</label>
+                            <input type="text" class="property_name_input" name="propertyname" required>
+                        </div>
+                        <div class="input_group">
+                            <label class="property_address">Address:</label>
+                            <input type="text" class="property_address_input" name="address" required>
+                        </div>
+                        <div class="input_group">
+                            <label class="property_surburb">Surburb:</label>
+                            <input type="text" class="property_suburb_input" name="surburb" required>
+                        </div>
+                        <div class="input_group">
+                            <label class="property_postcode">Postcode:</label>
+                            <input type="text" class="property_postcode_input" name="postcode" required>
+                        </div>
+                        <div class="input_group">
+                            <label class="property_capacity">Capacity:</label>
+                            <select name="capacity" class="property_capacity_button">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                            </select>
+                        </div>
+                        <div class="property_submit">
+                            <button type="submit" class="add_button">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="release_accomondation">
+                    <div class="word_release_accomondation">
+                        <h3>Owned Property :</h3>
+                    </div>
+                    
+                    <table class="zebra release_accomondation_table">
+                        <tr class="tablehead">
+                            <td width="25%">Suburb</td>
+                            <td width="25%">Address</td>
+                            <td width="25%">Capacity</td>
+                            <td width="25%">Add Time</td>
+                        </tr>
+                        <tr>
+                            <td width="25%">Kensington</td>
+                            <td width="25%">13 Doncaster Avenue</td>
+                            <td width="25%">4</td>
+                            <td width="25%"><button type="submit" class="submit_button" onclick="show_addlist()">Add Spare Time</button></td>
+                        </tr>
+                        <tr id="addlist" style="display:none;">
+                            <td width="25%">
+                                <span>Start Time:</span>
+                                <input type="text" placeholder="YYYY-MM-DD">
+                            </td>
+                            <td width="25%">
+                                <span>End Time:</span>
+                                <input type="text" placeholder="YYYY-MM-DD">
+                            </td>
+                            <td width="25%">
+                                <span>Price: $</span>
+                                <input type="text" placeholder="Whole Numbers">
+                            </td>
+                            <td width="25%">
+                                <button type="submit" class="submit_button">Submit</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Below are release information for traveller -->
+                <!-- <div class="release_requirements">
+                    <form action="/" method="post" class="requirements_input_form">
+                        <div class="input_group">
+                            <label class="requirements_surburb">Surburb:</label>
+                            <input type="text" class="requirements_surburb_input" name="surburb" required>
+                        </div>
+                        <div class="input_group">
+                            <label class="requirements_postcode">Postcode:</label>
+                            <input type="text" class="requirements_postcode_input" name="postcode" required>
+                        </div>
+                        <div class="input_group">
+                            <label class="requirements_capacity">Capacity:</label>
+                            <select name="capacity" class="requirements_capacity_button">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                            </select>
+                        </div>
+                        <div class="input_group">
+                            <label class="requirements_start_time">Start Time:</label>
+                            <input type="text" class="requirements_start_time_input" name="starttime" placeholder="YYYY-MM-DD" required>
+                        </div>
+                        <div class="input_group">
+                            <label class="requirements_end_time">End Time:</label>
+                            <input type="text" class="requirements_end_time_input" name="endtime" placeholder="YYYY-MM-DD" required>
+                        </div>
+                        <div class="property_submit">
+                            <button type="submit" class="add_button">Submit</button>
+                        </div>
+                    </form>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer_content">
+            <ul>
+                <li>
+                    <div class="footer_single">
+                        <div class="footer_title">
+                            <h3>About Us</h3>
+                        </div>
+                        <div class="footer_text">
+                            <p>Curabitur non nulla sit amet nislinit tempus convallis quis ac lectus. lac inia eget consectetur sed, convallis at tellus. Nulla porttitor accumsana tincidunt.</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="footer_single">
+                        <div class="footer_title">
+                            <h3>Get in Touch</h3>
+                        </div>
+                        <div class="footer_text">
+                            <h4>Location :</h4>
+                            <p>0926k 4th block building, king Avenue, New York City.</p>
+                        </div>
+                        <div class="footer_text">
+                            <h4>Contact :</h4>
+                            <p>Phone : +121 098 8907 9987</p>
+                            <p>Email : info@example.com</p>
+                        </div>  
+                    </div>
+                </li>
+                <li>
+                    <div class="footer_single">
+                        <div class="footer_title">
+                            <h3>Quick Links</h3>
+                        </div>
+                        <div class="footer_text">
+                            <p><a href="index.html">Home</a></p>
+                            <p><a href="#">Back To Top</a></p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="copywrite">
+            <p>Copyright &copy; 2018.Company name All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
