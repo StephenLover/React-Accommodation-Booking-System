@@ -42,7 +42,6 @@ class UserProfileTravellerSingle extends Component{
     }
 
   render() {
-      console.log(this.props.status)
     const { suburb, price, address, startTime, endTime ,review, status, star} = this.props;
     const statusObj = {
         pending : 'Pending',

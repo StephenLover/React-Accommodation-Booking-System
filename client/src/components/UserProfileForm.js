@@ -8,7 +8,7 @@ class UserProfileForm extends Component{
     constructor(props){
         super(props)
         this.state = {
-            profileState: "traveller",
+            profileState: "provider",
             name: null,
             gender: null,
             email: null,
@@ -33,7 +33,6 @@ class UserProfileForm extends Component{
         fetch(`/api/user/${localStorage.getItem('uid')}`)
             .then(response => response.json())
             .then(res => {
-                console.log(res.firstName,res.lastName)
                 this.setState({
                     // comments: res.property.comments,
                     name: res.firstName + ' ' + res.lastName,
@@ -64,7 +63,6 @@ class UserProfileForm extends Component{
                     localStorage.setItem('session-firstName', this.state.firstName);
                     alert('User Profile Updated');
                     window.location.href="/profile"
-
                 })
 				.catch(error => console.error('Error:', error));
 
@@ -125,7 +123,6 @@ class UserProfileForm extends Component{
     }
 
     render () {
-        console.log(this.state)
         return (
             <div id="contact" className="section">
                 <div className="container">

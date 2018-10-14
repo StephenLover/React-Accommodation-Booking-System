@@ -27,11 +27,14 @@ class UserProfileProviderForm extends Component{
             return this.state.providerHistory.map((singleRecord, index)=> (<UserProfileProviderSingle
                 key={index} suburb={singleRecord.property.suburb} 
                 address={singleRecord.property.address} startTime={singleRecord.startDate.slice(0,-14)}
-                endTime={singleRecord.endDate.slice(0,-14)} postcode={singleRecord.property.postcode}
-                
+                endTime={singleRecord.endDate.slice(0,-14)}
+                adValue={singleRecord.ad} accId={singleRecord._id}
            />))
         }
     }
+
+
+
 
 
     render () {
@@ -45,12 +48,12 @@ class UserProfileProviderForm extends Component{
                     <table className="provider_table zebra">
                         <tbody>
                             <tr className="tablehead">
-                                <td width="20%">Suburb</td>
-                                <td width="20%">Address</td>
-                                <td width="15%">StartTime</td>
-                                <td width="15%">EndTime</td>
-                                <td width="15%">Ad Value</td>
-                                <td width="15%">Advertisement</td>
+                            <td width="20%">Suburb</td>
+                            <td width="20%">Address</td>
+                            <td width="15%">Start Time</td>
+                            <td width="15%">End Time</td>
+                            <td style={{textAlign: "center"}} width="15%">Advertisement</td>
+                            <td style={{textAlign: "center"}} width="15%">Pay</td>
                             </tr>
                             {this.renderProviderMultipleRecords()}
                         </tbody>
