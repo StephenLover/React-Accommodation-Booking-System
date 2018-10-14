@@ -137,6 +137,7 @@ app.get('/api/search/postcode/:id', (req, res) => {
       path: 'property',
       match: {postcode: postcode,}
     })
+    .sort('-ad')
     .exec(function(err, docs){
       if (err) {
         console.log(err);
@@ -145,6 +146,7 @@ app.get('/api/search/postcode/:id', (req, res) => {
         return doc.property !== null
       })
       mongoose.disconnect();
+      console.log(docs)
       resolve(docs)
     })
     }) // promise end
@@ -170,6 +172,7 @@ app.get('/api/search/suburb/:id', (req, res) => {
       path: 'property',
       match: {suburb: new RegExp(req.params.id, 'i')}
     })
+    .sort('-ad')
     .exec(function(err, docs){
       if (err) {
         console.log(err);
@@ -448,7 +451,7 @@ app.get('/api/history/traveler/:id', (req, res) => {
       path: 'accommodationId', select: 'startDate endDate price',
       populate: {path: 'property', select: 'address suburb'}
     })
-    .sort('modifiedTime')
+    .sort('-modifiedTime')
     .exec( function(err, docs){ 
       if (err){
           console.log(err)
@@ -476,7 +479,7 @@ app.get('/api/history/provider/:id', (req, res) => {
   .populate({
     path: 'property', match: {owner: req.params.id}, select: 'address suburb'
   })
-  .sort('startDate')
+  .sort('-startDate')
   .exec( function(err, docs){ 
     if (err){
         console.log(err)
@@ -550,6 +553,90 @@ app.post('/api/review/update', (req, res) => {
     }
     console.log(docs)
     return res.status(200).json({status:"ok"})
+  })
+})
+
+// provider add new property
+app.post('/api/property/new', (req, res) => {
+  mongoose.connect(url)
+  .then(
+    () => {
+      console.log('/api/property/new connects successfully')
+    },
+    err => { console.log(err) }
+  )
+  let owner = req.body.owner; // provider email address
+  let address = req.body.address;
+  let suburb = req.body.suburb;
+  let postcode = parseInt(req.body.postcode);
+  let capacity = parseInt(req.body.capacity);
+  
+  propertyModel
+  .count()
+  .exec(function(err, count){
+    if(err){
+      console.log(err);
+    }
+    console.log('count',count)
+    let property = new propertyModel({
+      _id: count,
+      owner: owner,
+      address: address,
+      suburb: suburb,
+      postcode: postcode,
+      capacity: capacity
+    })
+    property
+    .save(function(err, docs){
+      if (err) {
+        console.log(err);
+        res.sendStatus(500).send(err);
+      }
+      console.log(docs)
+      return res.status(200).json(docs);
+    })
+  })
+})
+
+// provider add accommodation based on property
+app.post('/api/accommodation/new', (req, res) => {
+  mongoose.connect(url)
+  .then(
+    () => {
+      console.log('/api/accommodation/new connects successfully')
+    },
+    err => { console.log(err) }
+  )
+  let property = parseInt(req.body.property); // property id
+  let startDate = new Date(req.body.startDate); // '2016-07-28'
+  let endDate = new Date(req.body.endDate); // '2016-07-28'
+  let price = parseInt(req.body.price);
+  let ad = req.body.ad ? parseInt(req.body.ad) : 0
+  
+  accommodationModel
+  .count()
+  .exec(function(err, count){
+    if(err){
+      console.log(err);
+    }
+    console.log('count',count)
+    let acc = new accommodationModel({
+      _id: count,
+      property: property,
+      startDate: startDate,
+      endDate: endDate,
+      price: price,
+      ad: ad
+    })
+    acc
+    .save(function(err, docs){
+      if (err) {
+        console.log(err);
+        res.sendStatus(500).send(err);
+      }
+      console.log(docs)
+      return res.status(200).json(docs);
+    })
   })
 })
 
