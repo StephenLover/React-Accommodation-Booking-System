@@ -13,6 +13,8 @@ class UserProfileForm extends Component{
             gender: null,
             email: null,
             phone: null,
+            firstName: null,
+            lastName: null,
             // reviewFormStatus: false,
             // reviewItem: null,
         }
@@ -45,31 +47,40 @@ class UserProfileForm extends Component{
 
     handleUserInfoFormSubmit(e){
         e.preventDefault();
+        let data = {
+					'_id': localStorage.getItem('uid'),
+					'firstName': this.state.firstName,
+					'lastName': this.state.lastName,
+					'phone': this.state.phone
+        }
+        fetch('/api/user/update', {
+            method: 'POST', 
+            body: JSON.stringify(data),
+            headers:{
+                'Content-Type': 'application/json'
+            }})
+				.then(res => res.json)
+				.then(response => {
+                    localStorage.setItem('session-firstName', this.state.firstName);
+                    alert('User Profile Updated');
+                    window.location.href="/profile"
 
-        // if(this.state.email !== null){
-        //     let url = '/api/user/update';
-        //     let fullName = 
-        //     split(/(\s)/).filter(item => !/\s/.test(item)  //["Stephen","Wang"]
-        //     let data = {_id: localStorage.getItem('uid'), firstName};
-        //     console.log(JSON.stringify(data))
-        //     fetch(url, {
-        //     method: 'POST', 
-        //     body: JSON.stringify(data),
-        //     headers:{
-        //         'Content-Type': 'application/json'
-        //     }
-        //     }).then(res => res.json())
-        //     .then(response => alert('Property added to pending list!', JSON.stringify(response)))
-        //     .then(window.location.href="./watching")
-        //     .catch(error => console.error('Error:', error));
-        // }else{
-        //     alert('Please choose one property to add to pending list!')
-        // }
+                })
+				.catch(error => console.error('Error:', error));
 
     }
 
-    handleUserInfoChange(){
-        
+    handleUserInfoChange(e){
+        let name = this.refs.name.value
+        let phone = this.refs.phone.value;
+        let email = localStorage.getItem('uid')
+        let firstName = name.split(' ')[0]
+        let lastName = name.split(' ')[1]
+        this.setState({
+            firstName: firstName,
+            lastName: lastName,
+            phone: phone
+        })
     }
 
     renderUserInfo(){
@@ -79,7 +90,7 @@ class UserProfileForm extends Component{
                     <form action="/" method="post">
                         <div className="profile_group">
                             <label className="user_name">Name:</label>
-                            <input type="text" className="user_name_input" name="username" defaultValue={this.state.name} required/>
+                            <input type="text" className="user_name_input" name="username" ref="name" defaultValue={this.state.name} onChange={this.handleUserInfoChange.bind(this)} required/>
                         </div>
                         <div className="profile_group">
                             <label className="user_gender">Gender:</label>
@@ -91,7 +102,7 @@ class UserProfileForm extends Component{
                         </div>
                         <div className="profile_group">
                             <label className="user_phone">Phone:</label>
-                            <input type="text" className="user_phone_input" name="phone" defaultValue={this.state.phone} required/>
+                            <input type="text" className="user_phone_input" name="phone" ref='phone' defaultValue={this.state.phone} onChange={this.handleUserInfoChange.bind(this)} required/>
                         </div>
                         <div className="profile_submit">
                             <button type="submit" className="add_button" onClick={this.handleUserInfoFormSubmit}>Submit</button>
