@@ -262,6 +262,30 @@ app.get('/api/search/ad', (req, res) => {
   })
 })
 
+// get top-rated accommodation on homepage
+app.get('/api/toprated', (req, res) => {
+  mongoose.connect(url)
+    .then(
+      () => {
+        console.log('/api/toprated connects successfully')
+      },
+      err => console.log(err)
+    )
+  accommodationModel
+  .find({status: 'open'})
+  .populate({
+    path: 'property',
+  })
+  .sort('-avgStar')
+  .exec(function(err, docs){
+    if(err){
+      console.log(err);
+    }
+    console.log(docs)
+    res.json(docs)
+  })
+})
+
 // get accommodation details based on accId
 app.get('/api/accommodation/:id', (req, res) => {
   const accInfo = new Promise((resolve, reject) => {
