@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 const userModel = require('./Datamodel/models/user');
 const accommodationModel = require('./Datamodel/models/accommodation');
 const transactionModel = require('./Datamodel/models/transaction');
-const reviewModel = require('./Datamodel/models/review');
+const travelerReqModel = require('./Datamodel/models/travelerReq');
 const propertyModel = require('./Datamodel/models/property');
 const watchingModel = require('./Datamodel/models/watchingList');
 
@@ -187,6 +187,54 @@ app.get('/api/search/suburb/:id', (req, res) => {
   searchInfo.then(result => {
     return res.json(result);
   })
+})
+
+// search traveler requirements based on postcode
+app.get('/api/search/travelerReq/postcode/:id', (req, res) => {
+  mongoose.connect(url)
+    .then(
+      () => {
+        console.log('Search travelerReq suburb connect')
+      },
+      err => { console.log(err) }
+    )
+
+    travelerReqModel
+    .find({'postcode': parseInt(req.params._id)})
+    .exec(function(err, docs){
+      if (err) {
+        console.log(err);
+      }
+      if(docs.length === 0){
+        return res.json([{'_id': null}])
+      }
+      res.json(docs)
+      mongoose.disconnect();
+    })
+})
+
+// search traveler requirements based on suburb
+app.get('/api/search/travelerReq/suburb/:id', (req, res) => {
+  mongoose.connect(url)
+    .then(
+      () => {
+        console.log('Search travelerReq suburb connect')
+      },
+      err => { console.log(err) }
+    )
+
+    travelerReqModel
+    .find({'suburb': req.params.suburb})
+    .exec(function(err, docs){
+      if (err) {
+        console.log(err);
+      }
+      if(docs.length === 0){
+        return res.json([{'_id': null}])
+      }
+      res.json(docs)
+      mongoose.disconnect();
+    })
 })
 
 // get ad for homepage
@@ -688,6 +736,40 @@ app.post('/api/accommodation/new', (req, res) => {
       console.log(docs)
       return res.status(200).json(docs);
     })
+  })
+})
+
+// post traveler requirement
+app.post('/api/travelerReq', (req, res) => {
+  mongoose.connect(url)
+  .then(
+    () => {
+      console.log('/api/travelerReq connects successfully')
+    },
+    err => { console.log(err) }
+  )
+  let user = req.body.user; // traveler email
+  let suburb = req.body.suburb;
+  let postcode = parseInt(req.body.postcode);
+  let capacity = parseInt(req.body.capacity);
+  let minPrice = parseInt(req.body.minPrice);
+  let maxPrice = parseInt(req.body.maxPrice);
+  let comment = req.body.comment; // special requirements
+  const travelerReq = new travelerReqModel({
+    user: user,
+    suburb: suburb,
+    postcode: postcode,
+    capacity: capacity,
+    minPrice: minPrice,
+    maxPrice: maxPrice,
+    comment: comment
+  })
+  travelerReq
+  .save(function(err, docs){
+    if(err){
+      console.log(err)
+    }
+    console.log(docs)
   })
 })
 
