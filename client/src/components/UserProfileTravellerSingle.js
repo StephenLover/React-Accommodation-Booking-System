@@ -22,7 +22,9 @@ class UserProfileTravellerSingle extends Component{
     renderReviewButtons(){
         if(this.props.status === 'pending'){
             return(
-                <td width="5%"><input style={{color: '#FF0000'}} disabled type="button" value="Need Confirm" className="submit_button"/></td>
+                <a href="/pendinglist">
+                    <td width="5%"><input style={{color: '#FF0000'}} type="button" value="Need Confirm" className="submit_button"/></td>
+                </a>
             )
         }else if(this.props.status === 'success'){
             if(this.props.review === null){

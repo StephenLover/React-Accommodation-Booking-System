@@ -10,7 +10,7 @@ class HomePageAdvertisementSingleCard extends Component{
             price: this.props.price,
             rank: this.props.rank,
             pictures: this.props.pictures,
-            property_id : this.props.proerty_id,
+            property_id : this.props.property_id,
             accId: this.props.accId,
             startTime: this.props.startTime,
             endTime : this.props.endTime
