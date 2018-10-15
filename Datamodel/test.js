@@ -96,7 +96,7 @@ class Database{
   mongoose.connect(url)
     .then(
       () => {
-        console.log('/api/add2watching/ connects successfully')
+        console.log('Database connects successfully')
       },
       err => console.log(err)
     )
@@ -113,16 +113,18 @@ class Database{
   //   console.log(docs)
   // })
 
-  let trans = new transactionModel({
-    traveler: user,
-    accommodationId: accId,
-    status: 'pending'
+transactionModel
+.find({},'star')
+.populate({
+  path: 'accommodationId', match: {'property': 100}
+})
+.exec(function(err, docs){
+  if(err){
+    console.log(err)
+  }
+  docs = docs.filter( doc => {
+    return doc.accommodationId !== null;
   })
-  trans.save()
-  .then(docs => {
-    console.log(docs)
-  })
-  .catch(err => {
-    console.log(err);
-    res.sendStatus(500)
-  })
+  console.log(docs)
+  mongoose.disconnect()
+})
