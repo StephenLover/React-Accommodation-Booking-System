@@ -5,7 +5,7 @@ class AccomendationDetailsReviewSingle extends Component{
     constructor(props){
         super(props)
         this.state = {
-            icon: "",
+            icon: this.props.icon,
             name: this.props.name,
             transactionDate: this.props.transactionDate,
             reviewDate: this.props.reviewDate,
@@ -18,11 +18,11 @@ class AccomendationDetailsReviewSingle extends Component{
 
 
     render(){
-        console.log(this.state)
+        console.log(this.props)
         return (
             <div className="personal_comment">
                 <div className="comment_person_detail">
-                    <img src={require(`../img/Astrid_1.ico`)} alt="" className="comment_person_img"/>
+                    <img src={require(`../photo/${this.state.icon}`)} alt="" className="comment_person_img"/>
                     <span id="comment_person_name">{this.state.name}</span>
                     {/* <span id="comment_person_time">{this.state.transactionDate}</span> */}
                     <div className="comment_person_review_date">

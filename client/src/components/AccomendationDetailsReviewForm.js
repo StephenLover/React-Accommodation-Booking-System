@@ -46,7 +46,7 @@ class AccomendationDetailsReviewForm extends Component{
             return this.state.reviewList.map((review, index) => (
                 <AccomendationDetailsReviewSingle key={index} name={`${review.traveler.firstName} ${review.traveler.lastName}`}
                 transactionDate={review.accommodationId.startDate.slice(0,-14) +" to " +review.accommodationId.endDate.slice(0,-14)} reviewDate={review.reviewDate.slice(0,-14)} star={review.star}
-                reviewComments={review.review}
+                reviewComments={review.review} icon={review.traveler.avatar}
                 />
             ))
         }
