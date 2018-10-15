@@ -447,7 +447,15 @@ app.post('/api/add2pending/', (req, res) => {
           res.sendStatus(500)
         }
         // change status of accommodation open to close
-        return res.status(200).json({status:"ok"})
+        accommodationModel
+        .findOneAndUpdate({'_id': accId},
+        {'$set': {'status': 'close'}},
+        {'new': true})
+        .exec(function(err, result){
+          if(err){console.log(err)}
+          console.log(result)
+          return res.status(200).json({status:"ok"})
+        })
       })
   })
   .catch(err => {
@@ -505,7 +513,15 @@ app.post('/api/pending/cancel', (req, res) => {
       console.log(err)
     }
     console.log('doc',docs)
-    return res.status(200).json({status:"ok"})
+    accommodationModel
+      .findOneAndUpdate({'_id': accId},
+      {'$set': {'status': 'open'}},
+      {'new': true})
+      .exec(function(err, result){
+        if(err){console.log(err)}
+        console.log(result)
+        return res.status(200).json({status:"ok"})
+      })
   })
 })
 
@@ -544,7 +560,7 @@ app.get('/api/history/traveler/:id', (req, res) => {
       err => { console.log(err) }
     )
     transactionModel
-    .find({'traveler': req.params.id}, 'review star status')
+    .find({'traveler': req.params.id}, 'review star status modifiedTime')
     .populate({
       path: 'accommodationId', select: 'startDate endDate price',
       populate: {path: 'property', select: 'address suburb'}
