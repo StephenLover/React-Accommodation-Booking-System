@@ -12,7 +12,7 @@ html body {
 	right:0;
 	top:0;
 	z-index:99;
-	border-bottom:1px solid rgba(235, 235, 235, 0.25);
+	border-bottom:1px solid #dbdbdb;
 	background-color:#FFF;
 	-webkit-transition:0.2s all;
 	transition:0.2s all;
@@ -48,7 +48,6 @@ html body {
 }
 
 .navbar-brand .logo {
-	margin-top: 10px;
 	float: left;
 }
 
@@ -124,6 +123,7 @@ html body {
 
 
 .search_no {
+    border: 1px solid #dbdbdb;
     margin-top: 40px;
     margin-left: 10px;
     margin-right: 10px;
@@ -145,6 +145,7 @@ html body {
 
 
 .search_se {
+    border: 1px solid #dbdbdb;
     margin-top: 40px;
     margin-left: 10px;
     margin-right: 10px;
@@ -885,6 +886,8 @@ table {
 .profile_group input{
     width: 410px;
     border-radius: 5px;
+    border: solid 1px #dbdbdb;
+    padding-left: 5px;
 }
 
 .user_gender_input {
@@ -1089,6 +1092,8 @@ table {
 .input_group input{
     width: 410px;
     border-radius: 5px;
+    border: 1px solid #dbdbdb;
+    padding-left: 5px;
 }
 
 .property_capacity_button {
@@ -1098,6 +1103,7 @@ table {
 .property_submit {
     margin-top: 40px;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .release_accomondation {
@@ -1119,6 +1125,9 @@ table {
 
 #addlist input {
     border-radius: 5px;
+    padding-left: 5px;
+    margin-left: 5px;
+    border: 1px solid #dbdbdb;
 }
 
 .release_requirements {
