@@ -39,6 +39,9 @@ class AccomendationDetailsSimilarContainer extends Component{
     renderIfDataPrepared(){
         // console.log(this.state.recommendationAccs, this.state.suburb, this.props.suburb)
         if(this.state.recommendationAccs.length >=3){
+            console.log(this.state.recommendationAccs.length)
+            const randomValue =Math.floor(Math.random() * (Math.floor(this.state.recommendationAccs.length) - 5) + 0)
+            console.log(randomValue)
             return (
                 <div className="similar">
                     <div className="word_similar">
@@ -47,9 +50,9 @@ class AccomendationDetailsSimilarContainer extends Component{
 
                     <div className="recommand">
                         <ul>
-                            <AccomendationCard property={this.state.recommendationAccs[0]}/>
-                            <AccomendationCard property={this.state.recommendationAccs[1]}/>
-                            <AccomendationCard property={this.state.recommendationAccs[2]}/>
+                            <AccomendationCard property={this.state.recommendationAccs[randomValue]}/>
+                            <AccomendationCard property={this.state.recommendationAccs[randomValue+1]}/>
+                            <AccomendationCard property={this.state.recommendationAccs[randomValue+2]}/>
                         </ul>
                     </div>
                 </div>

@@ -66,11 +66,12 @@ class ProviderReleaseInformationContainer extends Component{
                             </tr>
                         </tbody> 
                         {this.renderIfPropertyListNotEmpty()}
-                        
+
                     </table>
                 </div>
                 </div>
             </div>
+            
         </div>
         )
     }

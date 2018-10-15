@@ -8,7 +8,7 @@ class UserProfileForm extends Component{
     constructor(props){
         super(props)
         this.state = {
-            profileState: "provider",
+            profileState: "traveller",
             name: null,
             gender: null,
             email: null,

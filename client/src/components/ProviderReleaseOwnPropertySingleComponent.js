@@ -30,7 +30,7 @@ class ProviderReleaseOwnPropertySingleComponent extends Component{
         let endTime = this.refs.endTime.value;
         let price = this.refs.price.value;
         console.log(startTime,endTime,price)
-        if(this.state.dropDownState === true && this.stateproperty_id !== null){
+        if(this.state.dropDownState === true && this.state.property_id !== null){
             let url = '/api/accommodation/new';
             let data = {
                 property: this.state.property_id,
@@ -47,7 +47,7 @@ class ProviderReleaseOwnPropertySingleComponent extends Component{
             }
             }).then(res => res.json())
             .then(response => alert('Accomendation Spare Time has been added!', JSON.stringify(response)))
-            // .then(window.location.href="./provider")
+            .then(window.location.href="./provider")
             .catch(error => console.error('Error:', error));
         }else{
             alert('Please choose one property to add to pending list!')

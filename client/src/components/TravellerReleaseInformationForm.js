@@ -12,7 +12,46 @@ class TravellerReleaseInformationForm extends Component{
         }
     }
 
+
+    handleSubmit(e){
+        e.preventDefault()
+        // if(this.state.capacity !== "" && this.state.suburb !== "" & this.state.postcode !== "" 
+        // & this.state.startTime !== "" &&){
+        //     let address = this.refs.address.value;
+        //     let suburb = this.refs.suburb.value;
+        //     let postcode = this.refs.postcode.value;
+        //     let capacity = this.refs.capacity.value;
+        //     let owner = localStorage.getItem("uid")
+        //     if(this.state.dropDownState === true && this.stateproperty_id !== null){
+        //         let url = '/api/property/new';
+        //         let data = {
+        //             address: address,
+        //             suburb: suburb,
+        //             postcode: postcode,
+        //             capacity: capacity,
+        //             owner: owner
+        //         };
+        //         console.log(JSON.stringify(data))
+        //         fetch(url, {
+        //         method: 'POST', 
+        //         body: JSON.stringify(data),
+        //         headers:{
+        //             'Content-Type': 'application/json'
+        //         }
+        //         }).then(res => res.json())
+        //         .then(response => alert('New Property Information Released!', JSON.stringify(response)))
+        //         .then(window.location.href="./provider")
+        //         .catch(error => console.error('Error:', error));
+        //     }else{
+        //         alert('Please choose one property to add to pending list!')
+        //     }
+        // }
+    }
+
+
+
     render() {
+        console.log(this.state)
         return (
             <div id="contact" className="section">
                 <div className="container">
@@ -27,8 +66,8 @@ class TravellerReleaseInformationForm extends Component{
                     <div className="release_requirements">
                         <form action="/" method="post" className="requirements_input_form">
                             <div className="input_group">
-                                <label className="requirements_surburb">Surburb:</label>
-                                <input type="text" className="requirements_surburb_input" name="surburb" required/>
+                                <label className="requirements_surburb">Suburb:</label>
+                                <input type="text" className="requirements_surburb_input" name="suburb" required/>
                             </div>
                             <div className="input_group">
                                 <label className="requirements_postcode">Postcode:</label>
