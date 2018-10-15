@@ -779,6 +779,8 @@ app.post('/api/travelerReq', (req, res) => {
   let minPrice = parseInt(req.body.minPrice);
   let maxPrice = parseInt(req.body.maxPrice);
   let comment = req.body.comment; // special requirements
+  let startDate = new Date(req.body.startDate);
+  let endDate = new Date(req.body.endDate);
   const travelerReq = new travelerReqModel({
     user: user,
     suburb: suburb,
@@ -786,7 +788,9 @@ app.post('/api/travelerReq', (req, res) => {
     capacity: capacity,
     minPrice: minPrice,
     maxPrice: maxPrice,
-    comment: comment
+    comment: comment,
+    startDate: startDate,
+    endDate: endDate
   })
   travelerReq
   .save(function(err, docs){
