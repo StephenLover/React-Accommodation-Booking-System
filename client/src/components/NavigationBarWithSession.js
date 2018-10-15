@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
 
 class NavigationBarWithSession extends Component{
     constructor(props){
         super(props)
         this.state = {
+            selectorState: "Traveller",
             firstName : "",
             keywords: "",
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSelectorChange = this.handleSelectorChange.bind(this);
     }
 
     componentWillMount(props){
@@ -27,11 +28,24 @@ class NavigationBarWithSession extends Component{
     handleSubmit(event){
         // alert(this.state.keywords);
         event.preventDefault();
-        localStorage.setItem('keywords', this.state.keywords);
-        window.location.href="http://localhost:3000/search"
+        if(this.state.selectorState === "Traveller"){
+            localStorage.setItem('keywords', this.state.keywords);
+            window.location.href="http://localhost:3000/search"
+        }else if(this.state.selectorState === "Provider"){
+            localStorage.setItem('keywords', this.state.keywords);
+            window.location.href="http://localhost:3000/requirements"
+        }
     }
 
+    handleSelectorChange(event){
+        this.setState({
+            selectorState: event.target.value
+        });
+    }
+
+
     render() {
+        console.log(this.state)
         return (
             <div>
                 <header id="header" className="transparent-nav">
@@ -47,8 +61,8 @@ class NavigationBarWithSession extends Component{
                                     {/* <!-- <h1>LOGO</h1> --> */}
                                 </a>
                                 <div className="change">
-                                    <select name="change_user" className="change_user">
-                                        <option value="traveller">Traveller</option>
+                                    <select name="change_user" className="change_user" value={this.state.selectorState} onChange={this.handleSelectorChange}>
+                                        <option value="Traveller">Traveller</option>
                                         <option value="Provider">Provider</option>
                                     </select>
                                 </div>

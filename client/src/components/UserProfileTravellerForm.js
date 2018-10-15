@@ -94,7 +94,8 @@ class UserProfileTravellerForm extends Component{
                 traveler: localStorage.getItem('uid'),
                 accommodationId: this.state.travellerHistory[this.state.reviewFormIndex]['accommodationId']['_id'],
                 review : this.state.reviewFormInput,
-                star : this.state.reviewFormMark
+                star : this.state.reviewFormMark,
+                property: this.state.travellerHistory[this.state.reviewFormIndex]['accommodationId']['property']['_id'],
             };
             console.log(JSON.stringify(data))
             fetch(url, {
