@@ -13,7 +13,8 @@ import WatchingListPage from './pages/WatchingListPage';
 import PendingListPage from './pages/PendingListPage';
 import UserProfilePage from './pages/UserProfilePage';
 import ProviderReleasePropertyPage from './pages/ProviderReleasePropertyPage';
-import TravellerReleaseRentalInfoPage from './pages/TravellerReleaseRentalInfoPage'
+import TravellerReleaseRentalInfoPage from './pages/TravellerReleaseRentalInfoPage';
+import RequirementsPage from './pages/RequirementsPage';
 // import NotFound from './Pages/notFound';    //TODO : 404 bug need to fix
 
 import '../src/css/style.css';
@@ -29,6 +30,7 @@ const AppRouter = () =>
             <Route exact path = "/signup" component={SignUpPage} />
             <Route exact path = "/accommodation/:id" component={AccommodationDetailsPage}/>
             <Route exact path = "/search" component={SearchResultPage} />
+            <Route exact path = "/requirements" component={RequirementsPage} />
             <Route exact path = "/watching" component={WatchingListPage} />
             <Route exact path = "/pendinglist" component={PendingListPage} />
             <Route exact path = "/profile" component={UserProfilePage} />
