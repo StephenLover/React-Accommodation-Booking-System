@@ -10,6 +10,8 @@ let travelerReqSchema = new Schema({
     suburb: String,
     postcode: Number,
     capacity: Number,
+    startDate: Date,
+    endDate: Date,
     minPrice: Number,
     maxPrice: Number,
     comment: String
