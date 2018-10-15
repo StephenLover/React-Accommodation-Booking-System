@@ -63,19 +63,24 @@ class AccomendationDetailsCard extends Component{
 
     addToWatchingList(e){
         e.preventDefault();
-        let url = '/api/add2watching';
-        let data = {_id: localStorage.getItem('uid'), accId: this.state.accId};
-        console.log(JSON.stringify(data))
-        fetch(url, {
-        method: 'POST', 
-        body: JSON.stringify(data),
-        headers:{
-            'Content-Type': 'application/json'
-        }
-        }).then(res => res.json())
-        .then(response => alert('The property has been added to watching list!'))
-        .catch(error => console.error('Error:', error));
 
+        if(localStorage.getItem('uid') === null){
+            alert('Please Login in First!');
+            window.location.href="/login"
+        }else{
+            let url = '/api/add2watching';
+            let data = {_id: localStorage.getItem('uid'), accId: this.state.accId};
+            console.log(JSON.stringify(data))
+            fetch(url, {
+            method: 'POST', 
+            body: JSON.stringify(data),
+            headers:{
+                'Content-Type': 'application/json'
+            }
+            }).then(res => res.json())
+            .then(response => alert('The property has been added to watching list!'))
+            .catch(error => console.error('Error:', error));
+        }
     }
 
     googleComponentRender(){
@@ -92,7 +97,7 @@ class AccomendationDetailsCard extends Component{
     }
 
     render() {
-        console.log(this.state.reviewList)
+        console.log(this.state)
         return (
             <div>
                 <div id="contact" className="section">
@@ -159,7 +164,7 @@ class AccomendationDetailsCard extends Component{
                                     </tbody>
                                 </table>
                                     <div className="map">
-                                        {/* {this.googleComponentRender()} */}
+                                        {this.googleComponentRender()}
                                     </div>
                                         <form action="/" method="post" className="add_to_wl">
                                             <div className="add_to_wl_button">

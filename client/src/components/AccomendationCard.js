@@ -17,7 +17,7 @@ class AccomendationCard extends Component{
             suburb: this.props.property.property.suburb,
             picture: this.props.property.property.pictures[0],
             acc_id: this.props.property._id,
-            rank : (Math.random() * (5-3)+3).toFixed(1).toString() + '/5.0',
+            rank : this.props.property.property.avgStar,
             availableTime: this.props.property.startDate.slice(0,-14) +" to " + this.props.property.endDate.slice(0,-14),
         }
     }
@@ -25,6 +25,7 @@ class AccomendationCard extends Component{
 
 
     render() {
+        console.log(this.props.property)
         const href_acc = '/accommodation/' + this.state.property_id
         return (
             <div className="similar_card">
@@ -45,7 +46,7 @@ class AccomendationCard extends Component{
                             <span id="accomondation_time">Spare: {this.state.availableTime}</span>
                         </div>
                         <div className="acc_rank">
-                            <span id="accomondation_rank">Rating: {this.state.rank}</span>
+                            <span id="accomondation_rank">Rating: {this.state.rank !== 0 ? this.state.rank.toFixed(1) +  " / 5.0": "Not Marked"}</span>
                             <img src={require("../img/stars.png")} alt='star' className="rank_star"/>  
                         </div>
                     </div>

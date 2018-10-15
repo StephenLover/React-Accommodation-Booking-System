@@ -15,11 +15,14 @@ class RecommendationForm extends Component{
         .then(response => response.json())
         .then(res => {
             this.setState({
-                recommendationAccs : res,
+                recommendationAccs : res.sort((a,b) =>{
+                    return b.property.avgStar - a.property.avgStar
+                }),
             })
         })
         .catch((err) => {console.log(err)})
     }
+
 
     testIfNone(){       
         if (this.state.recommendationAccs[0] !== undefined){
@@ -28,12 +31,12 @@ class RecommendationForm extends Component{
                 <div className="row">
                     <div className="recommand">
                         <ul>
+                            <AccomendationCard property={this.state.recommendationAccs[0]}/>
+                            <AccomendationCard property={this.state.recommendationAccs[1]}/>
                             <AccomendationCard property={this.state.recommendationAccs[2]}/>
-                            <AccomendationCard property={this.state.recommendationAccs[11]}/>
-                            <AccomendationCard property={this.state.recommendationAccs[12]}/>
+                            <AccomendationCard property={this.state.recommendationAccs[3]}/>
                             <AccomendationCard property={this.state.recommendationAccs[4]}/>
-                            <AccomendationCard property={this.state.recommendationAccs[13]}/>
-                            <AccomendationCard property={this.state.recommendationAccs[6]}/>
+                            <AccomendationCard property={this.state.recommendationAccs[5]}/>
                         </ul>
                     </div>
                 </div>         

@@ -30,7 +30,7 @@ class HomePageAdvertisementContainer extends Component{
                 price={singleProperty.price} pictures={singleProperty.property.pictures}
                 property_id={singleProperty.property._id} accId={singleProperty._id}
                 startTime={singleProperty.startDate.slice(0,10)}
-                endTime={singleProperty.endDate.slice(0, 10)}
+                endTime={singleProperty.endDate.slice(0, 10)} avgStar={singleProperty.property.avgStar}
                 />
             ))
         }
