@@ -6,12 +6,11 @@ class RecommendationForm extends Component{
         super(props)
         this.state = {
             recommendationAccs : [],
-            suburb : "Randwick"
         }
     }
 
     componentWillMount(){
-        fetch(`/api/search/suburb/${this.state.suburb}`)
+        fetch(`/api/toprated`)
         .then(response => response.json())
         .then(res => {
             this.setState({
