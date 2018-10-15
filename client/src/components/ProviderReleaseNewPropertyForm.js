@@ -34,7 +34,7 @@ class ProviderReleaseNewPropertyForm extends Component{
 
     handleSubmit(e){
         e.preventDefault()
-        if(this.state.address !== "" && this.state.suburb !== "" & this.state.postcode !== ""){
+        if(this.state.address !== "" && this.state.suburb !== "" && this.state.postcode !== ""){
             let address = this.refs.address.value;
             let suburb = this.refs.suburb.value;
             let postcode = this.refs.postcode.value;

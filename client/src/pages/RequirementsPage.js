@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import NavigationBarWithoutSession from '../components/NavigationBarWithoutSession';
 import NavigationBarWithSession from '../components/NavigationBarWithSession';
 import HomePageFooter from '../components/HomePageFooter';
+import RequirementPostsForm from '../components/RequirementPostsForm';
 
 const RequirementsPageHeader = () => {
     return (
@@ -27,6 +28,8 @@ class RequirementsPage extends Component {
                 <RequirementsPageHeader/>
 
                 {localStorage.getItem('session-firstName') === null ? <NavigationBarWithoutSession/> : <NavigationBarWithSession/>}
+
+                <RequirementPostsForm/>
 
                 <HomePageFooter/>
             </div>
