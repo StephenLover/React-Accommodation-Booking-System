@@ -200,7 +200,7 @@ app.get('/api/search/travelerReq/postcode/:id', (req, res) => {
     )
 
     travelerReqModel
-    .find({'postcode': parseInt(req.params._id)})
+    .find({'postcode': parseInt(req.params.id)})
     .exec(function(err, docs){
       if (err) {
         console.log(err);
@@ -224,7 +224,7 @@ app.get('/api/search/travelerReq/suburb/:id', (req, res) => {
     )
 
     travelerReqModel
-    .find({'suburb': req.params.suburb})
+    .find({'suburb': req.params.id})
     .exec(function(err, docs){
       if (err) {
         console.log(err);
@@ -781,6 +781,7 @@ app.post('/api/travelerReq', (req, res) => {
   let comment = req.body.comment; // special requirements
   let startDate = new Date(req.body.startDate);
   let endDate = new Date(req.body.endDate);
+  console.log(req.body)
   const travelerReq = new travelerReqModel({
     user: user,
     suburb: suburb,

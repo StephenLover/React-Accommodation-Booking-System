@@ -3,7 +3,6 @@ let validator = require('validator');
 let Schema = mongoose.Schema;
 
 let travelerReqSchema = new Schema({
-    _id: Number,
     user: {
         type: String, ref: 'User'
     },

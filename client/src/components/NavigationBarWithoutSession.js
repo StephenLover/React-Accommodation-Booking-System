@@ -26,8 +26,13 @@ class NavigationBarWithoutSession extends Component{
     handleSubmit(event){
         // alert(this.state.keywords);
         event.preventDefault();
-        localStorage.setItem('keywords', this.state.keywords);
-        window.location.href="http://localhost:3000/search"
+        if(this.state.selectorState === "Traveller"){
+            localStorage.setItem('keywords', this.state.keywords);
+            window.location.href="http://localhost:3000/search"
+        }else if(this.state.selectorState === "Provider"){
+            localStorage.setItem('keywords', this.state.keywords);
+            window.location.href="http://localhost:3000/requirements"
+        }
     }
 
 

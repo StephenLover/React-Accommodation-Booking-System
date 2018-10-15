@@ -7,29 +7,51 @@ class RequirementPostsForm extends Component{
         this.state = {
             requirementsPostList : null,
         }
+        this.renderIfPropertyListNotEmpty = this.renderIfPropertyListNotEmpty.bind(this);
     }
 
 
     componentWillMount(){
-        fetch(`/api/search/travelerReq/suburb/${localStorage.getItem('keywords')}`)
-        .then(response => response.json())
-        .then(res => {
-            console.log(res)
-            this.setState({
-                requirementsPostList : res
-            })
-        })
-        .catch((err) => {console.log(err)})
+
+        if(localStorage.getItem('keywords') !== undefined){
+            if(/^-{0,1}\d+$/.test(localStorage.getItem('keywords')) === false){
+                fetch(`/api/search/travelerReq/suburb/${localStorage.getItem('keywords')}`)
+                .then(response => response.json())
+                .then(res => {
+                    this.setState({
+                        // comments: res.property.comments,
+                        requirementsPostList : res,
+                    })
+                })
+                .catch((err) => {console.log(err)})
+            }else{
+                fetch(`/api/search/travelerReq/postcode/${localStorage.getItem('keywords')}`)
+                .then(response => response.json())
+                .then(res => {
+                    this.setState({
+                        // comments: res.property.comments,
+                        requirementsPostList : res,
+                    })
+                })
+                .catch((err) => {console.log(err)})
+            }
+        }
     }
 
-    // renderIfPropertyListNotEmpty(){
-    //     if(this.state.propertyList !== null){
-    //         return (
-                    
-    //             ))
-    //         )
-    //     }
-    // }
+    renderIfPropertyListNotEmpty(){
+        if(this.state.requirementsPostList !== null){
+            return (
+                    this.state.requirementsPostList.map((singleRecord,index) => (
+                        <RequirementPostSingle key={index} suburb={singleRecord.suburb}
+                        postcode={singleRecord.postcode} capacity={singleRecord.capacity}
+                        startDate={singleRecord.startDate} endDate={singleRecord.endDate}
+                        minPrice={singleRecord.minPrice} maxPrice={singleRecord.maxPrice}
+                        />
+                    ))
+                )
+            }
+        }
+    
 
     render() {
         console.log(this.state)
@@ -52,7 +74,7 @@ class RequirementPostsForm extends Component{
                                         <td width="10%">Min Price</td>
                                         <td width="10%">Max Time</td>
                                     </tr>
-                                    <RequirementPostSingle/>
+                                    {this.renderIfPropertyListNotEmpty()}
                                 </tbody>
                             </table>
                         </div>

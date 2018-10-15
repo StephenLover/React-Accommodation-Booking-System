@@ -66,7 +66,6 @@ class Database{
       watching_list: [acc]
   })
   let travelerReq = new travelerReqModel({
-    _id: 0,
     user: user,
     minPrice: 20,
     maxPrice: 100,
