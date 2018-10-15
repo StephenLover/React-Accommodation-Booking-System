@@ -1138,3 +1138,18 @@ table {
 .requirements_capacity_button {
     width: 410px;
 }
+
+/* Accomondation Needed Requirements */
+
+.word_requirements {
+    margin-top: 150px;
+    text-align: center;
+}
+
+.information {
+    margin-top: 40px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+

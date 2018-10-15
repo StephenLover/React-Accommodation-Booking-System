@@ -276,7 +276,7 @@ image_container {
 .acc_name {
     margin-top: 5px;
     color: #959596;
-    font-size: 25px;
+    font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -1138,3 +1138,18 @@ table {
 .requirements_capacity_button {
     width: 410px;
 }
+
+/* Accomondation Needed Requirements */
+
+.word_requirements {
+    margin-top: 150px;
+    text-align: center;
+}
+
+.information {
+    margin-top: 40px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+
