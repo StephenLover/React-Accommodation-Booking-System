@@ -39,7 +39,7 @@ class RequirementPostsForm extends Component{
     }
 
     renderIfPropertyListNotEmpty(){
-        if(this.state.requirementsPostList !== null){
+        if(this.state.requirementsPostList !== null && this.state.requirementsPostList[0]._id !== null){
             return (
                     this.state.requirementsPostList.map((singleRecord,index) => (
                         <RequirementPostSingle key={index} suburb={singleRecord.suburb}

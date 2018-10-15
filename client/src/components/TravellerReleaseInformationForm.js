@@ -69,7 +69,7 @@ class TravellerReleaseInformationForm extends Component{
                 }
                 }).then(res => res.json())
                 .then(response => alert('Your requirement has been post!', JSON.stringify(response)))
-                // .then(window.location.href="./provider")
+                .then(window.location.href="http://localhost:3000/profile")
                 .catch(error => console.error('Error:', error));
             }else{
                 alert('Please choose one property to add to pending list!')
