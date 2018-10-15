@@ -11,11 +11,12 @@ class RequirementPostsForm extends Component{
 
 
     componentWillMount(){
-        fetch(`/api/property/${localStorage.getItem('uid')}`)
+        fetch(`/api/search/travelerReq/suburb/${localStorage.getItem('keywords')}`)
         .then(response => response.json())
         .then(res => {
+            console.log(res)
             this.setState({
-                propertyList : res
+                requirementsPostList : res
             })
         })
         .catch((err) => {console.log(err)})

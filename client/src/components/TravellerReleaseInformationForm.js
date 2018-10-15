@@ -14,6 +14,7 @@ class TravellerReleaseInformationForm extends Component{
             advancedDetails: null,
         }
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleInputChange(e){
@@ -40,24 +41,24 @@ class TravellerReleaseInformationForm extends Component{
             let suburb = this.refs.suburb.value;
             let postcode = this.refs.postcode.value;
             let capacity = this.refs.capacity.value;
-            let owner = localStorage.getItem("uid");
-            let startTime = this.ref.startTime.value;
-            let endtime = this.ref.endtime.value;
-            let minPrice = this.ref.minPrice.value;
-            let maxPrice = this.ref.maxPrice.value;
-            let comment = this.ref.advancedDetails.value;
-            if(this.state.dropDownState === true && this.stateproperty_id !== null){
+            let user = localStorage.getItem("uid");
+            let startDate = this.refs.startTime.value;
+            let endDate = this.refs.endTime.value;
+            let minPrice = this.refs.minPrice.value;
+            let maxPrice = this.refs.maxPrice.value;
+            let comment = this.refs.advancedDetails.value;
+            if(this.state.user !== ""){
                 let url = '/api/travelerReq';
                 let data = {
-                    owner : owner,
+                    user: user,
                     suburb: suburb,
                     postcode: postcode,
                     capacity: capacity,
-                    startTime: startTime,
-                    endtime: endtime,
-                    minPrice : minPrice,
-                    maxPrice : maxPrice,
-                    comment: comment
+                    minPrice: minPrice,
+                    maxPrice: maxPrice,
+                    comment: comment,
+                    startDate: startDate,
+                    endDate: endDate
                 };
                 console.log(JSON.stringify(data))
                 fetch(url, {
@@ -67,8 +68,8 @@ class TravellerReleaseInformationForm extends Component{
                     'Content-Type': 'application/json'
                 }
                 }).then(res => res.json())
-                .then(response => alert('New Property Information Released!', JSON.stringify(response)))
-                .then(window.location.href="./provider")
+                .then(response => alert('Your requirement has been post!', JSON.stringify(response)))
+                // .then(window.location.href="./provider")
                 .catch(error => console.error('Error:', error));
             }else{
                 alert('Please choose one property to add to pending list!')
@@ -121,22 +122,22 @@ class TravellerReleaseInformationForm extends Component{
                             </div>
                             <div className="input_group">
                                 <label className="requirements_end_time">End Time:</label>
-                                <input type="text" className="requirements_end_time_input" name="endtime" placeholder="YYYY-MM-DD" ref="endTime"  onChange={this.handleInputChange} required/>
+                                <input type="text" className="requirements_end_time_input" name="endTime" placeholder="YYYY-MM-DD" ref="endTime"  onChange={this.handleInputChange} required/>
                             </div>
                             <div className="input_group">
                                 <label className="requirements_min_price">Min Price:</label>
-                                <input type="text" className="requirements_min_price_input" name="endtime" placeholder="Whole Number" ref="minPrice"  onChange={this.handleInputChange} required/>
+                                <input type="text" className="requirements_min_price_input" name="minPrice" placeholder="Whole Number" ref="minPrice"  onChange={this.handleInputChange} required/>
                             </div>
                             <div className="input_group">
                                 <label className="requirements_max_price">Max Price:</label>
-                                <input type="text" className="requirements_max_price_input" name="endtime" placeholder="Whole Number" ref="maxPrice"  onChange={this.handleInputChange} required/>
+                                <input type="text" className="requirements_max_price_input" name="maxPrice" placeholder="Whole Number" ref="maxPrice"  onChange={this.handleInputChange} required/>
                             </div>
                             <div className="input_group">
                                 <label className="requirements_advanced_details">Advanced Details:</label>
-                                <textarea className="requirements_advanced_details_input" cols="43" rows="3" ref="advancedDetails"  onChange={this.handleInputChange} ></textarea>
+                                <textarea className="requirements_advanced_details_input" cols="43" rows="3" ref="advancedDetails" name="advancedDetails" onChange={this.handleInputChange} ></textarea>
                             </div>
                             <div className="property_submit">
-                                <button type="submit" className="add_button">Submit</button>
+                                <button type="submit" className="add_button" onClick={this.handleSubmit}>Submit</button>
                                 <a href="/profile" target="_parent" className="add_button">Back</a>
                             </div>
                         </form>

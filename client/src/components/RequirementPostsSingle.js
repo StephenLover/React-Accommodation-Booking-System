@@ -17,14 +17,14 @@ class RequirementPostsForm extends Component{
 
 
     componentWillMount(){
-        fetch(`/api/property/${localStorage.getItem('uid')}`)
-        .then(response => response.json())
-        .then(res => {
-            this.setState({
-                propertyList : res
-            })
-        })
-        .catch((err) => {console.log(err)})
+        // fetch(`/api/property/${localStorage.getItem('uid')}`)
+        // .then(response => response.json())
+        // .then(res => {
+        //     this.setState({
+        //         propertyList : res
+        //     })
+        // })
+        // .catch((err) => {console.log(err)})
     }
 
     // renderIfPropertyListNotEmpty(){
