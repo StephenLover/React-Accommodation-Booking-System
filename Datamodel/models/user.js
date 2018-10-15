@@ -20,6 +20,7 @@ let userSchema = new Schema({
   lastName: String,
   gender: String,
   phone: Number,
+  avatar: String
 })
 userSchema.virtual('fullName').get(function() {
   return this.firstName + ' ' + this.lastName
