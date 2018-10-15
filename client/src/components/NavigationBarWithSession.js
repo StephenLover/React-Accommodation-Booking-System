@@ -65,7 +65,7 @@ class NavigationBarWithSession extends Component{
                                 <li>
                                     <button type="submit" className="search_button_se" >Search</button>
                                 </li>
-                                <li><img src={require(`../img/Astrid_1.ico`)} className="user_img"/></li>
+                                <li><img src={require(`../img/Astrid_2.ico`)} className="user_img"/></li>
                                 <li className="dropdown"><a href="#" id="Username">{this.state.firstName}</a>
                                 <ul className="dropdown_content">
                                     <li><a href="/profile" target="_parent">Personal Profile</a></li>

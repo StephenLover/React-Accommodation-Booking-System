@@ -95,6 +95,18 @@ class TravellerReleaseInformationForm extends Component{
                                 <label className="requirements_end_time">End Time:</label>
                                 <input type="text" className="requirements_end_time_input" name="endtime" placeholder="YYYY-MM-DD" required/>
                             </div>
+                            <div className="input_group">
+                                <label className="requirements_min_price">Min Price:</label>
+                                <input type="text" className="requirements_min_price_input" name="endtime" placeholder="Whole Number" required/>
+                            </div>
+                            <div className="input_group">
+                                <label className="requirements_max_price">Max Price:</label>
+                                <input type="text" className="requirements_max_price_input" name="endtime" placeholder="Whole Number" required/>
+                            </div>
+                            <div className="input_group">
+                                <label className="requirements_advanced_details">Advanced Details:</label>
+                                <textarea className="requirements_advanced_details_input" cols="43" rows="3"></textarea>
+                            </div>
                             <div className="property_submit">
                                 <button type="submit" className="add_button">Submit</button>
                                 <a href="/profile" target="_parent" className="add_button">Back</a>

@@ -85,6 +85,14 @@ class SearchResultForm extends Component {
             this.setState({
                 recommendationAccs : recommendationAccs
             })
+        }else if(this.state.sortRequirement === 'star_up'){
+            recommendationAccs.sort((a,b) => {
+                return a.property.avgStar - b.property.avgStar
+            })
+        }else if(this.state.sortRequirement === 'star_down'){
+            recommendationAccs.sort((a,b) => {
+                return b.property.avgStar - a.property.avgStar
+            })
         }
     }
 
@@ -139,6 +147,8 @@ class SearchResultForm extends Component {
                                     <option value="price_down" onClick={this.handleSelectorChange}>Price High to Low</option>
                                     <option value="capacity_up" onClick={this.handleSelectorChange}>Capacity Low to High</option>
                                     <option value="capacity_down" onClick={this.handleSelectorChange}>Capacity High to Low</option>
+                                    <option value="star_up" onClick={this.handleSelectorChange}>Rating Low to High</option>
+                                    <option value="star_down" onClick={this.handleSelectorChange}>Rating High to Low</option>
                                 </select>
                             </form>
                         </div>

@@ -8,17 +8,16 @@ class HomePageAdvertisementSingleCard extends Component{
             suburb: this.props.suburb,
             address: this.props.address,
             price: this.props.price,
-            rank: this.props.rank,
             pictures: this.props.pictures,
             property_id : this.props.property_id,
             accId: this.props.accId,
             startTime: this.props.startTime,
-            endTime : this.props.endTime
+            endTime : this.props.endTime,
+            avgStar : this.props.avgStar,
         }
     }
 
     render() {
-        console.log(this.state)
         const href_acc = '/accommodation/' + this.state.property_id
         return (
             <li>
@@ -39,7 +38,7 @@ class HomePageAdvertisementSingleCard extends Component{
                             <span id="accomondation_time">Spare: {this.state.startTime} to {this.state.endTime}</span>
                         </div>
                         <div className="acc_rank">
-                            <span id="accomondation_rank">Rating: {this.state.rank}</span>
+                            <span id="accomondation_rank">Rating: {this.state.avgStar !== 0 ? this.state.avgStar +  " / 5.0": "Not Marked"}</span>
                             <img src={require("../img/stars.png")} alt='star' className="rank_star"/>  
                         </div>
                     </div>
