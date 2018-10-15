@@ -5,6 +5,7 @@ html body {
 }
 
 
+
 /* Navigation Bar */
 #header {
 	position:relative;
@@ -319,6 +320,7 @@ footer {
     font-family: 'Courier New', Courier, monospace;
     color: #FFFFFF;
     height: 400px;
+    margin-top: 60px;
 }
 
 .footer_content {
