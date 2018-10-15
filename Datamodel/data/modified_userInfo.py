@@ -28,7 +28,8 @@ def gene_picture(size):
     print (len(files))
     #files = [f for f in files if "jpg" in f]
 
-    picturesList = random.sample(files, size)
+    #picturesList = random.sample(files, size)
+    picturesList = [os.sep.join([folderName, jpgName]) for jpgName in random.sample(files, size)]
 
     return picturesList
 
