@@ -97,6 +97,7 @@ class TravellerReleaseInformationForm extends Component{
                             </div>
                             <div className="property_submit">
                                 <button type="submit" className="add_button">Submit</button>
+                                <a href="/profile" target="_parent" className="add_button">Back</a>
                             </div>
                         </form>
                     </div>

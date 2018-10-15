@@ -33,6 +33,7 @@ class UserProfilePage extends Component {
 
                 <ProviderReleaseInformationContainer/>
 
+                
                 <HomePageFooter/>
             </div>
         )
