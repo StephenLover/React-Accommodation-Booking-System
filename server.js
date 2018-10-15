@@ -638,8 +638,9 @@ app.post('/api/review/update', (req, res) => {
   )
   let traveler = req.body.traveler; // traveler email
   let accommodationId = req.body.accommodationId;
-  let review = req.body.review
-  let star = req.body.star
+  let review = req.body.review;
+  let star = req.body.star;
+  let property = req.body.property; // property id
   transactionModel
   .findOneAndUpdate({traveler: traveler, accommodationId: accommodationId},
   {'$set': {'review': review, 'star': star, 'reviewDate': Date.now()}},
@@ -650,7 +651,35 @@ app.post('/api/review/update', (req, res) => {
       res.sendStatus(500)
     }
     console.log(docs)
-    return res.status(200).json({status:"ok"})
+    transactionModel
+      .find({}, 'star')
+      .populate({
+        path: 'accommodationId', match: {property: property}, select: '_id'
+      })
+      .exec( function(err, docs){ 
+        if (err){
+            console.log(err)
+        }
+        docs = docs.filter(function(doc){
+          return (doc.accommodationId !== null) && (doc.star !== null);
+        })
+        //console.log('docs',docs)
+        sum = getSum(docs, 'star')
+        let mean = 0
+        if(docs.length !== 0){
+          mean = (sum/docs.length).toFixed(1)
+        }
+        //console.log(i,mean)
+        propertyModel
+        .findOneAndUpdate({'_id': property},
+        {'$set': {'avgStar': mean}},
+        {'new': true})
+        .exec(function(err, results){
+          if(err) {console.log(err)}
+          console.log(results)
+          mongoose.disconnect();
+          return res.status(200).json({status:"ok"})
+        })
   })
 })
 
@@ -796,6 +825,12 @@ app.post('/api/travelerReq', (req, res) => {
     console.log(docs)
   })
 })
+
+function getSum(array, key) {
+  return array.reduce(function (r, a) {
+      return r + a[key];
+  }, 0);
+}
 
 const port = 5000;
 
