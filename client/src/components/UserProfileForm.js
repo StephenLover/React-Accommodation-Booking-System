@@ -140,7 +140,7 @@ class UserProfileForm extends Component{
                     </div>
                     <div className="row">
                         <div className="col-md-6">
-                            <img src={require(`../img/Astrid_1.ico`)} alt="" className="user_profile_img"/>
+                            <img src={require(`../img/Astrid_2.ico`)} alt="" className="user_profile_img"/>
                             <div className="upload">
                                 <input type="button" value="Upload" className="add_button"/>
                             </div>
