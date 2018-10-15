@@ -437,6 +437,7 @@ app.post('/api/pending/cancel', (req, res) => {
   })
 })
 
+// change pending to success
 app.post('/api/pending/success', (req, res) => {
   mongoose.connect(url)
     .then(
