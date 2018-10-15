@@ -66,13 +66,13 @@ class RequirementPostsForm extends Component{
                             <table className="zebra information_table">
                                 <tbody>
                                     <tr className="tablehead">
-                                        <td width="20%">Suburb</td>
-                                        <td width="10%">Postcode</td>
-                                        <td width="10%">Capacity</td>
-                                        <td width="20%">Start Time</td>
-                                        <td width="20%">End Time</td>
-                                        <td width="10%">Min Price</td>
-                                        <td width="10%">Max Time</td>
+                                        <td width="14%">Suburb</td>
+                                        <td width="14%">Postcode</td>
+                                        <td width="14%">Capacity</td>
+                                        <td width="14%">Start Time</td>
+                                        <td width="14%">End Time</td>
+                                        <td width="15%">Min Price</td>
+                                        <td width="15%">Max Time</td>
                                     </tr>
                                     {this.renderIfPropertyListNotEmpty()}
                                 </tbody>
