@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import UserProfileTravellerSingle from '../components/UserProfileTravellerSingle';
 import EditableRatingReact from '../components/EditableRatingReact';
 import NonEditableRatingReact from '../components/NonEditableRatingReact';
+import { CLIENT_RENEG_LIMIT } from 'tls';
 
 class UserProfileTravellerForm extends Component{
     constructor(props){
@@ -29,6 +30,7 @@ class UserProfileTravellerForm extends Component{
         fetch(`api/history/traveler/${localStorage.getItem('uid')}`)
         .then(response => response.json())
         .then(res => {
+            console.log(res)
             this.setState({
                 travellerHistory : res
             })
@@ -106,7 +108,7 @@ class UserProfileTravellerForm extends Component{
             }
             }).then(res => res.json())
             .then(response => alert('Review Success!', JSON.stringify(response)))
-            .then(window.location.href="./watching")
+            .then(window.location.href="./profile")
             .catch(error => console.error('Error:', error));
         }
     }
