@@ -48,11 +48,22 @@ class AccomendationDetailsCard extends Component{
                 longitude : res[0].accommodationId.property.longitude,
                 latitude :res[0].accommodationId.property.latitude,
                 pictures: res[0].accommodationId.property.pictures,
-                startTime: res[0].accommodationId.startDate.slice(0,-14),
-                endTime: res[0].accommodationId.endDate.slice(0,-14),
+                // startTime: res[0].accommodationId.startDate.slice(0,-14),
+                // endTime: res[0].accommodationId.endDate.slice(0,-14),
                 accId : this.props.accId,
                 //property_id : this.props.accId,
                 reviewList : res,
+            })
+        })
+        .catch((err) => {console.log(err)})
+
+        fetch(`/api/acc/${this.props.accId}`)
+        .then(res => res.json())
+        .then(res => {
+            console.log('ressss', res)
+            this.setState({
+                startTime: res.startDate.slice(0,-14),
+                endTime: res.endDate.slice(0,-14),
             })
         })
         .catch((err) => {console.log(err)})

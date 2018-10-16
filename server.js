@@ -342,6 +342,24 @@ app.get('/api/accommodation/:id', (req, res) => {
   })
 });
 
+// get startdate and enddate of accommodation
+app.get('/api/acc/:id', (req, res) => {
+  mongoose.connect(url)
+    .then(
+      () => {
+        console.log('/api/acc/ connects successfully')
+      },
+      err => console.log(err)
+    )
+  accommodationModel
+  .find({'_id': parseInt(req.params.id)}, 'startDate endDate')
+  .exec(function(err, docs){
+    if(err) {console.log(err)}
+    console.log(docs)
+    res.json(docs[0])
+  })
+})
+
 // add accommodation to watching list
 app.post('/api/add2watching', (req, res) => {
   mongoose.connect(url)
