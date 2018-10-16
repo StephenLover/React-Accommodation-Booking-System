@@ -8,14 +8,25 @@ class WatchingListForm extends Component {
             toggledProperty : {},
             watchingList: [],
             formTicked: false,
+            pendingList: null,
         }
         this.renderMulitipleRecords = this.renderMulitipleRecords.bind(this);
         // this.fetchMulitipleRecords = this.fetchMulitipleRecords.bind(this);
         this.handleChangeClick = this.handleChangeClick.bind(this);
         this.handleSubmitToPendingList = this.handleSubmitToPendingList.bind(this);
+        this.handleJumpToPendingList = this.handleJumpToPendingList.bind(this);
     }
 
     componentWillMount(){
+        fetch(`/api/pending/${localStorage.getItem('uid')}`)
+        .then(response => response.json())
+        .then(res => {
+            this.setState({
+                pendingList : res
+            })
+        })
+        .catch((err) => {console.log(err)})
+
         fetch(`/api/watching/${localStorage.getItem('uid')}`)
         .then(response => response.json())
         .then(res => {
@@ -26,11 +37,11 @@ class WatchingListForm extends Component {
         .catch((err) => {console.log(err)})
     }
 
-    componentDidUpdate(prevState, prevProps){
-        if(prevState.formTicked !== this.state.formTicked){
+    // componentDidUpdate(prevState, prevProps){
+    //     if(prevState.formTicked !== this.state.formTicked){
 
-        }
-    }
+    //     }
+    // }
 
     renderMulitipleRecords(){
         if(this.state.watchingList.length !== 0 && this.state.watchingList !== undefined & this.state.watchingList !== []){
@@ -62,7 +73,12 @@ class WatchingListForm extends Component {
         }
     }
 
-    
+    handleJumpToPendingList(e){
+        e.preventDefault();
+        window.location.href="/pendinglist";
+
+    }
+
 
     handleSubmitToPendingList(e) {
         e.preventDefault();
@@ -112,7 +128,10 @@ class WatchingListForm extends Component {
                                     </table>
 
                                     <div className="button_part">
-                                        <button type="submit" className="add_button" onClick={this.handleSubmitToPendingList}>Add to Pending List</button>
+                                        {this.state.pendingList === false && this.state.pendingList !== null ? <button onClick={this.handleJumpToPendingList} style={{color : "red"}} className="add_button" >Please check your transaction in Pending List</button> : 
+                                        <button type="submit" className="add_button" onClick={this.handleSubmitToPendingList}>Add to Pending List</button>}
+
+                                       
                                         <a href="/" className="add_button">Back</a>
                                     </div>
                                 </form>
