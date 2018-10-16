@@ -524,7 +524,7 @@ app.post('/api/pending/cancel', (req, res) => {
   let accId = parseInt(req.body.accommodationId) //accid
   console.log('acc',accId)
   transactionModel
-  .findOneAndUpdate({'traveler': traveler, 'accommodationId': accId},
+  .findOneAndUpdate({'traveler': traveler, 'accommodationId': accId, 'status': 'pending'},
   {'$set': {'status': 'cancel'}},
   {"new": true })
   .exec(function(err, docs){
@@ -557,7 +557,7 @@ app.post('/api/pending/success', (req, res) => {
   let accId = parseInt(req.body.accommodationId) //accid
   console.log('acc',accId)
   transactionModel
-  .findOneAndUpdate({'traveler': traveler, 'accommodationId': accId},
+  .findOneAndUpdate({'traveler': traveler, 'accommodationId': accId, 'status': 'pending'},
   {'$set': {'status': 'success'}},
   {"new": true })
   .exec(function(err, docs){
