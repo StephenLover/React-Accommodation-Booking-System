@@ -44,17 +44,19 @@ class UserProfileTravellerSingle extends Component{
     }
 
   render() {
-    const { suburb, price, address, startTime, endTime ,review, status, star} = this.props;
+    console.log(this.props.accId)
+    const { suburb, price, address, startTime, endTime ,review, status, star, accId} = this.props;
     const statusObj = {
         pending : 'Pending',
         success : 'Finished',
         cancel: 'Cancelled'
     }
+    const hrefLink = '/accommodation/' + this.props.accId
     return (                
             <tr>
                 <td width="15%">{suburb}</td>
                 <td width="15%">{price} AUD</td>
-                <td width="20%">{address}</td>
+                <a className="profilelink" href={hrefLink}><td width="20%">{address}</td></a>
                 <td width="15%">{startTime}</td>
                 <td width="15%">{endTime}</td>
                 <td width="5%">{statusObj[status]}</td>
