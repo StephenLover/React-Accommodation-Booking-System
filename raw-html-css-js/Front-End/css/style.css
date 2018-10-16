@@ -1146,6 +1146,10 @@ table {
     text-align: center;
 }
 
+.informaiton_table {
+    width: 100%;
+}
+
 .information {
     margin-top: 40px;
     width: 100%;

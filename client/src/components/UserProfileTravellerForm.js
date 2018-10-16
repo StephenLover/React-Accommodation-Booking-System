@@ -46,7 +46,7 @@ class UserProfileTravellerForm extends Component{
                  endTime={singleRecord.accommodationId.endDate.slice(0,-14)} review={singleRecord.review} star={singleRecord.star}
                  status={singleRecord.status}
                  handleClickReviewButton={this.handleClickReviewButton.bind(this)} reviewFormStatus={this.state.reviewFormStatus}
-                 reviewFormIndex={index} accId={singleRecord.accommodationId.property._id}
+                 reviewFormIndex={index} accId={singleRecord.accommodationId.property._id} property_id={singleRecord.accommodationId._id}
             />))
         }
     }

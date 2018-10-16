@@ -51,7 +51,7 @@ class RecommendationForm extends Component{
                 <div id="contact" className="section">
                     <div className="container">
                         <div className="word">
-                            <h4>Top-rated Accomendation in {this.state.suburb} :</h4> 
+                            <h4>Top-rated Accomendation :</h4> 
                         </div>
                         {this.testIfNone()}            
                     </div>

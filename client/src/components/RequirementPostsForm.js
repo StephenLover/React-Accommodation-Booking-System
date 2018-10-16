@@ -72,7 +72,7 @@ class RequirementPostsForm extends Component{
                                         <td width="14%">Start Time</td>
                                         <td width="14%">End Time</td>
                                         <td width="15%">Min Price</td>
-                                        <td width="15%">Max Time</td>
+                                        <td width="15%">Max Price</td>
                                     </tr>
                                     {this.renderIfPropertyListNotEmpty()}
                                 </tbody>

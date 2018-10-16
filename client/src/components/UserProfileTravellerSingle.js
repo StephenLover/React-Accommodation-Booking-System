@@ -51,7 +51,7 @@ class UserProfileTravellerSingle extends Component{
         success : 'Finished',
         cancel: 'Cancelled'
     }
-    const hrefLink = '/accommodation/' + this.props.accId
+    const hrefLink = '/accommodation/' + this.props.accId + "&" + this.props.property_id
     return (                
             <tr>
                 <td width="15%">{suburb}</td>
