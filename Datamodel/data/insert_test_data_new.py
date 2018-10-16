@@ -1,3 +1,14 @@
+#!/usr/bin python
+# -*- coding: utf-8 -*-
+
+'''
+This module is to insert the data into the specific database.
+
+Connect the MongoDB, with the specific database.
+Read each CSV files in the csv folder as pandas DataFrame.
+Insert the data into the database
+'''
+
 from pymongo import MongoClient
 #import sys
 import json
