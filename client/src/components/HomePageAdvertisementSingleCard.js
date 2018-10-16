@@ -18,7 +18,7 @@ class HomePageAdvertisementSingleCard extends Component{
     }
 
     render() {
-        const href_acc = '/accommodation/' + this.state.property_id
+        const href_acc = '/accommodation/' + this.state.property_id + "&" + this.state.accId
         return (
             <li>
                 <div className="similar_card">
