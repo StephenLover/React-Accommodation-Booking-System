@@ -87,8 +87,17 @@ class AccomendationDetailsCard extends Component{
     }
 
     googleComponentRender(){
-        if (this.state.latitude !== null && this.state.longitude){
+        console.log(this.state)
+        if (this.state.latitude !== undefined && this.state.longitude !== undefined){
+            console.log("1")
             return(<GoogleMapReact lat={this.state.latitude} lng={this.state.longitude}/>)
+        }
+        else if (this.state.latitude === undefined && this.state.longitude === undefined){
+            console.log("2")
+            let latitude = -33.9173;
+            let longitude = 151.2313;
+            console.log(typeof(latitude))
+            return(<GoogleMapReact lat={latitude} lng={longitude}/>)
         }
     }
 
