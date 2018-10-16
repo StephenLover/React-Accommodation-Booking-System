@@ -28,8 +28,9 @@ const AccomendationDetailsHeader = () => {
 class AccommodationDetailsPage extends Component{
     constructor(props){
         super(props)
-        this.setState = {
-
+        this.state = {
+            accId: this.props.match.params.id.split('&')[1],
+            propertyId: this.props.match.params.id.split('&')[0]
         }
     }
     
@@ -40,7 +41,7 @@ class AccommodationDetailsPage extends Component{
 
                 {localStorage.getItem('session-firstName') === null ? <NavigationBarWithoutSession/> : <NavigationBarWithSession/>}
 
-                <AccomendationDetailsCard accId={this.props.match.params.id}/>
+                <AccomendationDetailsCard propertyId={this.state.propertyId} accId={this.state.accId}/>
 
                 <HomePageFooter/>
             </div>
