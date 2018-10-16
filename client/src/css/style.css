@@ -931,6 +931,18 @@ table {
     margin-right: 15px;
 }
 
+.profilelink {
+    text-decoration: none;
+    color: #000000;
+    height: 100%;
+}
+
+.profilelink:hover {
+    text-decoration: none;
+    height: 100%;
+    background-color: #FFFFFF;
+}
+
 /* review star */
 .ct-star {
     display: inline-block;

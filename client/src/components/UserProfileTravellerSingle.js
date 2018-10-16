@@ -56,7 +56,7 @@ class UserProfileTravellerSingle extends Component{
             <tr>
                 <td width="15%">{suburb}</td>
                 <td width="15%">{price} AUD</td>
-                <a className="profilelink" href={hrefLink}><td width="20%">{address}</td></a>
+                <td width="20%"><a className="profilelink" href={hrefLink}>{address}</a></td>
                 <td width="15%">{startTime}</td>
                 <td width="15%">{endTime}</td>
                 <td width="5%">{statusObj[status]}</td>
