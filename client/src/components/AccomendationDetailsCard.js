@@ -31,10 +31,11 @@ class AccomendationDetailsCard extends Component{
     }
 
     componentWillMount(){
-        fetch(`/api/accommodation/${this.props.accId}`)
+        fetch(`/api/accommodation/${this.props.propertyId}`)
         .then(response => response.json())
         .then(res => {
             console.log(res)
+            console.log('propsid',this.props.propertyId)
             // console.log(res[0].accommodationId.startDate.slice(0,-14),res[0].accommodationId.endDate.slice(0,-14))
             this.setState({
                 // comments: res.property.comments,
@@ -49,8 +50,8 @@ class AccomendationDetailsCard extends Component{
                 pictures: res[0].accommodationId.property.pictures,
                 startTime: res[0].accommodationId.startDate.slice(0,-14),
                 endTime: res[0].accommodationId.endDate.slice(0,-14),
-                accId : res[0].accommodationId._id,
-                property_id : this.props.accId,
+                accId : this.props.accId,
+                //property_id : this.props.accId,
                 reviewList : res,
             })
         })

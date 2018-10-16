@@ -310,6 +310,7 @@ app.get('/api/accommodation/:id', (req, res) => {
       docs = docs.filter( doc => {
         return doc.accommodationId.property !== null;
       })
+      console.log('trans', docs)
       if(docs.length === 0){
         accommodationModel
         .find({})

@@ -1,12 +1,20 @@
+#!/usr/bin python
+# -*- coding: utf-8 -*-
+
+'''
+This module is to insert the accomodation pictures into the propertyInfo.csv file.
+'''
+
 import pandas as pd
 import os
 import random
 
-
 #os.rename("image_/20.jpg", "image_/a0.jpg")
 
-
 def reorder(begin):
+    '''
+    Reorder and rename the files in the specific folder
+    '''
     picturesList = list()
 
     path = "image_"
@@ -19,6 +27,12 @@ def reorder(begin):
 
 
 def gene_picture(size):
+    '''Generate the pictures from the given size.
+    input:
+        - size, the number of pictures need to generate
+    return:
+        - a list, contain the size of the pictures.
+    '''
     picturesList = list()
 
     folderName = "image"

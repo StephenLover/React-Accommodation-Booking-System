@@ -1,3 +1,10 @@
+#!/usr/bin python
+# -*- coding: utf-8 -*-
+
+'''
+This module is to generate the email with teh given size,
+and save into the user_email.txt file in csv folder.
+'''
 
 import random
 import sys

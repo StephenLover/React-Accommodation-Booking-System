@@ -1,3 +1,10 @@
+#!/usr/bin python
+# -*- coding: utf-8 -*-
+
+'''
+This module is to crawler the profile photo from the specific website.
+'''
+
 import requests
 from bs4 import BeautifulSoup
 import os
