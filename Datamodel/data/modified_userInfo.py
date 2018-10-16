@@ -37,8 +37,9 @@ def gene_picture(size):
 
     folderName = "photo"
     files = os.listdir(folderName)
+    files = [f for f in files if "jpg" in f]
     #print (files)
-    print (len(files))
+    #print (len(files))
     #files = [f for f in files if "jpg" in f]
 
     #picturesList = random.sample(files, size)
@@ -52,6 +53,6 @@ filename = 'userInfo.csv'
 userInfoData = pd.read_csv(os.sep.join([path, filename]))
 
 userInfoData['avatar'] = gene_picture(userInfoData.shape[0])
-print (userInfoData.head())
+#print (userInfoData.head())
 
 userInfoData.to_csv(os.sep.join([path, filename]), index=False)
