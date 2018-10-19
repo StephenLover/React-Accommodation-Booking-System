@@ -16,11 +16,13 @@ class SearchResultForm extends Component {
         this.onChangePage = this.onChangePage.bind(this);
         this.sortAccordingRequirement = this.sortAccordingRequirement.bind(this);
         this.handleSelectorChange = this.handleSelectorChange.bind(this);
+        this.renderSearchResultHeader = this.renderSearchResultHeader.bind(this);
     }
 
 
     componentWillMount() {
-        if(localStorage.getItem('keywords') !== undefined){
+        if(localStorage.getItem('keywords') !== undefined && localStorage.getItem('keywords') !== null 
+        && localStorage.getItem('keywords') !== ''){
             if(/^-{0,1}\d+$/.test(localStorage.getItem('keywords')) === false){
                 fetch(`/api/search/suburb/${localStorage.getItem('keywords')}`)
                 .then(response => response.json())
@@ -42,6 +44,16 @@ class SearchResultForm extends Component {
                 })
                 .catch((err) => {console.log(err)})
             }
+        }else if(localStorage.getItem('keywords') === ''){
+            fetch(`/api/toprated`)
+            .then(response => response.json())
+            .then(res => {
+                this.setState({
+                    // comments: res.property.comments,
+                    recommendationAccs : res,
+                })
+            })
+            .catch((err) => {console.log(err)}) 
         }
     }
 
@@ -128,6 +140,18 @@ class SearchResultForm extends Component {
         this.setState({sortRequirement: event.target.value});
     }
 
+    renderSearchResultHeader(){
+        if(localStorage.getItem('keywords') !== undefined && localStorage.getItem('keywords') !== null 
+        && localStorage.getItem('keywords') !== ''){
+            if(/^-{0,1}\d+$/.test(localStorage.getItem('keywords')) === false){
+                return(<h1>Search Result of property in {localStorage.getItem('keywords')}</h1>)
+            }else{
+                return(<h1>Search Result of property in postcode {localStorage.getItem('keywords')}</h1>)
+            }
+        }else if(localStorage.getItem('keywords') === ''){
+            return(<h1>Search Result for all property</h1>)
+        }
+    }
 
     render(){
         console.log(this.state.recommendationAccs)
@@ -136,7 +160,7 @@ class SearchResultForm extends Component {
                 <div id="contact" className="section">
                     <div className="container">
                         <div className="word_search_result">
-                            {/^-{0,1}\d+$/.test(localStorage.getItem('keywords')) === false ? <h1>Search Result of property in {localStorage.getItem('keywords')}</h1> : <h1>Search Result of property in postcode {localStorage.getItem('keywords')}</h1> }
+                            {this.renderSearchResultHeader()}
                         </div>
                         <div className="filter">
                             <form action="/" method="POST">

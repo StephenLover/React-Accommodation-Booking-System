@@ -15,7 +15,6 @@ class HomePageAdvertisementContainer extends Component{
         fetch(`/api/search/ad`)
         .then(response => response.json())
         .then(res => {
-            console.log(res)
             this.setState({
                 adAccList : res,
             })
@@ -39,7 +38,6 @@ class HomePageAdvertisementContainer extends Component{
 
 
     render() {
-        console.log(this.state.adAccList)
         return (
             <div id="contact" className="section">
                 <div className="container">

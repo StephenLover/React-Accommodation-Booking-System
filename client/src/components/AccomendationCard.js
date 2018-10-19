@@ -25,7 +25,6 @@ class AccomendationCard extends Component{
 
 
     render() {
-        console.log(this.props.property)
         const href_acc = '/accommodation/' + this.state.property_id + '&' + this.props.property._id
         return (
             <div className="similar_card">
