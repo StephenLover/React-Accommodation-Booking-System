@@ -48,8 +48,10 @@ class LoginForm extends Component{
                 auth_bool = true;
                 localStorage.setItem('session-firstName', json.firstName);
                 localStorage.setItem('uid',json._id);
+                localStorage.setItem('avatar',json.avatar)
                 this.setState({isAuthenticated : true});
                 alert(`Welcome Back! ${localStorage.getItem('session-firstName')}! Click on 'OK' will move to homepage.`)
+    
                 window.location.href = "/"
             }else{
                 window.alert("Please check the username or password input");
