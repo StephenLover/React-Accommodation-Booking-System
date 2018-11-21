@@ -128,7 +128,10 @@ class WatchingListForm extends Component {
                                     </table>
 
                                     <div className="button_part">
-                                        {this.state.pendingList === false && this.state.pendingList !== null ?                                          <button type="submit" className="add_button" onClick={this.handleSubmitToPendingList}>Add to Pending List</button> : <button onClick={this.handleJumpToPendingList} style={{color : "red"}} className="add_button" >Please check your transaction in Pending List</button>}
+                                        {this.state.pendingList === false && this.state.pendingList !== null ?  
+                                        <button type="submit" className="add_button" onClick={this.handleSubmitToPendingList}>Add to Pending List</button> 
+                                        : <button onClick={this.handleJumpToPendingList} style={{color : "red"}} className="add_button" >Please check your transaction in Pending List</button>
+                                    }
 
 
                                        

@@ -84,13 +84,18 @@ app.post('/api/user/update', (req, res) => {
 })
 
 // Sign up
+// TODO: need to set the exception for handle "the user has been existed".
 app.post('/api/signup', function(req, res){
   let _id = req.body._id
   let password = req.body.password
   let firstName = req.body.firstName
   let lastName = req.body.lastName
-  let phone = req.body.phone
-  let gender = ""
+  let phone = req.body.phoneNumber
+  let gender = req.body.gender
+  let avatar = "photo/85.jpg"
+  console.log("-----------------")
+  console.log(req.body)
+  console.log("-----------------")
   mongoose.connect(url)
     .then(
       () => {
@@ -105,7 +110,8 @@ app.post('/api/signup', function(req, res){
     firstName: firstName,
     lastName: lastName,
     phone: phone,
-    gender: gender
+    gender: gender,
+    avatar: avatar,
   })
   User
   .save(function(err, docs){

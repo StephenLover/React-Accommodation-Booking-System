@@ -49,13 +49,14 @@ class SignUpForm extends Component{
 
     postRequest(){
         let data = {
-            _id:this.refs.emailAddress.value,
-            firstName:this.refs.firstName.value,
-            lastName:this.refs.lastName.value,
-            password:this.refs.password.value,
-            phoneNumber:this.refs.phoneNumber.value
+            _id: this.refs.emailAddress.value,
+            firstName: this.refs.firstName.value,
+            lastName: this.refs.lastName.value,
+            password: this.refs.password.value,
+            phoneNumber: this.refs.phoneNumber.value,
+            gender: this.refs.gender.value,
         }
-
+        console.log(data)
         let url = `http://127.0.0.1:5000/api/signup`
         fetch(url, {
             method: 'POST',
@@ -65,13 +66,13 @@ class SignUpForm extends Component{
             }
         })
         .then(res => {
+            console.log(res.status)
             console.log(res.json());
             if(res.status === 200){
                 res.json();
                 console.log('Success:', JSON.stringify(res.json));
-                localStorage.setItem('session-firstName', JSON.stringify(this.refs.firstName.value));
-                alert(`Registered successfully! Click 'OK' will jump to the Homepage!`)
-                window.location.href="./"
+                alert(`Registered successfully! Click 'OK' and login it again`)
+                window.location.href="./login"
             }
         })
         .catch(error => {
@@ -88,8 +89,11 @@ class SignUpForm extends Component{
         let password = this.refs.emailAddress.value
         let passwordAgain = this.refs.emailAddress.value
         let phoneNumber = this.refs.emailAddress.value
+        let gender = this.refs.gender.value
+        //check if all the fields has been input
         if (emailAddress.length !== 0 && firstName.length !== 0 && lastName.length !== 0 
-        && password.length !== 0 && password.length !== 0 && passwordAgain.length !== 0 && phoneNumber.length !== 0){
+        && password.length !== 0 && password.length !== 0 && passwordAgain.length !== 0 && phoneNumber.length !== 0
+        && gender !== 0){
             valid_bool = true;
             return valid_bool
         }
@@ -123,17 +127,22 @@ class SignUpForm extends Component{
                                 </div>
 
                                 <div className="wrap-input100 validate-input">
-                                    <input className="input100" type="password" name="email" placeholder="Password" ref="password" required/>
+                                    <input className="input100" type="password" name="password" placeholder="Password" ref="password" required/>
                                     <span className="focus-input100"></span>
                                 </div>
 
                                 <div className="wrap-input100 validate-input">
-                                    <input className="input100" type="password" name="email" placeholder="Password Again" ref="passwordAgain" required/>
+                                    <input className="input100" type="password" name="password again" placeholder="Password Again" ref="passwordAgain" required/>
                                     <span className="focus-input100"></span>
                                 </div>
             
                                 <div className="wrap-input100 validate-input">
-                                    <input className="input100" type="text" name="email" placeholder="Phone Number" ref="phoneNumber" required/>
+                                    <input className="input100" type="text" name="gender" placeholder="Gender" ref="gender" required/>
+                                    <span className="focus-input100"></span>
+                                </div>
+
+                                <div className="wrap-input100 validate-input">
+                                    <input className="input100" type="text" name="phone number" placeholder="Phone Number" ref="phoneNumber" required/>
                                     <span className="focus-input100"></span>
                                 </div>
 

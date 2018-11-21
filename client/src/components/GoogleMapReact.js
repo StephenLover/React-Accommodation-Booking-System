@@ -21,7 +21,7 @@ const MyMapComponent = compose(
 );
 
 class GoogleMapReact extends React.PureComponent {
-  state = {
+   state = {
     isMarkerShown: true,
     lat: -33.9173,
     lng: 151.2313,

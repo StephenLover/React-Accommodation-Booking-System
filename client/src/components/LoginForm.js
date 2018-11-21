@@ -35,6 +35,7 @@ class LoginForm extends Component{
         //fetch data from DB and API
         fetch(`api/user/${username}`)
         .then(res => {
+            console.log(res.status)
             // wrong username input, get 404 from backend API
             if(res.status === 404){
                 window.alert("Please check the username or password input");
