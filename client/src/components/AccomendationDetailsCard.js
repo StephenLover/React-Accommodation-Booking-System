@@ -26,12 +26,10 @@ class AccomendationDetailsCard extends Component{
             startTime: null,
             endTime: null,
         }
-        this.addToWatchingList = this.addToWatchingList.bind(this);
-        this.googleComponentRender = this.googleComponentRender.bind(this);
     }
 
-    componentWillMount(){
-        fetch(`/api/accommodation/${this.props.propertyId}`)
+    async componentWillMount(){
+        await fetch(`/api/accommodation/${this.props.propertyId}`)
         .then(response => response.json())
         .then(res => {
             console.log(res)
@@ -75,7 +73,7 @@ class AccomendationDetailsCard extends Component{
         }      
     }
 
-    addToWatchingList(e){
+    addToWatchingList = (e) => {
         e.preventDefault();
 
         if(localStorage.getItem('uid') === null){
@@ -97,10 +95,8 @@ class AccomendationDetailsCard extends Component{
         }
     }
 
-    googleComponentRender(){
-        console.log(this.state)
-        if (this.state.latitude !== undefined && this.state.longitude !== undefined){
-            console.log("1")
+    googleComponentRender = () => {
+        if (this.state.latitude && this.state.longitude ){
             return(<GoogleMapReact lat={this.state.latitude} lng={this.state.longitude}/>)
         }
         else if (this.state.latitude === undefined && this.state.longitude === undefined){
@@ -120,7 +116,6 @@ class AccomendationDetailsCard extends Component{
     }
 
     render() {
-        console.log(this.state)
         return (
             <div>
                 <div id="contact" className="section">

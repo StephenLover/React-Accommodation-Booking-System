@@ -117,7 +117,7 @@ class SignUpForm extends Component{
                                 </div>
 
                                 <div className="wrap-input100 validate-input">
-                                    <input className="input100" type="text" name="password" placeholder="FirstName" ref="firstName" required/>
+                                    <input className="input100" type="text" name="firstname" placeholder="FirstName" ref="firstName" required/>
                                     <span className="focus-input100"></span>
                                 </div>
 

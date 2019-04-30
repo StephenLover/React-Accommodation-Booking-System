@@ -13,8 +13,8 @@ class HomePageFooter extends Component{
                                     <h3>About Us</h3>
                                 </div>
                                 <div className="footer_text">
-                                    <p>The Double 90 Group is an extremely mystical team, there are four wacko in this team, you may can find them at CSE Drums lab in 2pm on Tuesday....</p>
-                                    <p>Developers: <br/>Albus Lee, Bruce Wang, Jaffar Ye, Stephen Wang</p>
+                                    <p>The Double 90 Group is an extremely mystical dev team, there are four wackos in this team, you may find them at CSE Drums lab at 2pm on Tuesday....</p>
+                                    <p>Developers: <br/>Stephen Wang, Albus Lee, Bruce Wang, Jaffar Ye</p>
                                 </div>
                             </div>
                         </li>
@@ -25,12 +25,12 @@ class HomePageFooter extends Component{
                                 </div>
                                 <div className="footer_text">
                                     <h4>Location :</h4>
-                                    <p>UNSW Business School G21</p>
+                                    <p>UNSW Computer Science Engineering</p>
                                 </div>
                                 <div className="footer_text">
                                     <h4>Contact :</h4>
                                     <p>Phone : +04?? ??? ???</p>
-                                    <p>Email : weido@gmail.com</p>
+                                    <p>Email : weidos@gmail.com</p>
                                 </div>  
                             </div>
                         </li>

@@ -14,11 +14,7 @@ class AccomendationDetailsReviewSingle extends Component{
         }
     }
     
-
-
-
     render(){
-        console.log(this.props.icon)
         return (
             <div className="personal_comment">
                 <div className="comment_person_detail">

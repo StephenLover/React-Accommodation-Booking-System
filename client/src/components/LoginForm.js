@@ -50,6 +50,7 @@ class LoginForm extends Component{
                 localStorage.setItem('uid',json._id);
                 localStorage.setItem('avatar',json.avatar)
                 this.setState({isAuthenticated : true});
+                
                 alert(`Welcome Back! ${localStorage.getItem('session-firstName')}! Click on 'OK' will move to homepage.`)
     
                 window.location.href = "/"
@@ -64,6 +65,7 @@ class LoginForm extends Component{
         })
     }
 
+
     render() {
         return (
             <div>
@@ -71,7 +73,7 @@ class LoginForm extends Component{
                     <div className="container-login100">
                         <div className="wrap-login100" >
                             <span className="login100-form-title" >
-                                Accomondation System
+                                Accommodation System
                             </span>
                             <form className="login100-form validate-form "  name="loginform">
 
